@@ -1,0 +1,43 @@
+주어진 시간 30분 안에 문제를 파악한다. 현재시각 2024_4/1_11:24
+과제 ft_printf
+• 프로젝트는 C 언어로 작성되어야 합니다.
+• 프로젝트는 Norm에 따라 작성되어야 합니다. 보너스 파일/함수가 있는 경우에도 이를 포함하여 Norm 검사가 진행되며, Norm 오류가 있을 경우 0점을 받게 됩니다.
+• 함수는 예기치 않게 종료해서는 안 됩니다 (세그멘테이션 폴트, 버스 에러, 이중 해제 등). 이러한 경우, 프로젝트는 비정상적으로 간주되며, 평가 중에 0점을 받게 됩니다. 정의되지 않은 동작을 제외하고요.
+• 필요한 경우 모든 힙 할당된 메모리 공간은 적절하게 해제되어야 합니다. 메모리 누수는 용납되지 않습니다.
+• 과제에 따라 필요하다면 Makefile을 제출해야 하며, 해당 Makefile은 소스 파일을 필요한 출력물로 컴파일하고, -Wall, -Wextra 및 -Werror 플래그를 사용하여 cc를 사용해야 합니다. 또한 Makefile은 다시 링크해서는 안 됩니다.
+• Makefile은 적어도 $(NAME), all, clean, fclean 및 re 규칙을 포함해야 합니다.
+• 프로젝트에 추가 기능을 제공할 수 있는 경우, Makefile에 보너스 규칙을 포함해야 하며, 이 규칙은 필요한 모든 다양한 헤더, 라이브러리 또는 함수를 추가해야 합니다. 보너스는 필요에 따라 _bonus.{c/h} 파일에 있어야 합니다.
+• 프로젝트에서 libft를 사용할 수 있는 경우, 해당 소스와 연관된 Makefile을 libft 폴더에 복사해야 합니다. 프로젝트의 Makefile은 해당 Makefile을 사용하여 라이브러리를 컴파일한 다음 프로젝트를 컴파일해야 합니다.
+• 프로젝트에 대한 테스트 프로그램을 만드는 것을 권장하지만, 이 작업은 제출되거나 평가되지 않습니다. 이를 통해 작업 및 동료의 작업을 쉽게 테스트할 수 있습니다. 특히 방어 중에 이러한 테스트를 유용하게 활용할 수 있습니다. 실제로 방어 중에는 테스트나 피어의 테스트를 자유롭게 사용할 수 있습니다.
+• 작업물을 할당된 git 저장소에 제출해야 합니다. git 저장소에 있는 작업물만 평가됩니다. Deepthought가 작업을 평가하는 경우, 피어 평가 후에 진행됩니다. Deepthought의 평가 중에 작업의 어떤 부분에서 오류가 발생하면 평가가 중단됩니다.
+
+Program name --> libftprintf.a
+Turn in files --> Makefile, *.h, */*.h, *.c, */*.c
+Makefile --> NAME, all, clean, fclean, re
+External functs. --> malloc, free, write, va_start, va_arg, va_copy, va_end
+Libft authorized --> yes
+Description --> rite a library that contains ft_printf(), a function that will mimic the original printf()
+
+You have to recode the printf() function from libc.
+The prototype of ft_printf() is int	ft_printf(const char *, ...);
+
+요구 사항들
+• 원본 printf()의 버퍼 관리를 구현하지 마십시오.
+• 함수는 다음 변환을 처리해야 합니다: cspdiuxX%
+• 함수는 원본 printf()와 비교될 것입니다.
+• 라이브러리를 생성하기 위해 ar 명령을 사용해야 합니다. libtool 명령의 사용은 금지됩니다.-->libtool이뭐지
+• libftprintf.a는 귀하의 저장소의 루트에 생성되어야 합니다.
+
+You have to implement the following conversions:
+1. %c Prints a single character.
+2. %s Prints a string(as defined by the common C convention).
+3. %p The void * pointer argument has to be printed in hexadecimal(16진수) format.
+4. %d Prints a decimal (base 10) number.
+5. %i Prints an integer in base 10.
+6. %u Prints an unsigned decimal(-->소수?) (base 10) number. 
+7. %x Prints a number in hexadecimal (base 16) lowercase format.
+8. %X Prints a number in hexadecimal (base 16) uppercase format.
+9. %% Prints a percent sign.
+
+문제의 명세서를 봤을 때 딱히 어려운 내용은 없는 것 같다. 다만 %u가 뭘하는 함수인지 감이 안잡힌다.
+그리고 8진법은 안하는지 모르겠다.

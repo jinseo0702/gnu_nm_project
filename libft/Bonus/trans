@@ -1,0 +1,33 @@
+ft_lstadd_front
+void ft_lstadd_front(t_list **lst, t_list *new)
+
+lst : 포인터의 주소이다. 첫번째 링크드리스트
+new : 포인터의 주소이다. 추가 하려는 노드
+
+return value : none
+External functs. none
+
+특징 : 새로운 노드 'new'를 리스트 첫번째에 추가한다.
+
+ft_lstsize
+int ft_lstsize(t_list *lst);
+lst: The beginning of the list.
+	 리스트의 시작
+return value 리스트의 길이 예를 들어 list 가 "Hello" "World" "jin" 이라고 한다면 3개
+특징 : 리스트 안에있는 노드들의 길이를 잰다.
+
+ft_lstlast
+t_list *ft_lstlast(t_list *lst);
+
+lst : 리스트의 시작
+return value : 리스트의 마지막 노드
+특징 : 리스트의 마지막 노드를 반환하세영.
+
+ft_lstdelone
+void ft_lstdelone(t_list *lst, void (*del)(void *));
+lst : free해줄 node
+del : 콘텐츠를 삭제하는 함수 포인터
+external functs : free
+특징 : 노드를 파라미터로 받아 주어진 'del' 함수를 사용하여 주어진 'del' 함수를 사용하여\
+		노드의 콘텐츠의 메모리를 해제합니다.
+		'next'의 메모리는 'next'의 메모리는 해제하지 않아야 합니다.
