@@ -29,6 +29,7 @@ int main(int argc, char *argv[]) {
     DBG_E_IDENT(e_ident);
     DBG_ELF64(Elf64);
     DBG_ELF64_SHDR(Elf64);
+    DBG_ELF64_SYM(Elf64);
 
     return (0);
 }

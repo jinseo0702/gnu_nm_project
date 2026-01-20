@@ -251,6 +251,153 @@ typedef struct { \n\
 void prints_elf64_shdr(Elf64_Ehdr *elf_64) {
     Elf64_Shdr *shdr_64 =  (Elf64_Shdr *)((unsigned char *)elf_64 + elf_64->e_shoff);
     for (int i = 0; i < elf_64->e_shnum; i++) {
+        ft_printf("\nindex is 0x%X", i);
         print_elf64_shdr(&shdr_64[i]);
     }
+}
+
+/*
+           typedef struct {
+               uint32_t      st_name;
+               unsigned char st_info;
+               unsigned char st_other;
+               uint16_t      st_shndx;
+               Elf64_Addr    st_value;
+               uint64_t      st_size;
+           } Elf64_Sym;
+*/
+
+static const char *Elf64_Sym_st_info_stt[] = {
+    [STT_NOTYPE] = "STT_NOTYPE : The symbol's type is not defined.",
+    [STT_OBJECT] = "STT_OBJECT : The symbol is associated with a data object.",
+    [STT_FUNC] = "STT_FUNC : The symbol is associated with a function or other executable code.",
+    [STT_SECTION] = "STT_SECTION : The symbol is associated with a section.  Symbol table entries of this type exist primarily for relocation and normally have STB_LOCAL bindings.",
+    [STT_FILE] = "STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL",
+    [STT_LOPROC] = "STT_LOPROC : Values in the inclusive range [STT_LOPROC, STT_HIPROC] are reserved for processor-specific semantics.",
+};
+
+static const char *Elf64_Sym_st_info_stb[] = {
+    [STB_LOCAL] = "STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other.",
+    [STB_GLOBAL] = "STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol.",
+    [STB_WEAK] = "STB_WEAK : Weak symbols resemble global symbols, but their definitions have lower precedence.",
+    [STB_LOPROC] = "STB_LOPROC : Values in the inclusive range [STB_LOPROC, STB_HIPROC] are reserved for processor-specific semantics.",
+};
+
+static const char *Elf64_Sym_st_other[] = {
+    [STV_DEFAULT] = "Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules.",
+    [STV_INTERNAL] = "Processor-specific hidden class.",
+    [STV_HIDDEN] = "Symbol is unavailable to other modules; references in the local module always resolve to the local symbol (i.e., the symbol can't be interposed by definitions in other modules).",
+    [STV_PROTECTED] = "Symbol is available to other modules, but references in the local module always resolve to the local symbol.",
+};
+
+
+static void print_elf64_Sym_all(Elf64_Sym *shdr_64, const char *str) {
+    ft_printf("\n\
+typedef struct { \n\
+               uint32_t      st_name; -> 0x%X \n\
+               uint32_t      st_name; -> %s \n\
+               unsigned char st_info_stt; -> %s \n\
+               unsigned char st_info_stb; -> %s \n\
+               unsigned char st_other; -> %s \n\
+               uint16_t      st_shndx; -> %d \n\
+               Elf64_Addr    st_value; -> %P \n\
+               uint64_t      st_size; -> 0x%X \n\
+           } Elf64_Sym; \n"
+,  shdr_64->st_name  \
+,  &str[shdr_64->st_name]  \
+,  Elf64_Sym_st_info_stt[ELF32_ST_TYPE(shdr_64->st_info)] \
+,  Elf64_Sym_st_info_stb[ELF32_ST_BIND(shdr_64->st_info)] \
+,  Elf64_Sym_st_other[ELF64_ST_VISIBILITY(shdr_64->st_other)] \
+, shdr_64->st_shndx \
+, shdr_64->st_value \
+, shdr_64->st_size);
+}
+
+static void print_elf64_Sym_import(Elf64_Ehdr *elf_64, Elf64_Sym *shdr_64, const char *str, const char *section, Elf64_Shdr *sec_64) {
+
+    const char *secname;
+if (shdr_64->st_shndx < elf_64->e_shnum)
+    secname = section +  sec_64[shdr_64->st_shndx].sh_name;
+else if (shdr_64->st_shndx == SHN_ABS)
+    secname = "ABS";
+else if (shdr_64->st_shndx == SHN_UNDEF)
+    secname = "UND";
+else if (shdr_64->st_shndx == SHN_COMMON)
+    secname = "COM";
+else{
+    secname = "SPECIAL";
+}
+
+    ft_printf("\n\
+               uint32_t      st_name; -> %s \n\
+               Elf64_Addr    st_value; -> %P \n\
+               section name is -> %s \n"
+,  &str[shdr_64->st_name]  \
+, shdr_64->st_value \
+,  secname \
+);
+}
+
+#include <stdlib.h>
+#include <string.h>
+
+static const char *g_strtab;
+
+static int cmp_sym_by_value(const void *a, const void *b)
+{
+    const Elf64_Sym *sa = *(const Elf64_Sym * const *)a;
+    const Elf64_Sym *sb = *(const Elf64_Sym * const *)b;
+
+    if (sa->st_value < sb->st_value) return -1;
+    if (sa->st_value > sb->st_value) return  1;
+
+    // 같은 주소면 이름으로 2차 정렬(선택)
+    return strcmp(g_strtab + sa->st_name, g_strtab + sb->st_name);
+}
+
+void print_elf64_sym(Elf64_Ehdr *elf_64) {
+    Elf64_Shdr *shdr_64 =  (Elf64_Shdr *)((unsigned char *)elf_64 + elf_64->e_shoff);
+    Elf64_Shdr *sym_section_temp = NULL;
+    
+    //symstr 의 값 찾기
+    for (int i = 0; i < elf_64->e_shnum; i++) {
+        if (shdr_64[i].sh_type == SHT_SYMTAB) {
+            sym_section_temp = &shdr_64[i];
+            break;
+        }
+    }
+    if (sym_section_temp == NULL) {
+        ft_printf("Don't have symbols\n");
+    }
+    uint32_t link = sym_section_temp->sh_link;
+    char *str_arr = (char *)((unsigned char *)elf_64 + shdr_64[link].sh_offset);
+
+    //section str 값 찾기
+    // shdr_64 = (Elf64_Shdr *)((unsigned char *)elf_64 + elf_64->e_shoff);
+    uint16_t shstr_i = elf_64->e_shstrndx;          // 섹션 이름 테이블 인덱스
+    Elf64_Shdr *shstr = &shdr_64[shstr_i];          // .shstrtab 섹션 헤더
+    const char *shstrtab = (const char *)elf_64 + shstr->sh_offset;  // 섹션 이름 문자열 테이블
+
+
+
+
+    uint64_t size = sym_section_temp->sh_size;
+    uint64_t entsize = sym_section_temp->sh_entsize;
+    long cnt = size / entsize;
+    Elf64_Sym *Sym_64 =  (Elf64_Sym *)((unsigned char *)elf_64 + sym_section_temp->sh_offset);
+    for (int i = 0; i < cnt; i++) {
+        print_elf64_Sym_all(&Sym_64[i], str_arr);
+    }
+
+    Elf64_Sym **sorted = malloc(sizeof(*sorted) * cnt);
+    for (int i = 0; i < cnt; i++)
+        sorted[i] = &Sym_64[i];
+
+    g_strtab = str_arr;
+    qsort(sorted, cnt, sizeof(*sorted), cmp_sym_by_value);
+
+    for (int i = 0; i < cnt; i++)
+        print_elf64_Sym_import(elf_64, sorted[i], str_arr, shstrtab, shdr_64);
+
+    free(sorted);
 }
