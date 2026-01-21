@@ -4,7 +4,10 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <elf.h>
+#include <string.h>
 #include "../ft_printf/libftprintf.h"
+
+int global_var = 1;
 
 static const char *e_ident_ei_class[] = {
     [ELFCLASSNONE] = "ELFCLASSNONE : This class is invalid.",
@@ -216,17 +219,36 @@ static const char *Elf64_Shdr_sh_flags[] = {
 
 static void print_elf64_shdr(Elf64_Shdr *shdr_64) {
     const char *ptr;
+    char ptr2[100000] = {0,};
+    int falg = 0;
     if (shdr_64->sh_type < 12) {
         ptr = Elf64_Shdr_sh_type[shdr_64->sh_type];
     }
     else {
         ptr = "Out of range";
     }
+    if (shdr_64->sh_flags & SHF_WRITE) {
+        falg += 1;
+        strcat(ptr2, Elf64_Shdr_sh_flags[SHF_WRITE]);
+    }
+    if (shdr_64->sh_flags & SHF_ALLOC) {
+        falg += 1;
+        strcat(ptr2, "\n");
+        strcat(ptr2, Elf64_Shdr_sh_flags[SHF_ALLOC]);
+    }
+    if (shdr_64->sh_flags & SHF_EXECINSTR) {
+        falg += 1;
+        strcat(ptr2, "\n");
+        strcat(ptr2, Elf64_Shdr_sh_flags[SHF_EXECINSTR]);
+    }
+    if(falg == 0) {
+        strcat(ptr2, "Out of range");
+    }
     ft_printf(" \n\
 typedef struct { \n\
                uint32_t   sh_name; -> %P \n\
                uint32_t   sh_type; -> %s \n\
-               uint64_t   sh_flags; -> %P \n\
+               uint64_t   sh_flags; -> %s \n\
                Elf64_Addr sh_addr; -> %P \n\
                Elf64_Off  sh_offset; -> %P \n\
                uint64_t   sh_size; -> %P \n\
@@ -237,7 +259,7 @@ typedef struct { \n\
            } Elf64_Shdr; \n\
 ", shdr_64->sh_name \
 , ptr \
-, Elf64_Shdr_sh_flags[shdr_64->sh_flags] \
+, ptr2 \
 , shdr_64->sh_addr \
 , shdr_64->sh_offset \
 , shdr_64->sh_size \
@@ -305,36 +327,71 @@ typedef struct { \n\
            } Elf64_Sym; \n"
 ,  shdr_64->st_name  \
 ,  &str[shdr_64->st_name]  \
-,  Elf64_Sym_st_info_stt[ELF32_ST_TYPE(shdr_64->st_info)] \
-,  Elf64_Sym_st_info_stb[ELF32_ST_BIND(shdr_64->st_info)] \
+,  Elf64_Sym_st_info_stt[ELF64_ST_TYPE(shdr_64->st_info)] \
+,  Elf64_Sym_st_info_stb[ELF64_ST_BIND(shdr_64->st_info)] \
 ,  Elf64_Sym_st_other[ELF64_ST_VISIBILITY(shdr_64->st_other)] \
 , shdr_64->st_shndx \
 , shdr_64->st_value \
 , shdr_64->st_size);
 }
 
+static const char *Elf64_Sym_st_info_stt_s[] = {
+    [STT_NOTYPE] = "STT_NOTYPE",
+    [STT_OBJECT] = "STT_OBJECT",
+    [STT_FUNC] = "STT_FUNC",
+    [STT_SECTION] = "STT_SECTION",
+    [STT_FILE] = "STT_FILE",
+    [STT_LOPROC] = "STT_LOPROC",
+};
+
+static const char *Elf64_Sym_st_info_stb_s[] = {
+    [STB_LOCAL] = "STB_LOCAL",
+    [STB_GLOBAL] = "STB_GLOBAL",
+    [STB_WEAK] = "STB_WEAK",
+    [STB_LOPROC] = "STB_LOPROC",
+};
+
+static const char *Elf64_Sym_st_other_s[] = {
+    [STV_DEFAULT] = "STV_DEFAULT",
+    [STV_INTERNAL] = "STV_INTERNAL",
+    [STV_HIDDEN] = "STV_HIDDEN",
+    [STV_PROTECTED] = "STV_PROTECTED",
+};
+
 static void print_elf64_Sym_import(Elf64_Ehdr *elf_64, Elf64_Sym *shdr_64, const char *str, const char *section, Elf64_Shdr *sec_64) {
 
-    const char *secname;
-if (shdr_64->st_shndx < elf_64->e_shnum)
-    secname = section +  sec_64[shdr_64->st_shndx].sh_name;
-else if (shdr_64->st_shndx == SHN_ABS)
-    secname = "ABS";
-else if (shdr_64->st_shndx == SHN_UNDEF)
-    secname = "UND";
-else if (shdr_64->st_shndx == SHN_COMMON)
-    secname = "COM";
+    char secname[10000];
+    memset(secname, 0, sizeof(secname));
+if (shdr_64->st_shndx == SHN_UNDEF){
+        strcat(secname, "UND");
+}
+else if (shdr_64->st_shndx == SHN_COMMON){
+    strcat(secname, "COM");
+}
+else if (shdr_64->st_shndx == SHN_ABS){
+    strcat(secname, "ABS");
+}
+else if (shdr_64->st_shndx < elf_64->e_shnum){
+    strcat(secname, section +  sec_64[shdr_64->st_shndx].sh_name);
+}
 else{
-    secname = "SPECIAL";
+    strcat(secname, "SPECIAL");
 }
 
     ft_printf("\n\
                uint32_t      st_name; -> %s \n\
                Elf64_Addr    st_value; -> %P \n\
-               section name is -> %s \n"
+               section name is -> %s \n\
+               st_info_stt; -> %s \n\
+               st_info_stb; -> %s \n\
+               st_other; -> %s \n\
+               "
 ,  &str[shdr_64->st_name]  \
 , shdr_64->st_value \
 ,  secname \
+,  Elf64_Sym_st_info_stt_s[ELF64_ST_TYPE(shdr_64->st_info)] \
+,  Elf64_Sym_st_info_stb_s[ELF64_ST_BIND(shdr_64->st_info)] \
+,  Elf64_Sym_st_other_s[ELF64_ST_VISIBILITY(shdr_64->st_other)]
 );
 }
 

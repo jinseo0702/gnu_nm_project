@@ -1,0 +1,68 @@
+New Note 4
+
+사용안하는것
+c, g, G, s, S
+
+사용하는 symbol type
+
+A/a : 
+ElfN_Sym 의 st_shndx 가 SHN_ABS 인경우
+shdr_64->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : a
+shdr_64->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : A
+
+B/b:
+Elf32_Shdr의 sh_type 이 SHT_NOBITS  인경우 &&
+Elf32_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
+shdr_64->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : b
+shdr_64->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : B
+
+C:
+Elf32_Shdr의 sh_type 이 SHT_NOBITS  인경우 &&
+Elf32_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
+ElfN_Sym 의 st_shndx 가 SHN_COMMON 인경우
+
+D/d:
+Elf32_Shdr의 sh_type 이 SHT_PROGBITS  인경우 &&
+Elf32_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
+shdr_64->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : d
+shdr_64->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : D
+
+i
+
+I
+
+N
+
+n
+
+p
+
+R/r
+
+T/t
+
+U : 
+ElfN_Sym 의 st_shndx 가 SHN_UNDEF 인경우 그리고
+symbol ->st_info 의 ELF64_ST_BIND 가  STB_WEAK 이 아닌경우
+
+u
+
+V/v : 
+The symbol is a weak object. 를 근거로 
+symbol ->st_info 의 ELF64_ST_BIND 가  STB_WEAK 일때 
+symbol ->st_info 의 ELF64_ST_TYPE 이 STT_OBJECT 이고
+symbol->st_value 가 SHN_UNDEF(정의 되지 않았다면) v
+symbol->st_value 가 정의 되었다면 V
+
+W/w :
+ man page 보면 not been tagged as a weak object symbol 를 근거로
+symbol ->st_info 의 ELF64_ST_BIND 가  STB_WEAK 일때 
+symbol ->st_info 의 ELF64_ST_BIND 가  STB_WEAK 아닐때
+symbol->st_value 가 SHN_UNDEF(정의 되지 않았다면) w
+symbol->st_value 가 정의 되었다면 W
+
+
+
+-
+
+?
