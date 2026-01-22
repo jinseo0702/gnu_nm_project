@@ -7,62 +7,82 @@ c, g, G, s, S
 
 A/a : 
 ElfN_Sym 의 st_shndx 가 SHN_ABS 인경우
-shdr_64->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : a
-shdr_64->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : A
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : a
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : A
 
 B/b:
-Elf32_Shdr의 sh_type 이 SHT_NOBITS  인경우 &&
-Elf32_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
-shdr_64->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : b
-shdr_64->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : B
+ElfN_Shdr의 sh_type 이 SHT_NOBITS  인경우 &&
+ElfN_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : b
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : B
 
 C:
-Elf32_Shdr의 sh_type 이 SHT_NOBITS  인경우 &&
-Elf32_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
+ElfN_Shdr의 sh_type 이 SHT_NOBITS  인경우 &&
+ElfN_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
 ElfN_Sym 의 st_shndx 가 SHN_COMMON 인경우
 
 D/d:
-Elf32_Shdr의 sh_type 이 SHT_PROGBITS  인경우 &&
-Elf32_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
-shdr_64->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : d
-shdr_64->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : D
+ElfN_Shdr의 sh_type 이 SHT_PROGBITS  인경우 &&
+ElfN_Shdr의 sh_flags 가 SHF_ALLOC + SHF_WRITE 인경우
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : d
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : D
 
-i
+i: 
+ElfN_Sym -> st_info 의 ELFN_ST_TYPE 가 STT_GNU_IFUNC 인 경우
 
-I
+I: 
+구현하지 않겠다. 
+심볼은 다른 심볼에 대한 간접 참조(indirect reference)입니다. 
+위 사항을 구현 방법은 현재로써는 어렵기때문에 구현하지 않겠다
 
-N
+N:
+ElfN_Shdr 의 sh_type 이 SHT_PROGBITS 이면서
+sh_flag 가 0(none) 인경우
 
-n
+n:
+ElfN_Shdr 의 sh_type 이 SHT_PROGBITS 이면서
+sh_flag 이 (sh_flag & SHF_WRITE) == 0  인경우
 
-p
+p:
+64bit기준만 고려 한다.
+ElfN_Shdr 의 sh_type 이 SHT_X86_64_UNWIND 이면 p 이다.
 
-R/r
+R/r:
+ElfN_Shdr 의 sh_type 이 SHT_PROGBITS 이면서
+sh_flag 이 (sh_flag & SHF_WRITE) == 0  이면서
+sh_flag 이 SHF_ALLOC 인 경우
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : r
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : R
 
-T/t
+T/t:
+ElfN_Shdr 의 sh_type 이 SHT_PROGBITS 이면서
+sh_flag 이 SHF_ALLOC  이면서 SHF_EXECINSTR 인경우
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : t
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : T
 
-U : 
+U: 
 ElfN_Sym 의 st_shndx 가 SHN_UNDEF 인경우 그리고
-symbol ->st_info 의 ELF64_ST_BIND 가  STB_WEAK 이 아닌경우
+symbol ->st_info 의 ELFN_ST_BIND 가  STB_WEAK 이 아닌경우
 
-u
+u:
+shdr_N->st_info 의 ELFN_ST_BIND 가 STB_GNU_UNIQUE 인경우
 
 V/v : 
 The symbol is a weak object. 를 근거로 
-symbol ->st_info 의 ELF64_ST_BIND 가  STB_WEAK 일때 
-symbol ->st_info 의 ELF64_ST_TYPE 이 STT_OBJECT 이고
+symbol ->st_info 의 ELFN_ST_BIND 가  STB_WEAK 일때 
+symbol ->st_info 의 ELFN_ST_TYPE 이 STT_OBJECT 이고
 symbol->st_value 가 SHN_UNDEF(정의 되지 않았다면) v
 symbol->st_value 가 정의 되었다면 V
 
 W/w :
  man page 보면 not been tagged as a weak object symbol 를 근거로
-symbol ->st_info 의 ELF64_ST_BIND 가  STB_WEAK 일때 
-symbol ->st_info 의 ELF64_ST_BIND 가  STB_WEAK 아닐때
+symbol ->st_info 의 ELFN_ST_BIND 가  STB_WEAK 일때 
+symbol ->st_info 의 ELFN_ST_BIND 가  STB_WEAK 아닐때
 symbol->st_value 가 SHN_UNDEF(정의 되지 않았다면) w
 symbol->st_value 가 정의 되었다면 W
+  
+-:
+N 으로 통합이 되었음
 
-
-
--
-
-?
+?:
+위 내용이 아닌경우 

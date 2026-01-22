@@ -206,3 +206,127 @@ Quick Sort
 - **스택(재귀) 줄이기**: 항상 **작은 쪽만 재귀**하고 큰 쪽은 루프로 처리하면 스택이 깊어지는 걸 막음.
 - **최악 방지 장치(introsort)**: 재귀가 너무 깊어지면 **힙정렬로 전환**해서 최악도 \(O(n \log n)\) 보장.
 */
+
+/*
+내가 만든코드
+        ```c
+        void quickSort(t_NmSym *arr, int start, int end) {
+        	int partion2 = partion(arr, start, end);
+        	if (start >= end) return;
+        	quickSort(arr, start, partion2 - 1);
+        	quickSort(arr, partion2, end);
+        }
+
+        void swap(t_NmSym *arr, int start, int end) {
+        	t_NmSym temp;
+
+            ft_memcpy(&temp, &arr[start], sizeof(t_NmSym));
+            ft_memcpy(&arr[start], &arr[end], sizeof(t_NmSym));
+            ft_memcpy(&arr[end], &temp, sizeof(t_NmSym));
+        }
+
+        int partion_n(t_NmSym *arr, int start, int end) {
+        	int tstart = start;
+        	int tend = end;
+        	ElfN_Addr pivot = arr[(start + end) / 2].st_value;
+        	while (start <= end) {
+        		while (arr[start].st_value < pivot) start++;
+        		while (arr[end].st_value > pivot) end--;
+        		if (start <= end) {
+        			swap(arr, start, end);
+        			start++;
+        			end--;
+        		}
+        	}
+        	return start;
+        }
+
+        int partion_none_n(t_NmSym *arr, int start, int end) {
+        	int tstart = start;
+        	int tend = end;
+            int len = 0;
+        	const char *pivot = arr[(start + end) / 2].SymName;
+        	while (start <= end) {
+                len = ft_strlen(arr[start].SymName) > ft_strlen(pivot) ? ft_strlen(arr[start].SymName) : ft_strlen(pivot)
+        		while (ft_strncmp(arr[start].SymName, pivot) < 0){
+                    start++
+                };
+                len = ft_strlen(arr[end].SymName) > ft_strlen(pivot) ? ft_strlen(arr[end].SymName) : ft_strlen(pivot)
+        		while (ft_strncmp(arr[end].SymName, pivot) > 0){
+                    end--
+                };
+        		if (start <= end) {
+        			swap(arr, start, end);
+        			start++;
+        			end--;
+        		}
+        	}
+        	return start;
+        }
+        ```
+
+AI가 만든 코드
+#include <string.h>
+
+// 1. Swap 로직: 구조체 직접 대입 (memcpy보다 직관적이고 효율적)
+void swap(t_NmSym *arr, int i, int j) {
+    t_NmSym temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+// 이름 비교 함수 (ASCII 순)
+int compare_name(t_NmSym *a, t_NmSym *b) {
+    return ft_strcmp(a->SymName, b->SymName);
+}
+
+// 주소 비교 함수 (보완된 로직: 주소 같으면 이름순)
+int compare_numeric(t_NmSym *a, t_NmSym *b) {
+    if (a->st_value < b->st_value) return -1;
+    if (a->st_value > b->st_value) return 1;
+    // 주소가 같으면 이름순으로 정렬 (nm의 표준 동작)
+    return compare_name(a, b);
+}
+
+// 통합 파티션 로직
+int partition(t_NmSym *arr, int start, int end, int is_numeric) {
+    t_NmSym pivot = arr[(start + end) / 2];
+    
+    while (start <= end) {
+        if (is_numeric) {
+            while (compare_numeric(&arr[start], &pivot) < 0) start++;
+            while (compare_numeric(&arr[end], &pivot) > 0) end--;
+        } else {
+            while (compare_name(&arr[start], &pivot) < 0) start++;
+            while (compare_name(&arr[end], &pivot) > 0) end--;
+        }
+        
+        if (start <= end) {
+            swap(arr, start, end);
+            start++;
+            end--;
+        }
+    }
+    return start;
+}
+
+// 퀵 정렬 메인 함수
+void quickSort(t_NmSym *arr, int start, int end, int is_numeric) {
+    if (start >= end) return;
+
+    int p = partition(arr, start, end, is_numeric);
+    quickSort(arr, start, p - 1);
+    quickSort(arr, p, end);
+}
+
+// 2. 내림차순(-r) 처리: 정렬 완료 후 배열을 뒤집음
+void reverse_symbols(t_NmSym *arr, int size) {
+    int i = 0;
+    int j = size - 1;
+    while (i < j) {
+        swap(arr, i, j);
+        i++;
+        j--;
+    }
+}
+*/

@@ -380,7 +380,7 @@ else{
 
     ft_printf("\n\
                uint32_t      st_name; -> %s \n\
-               Elf64_Addr    st_value; -> %P \n\
+               Elf64_Addr    st_value; -> %x \n\
                section name is -> %s \n\
                st_info_stt; -> %s \n\
                st_info_stb; -> %s \n\
@@ -415,7 +415,6 @@ static int cmp_sym_by_value(const void *a, const void *b)
 void print_elf64_sym(Elf64_Ehdr *elf_64) {
     Elf64_Shdr *shdr_64 =  (Elf64_Shdr *)((unsigned char *)elf_64 + elf_64->e_shoff);
     Elf64_Shdr *sym_section_temp = NULL;
-    
     //symstr 의 값 찾기
     for (int i = 0; i < elf_64->e_shnum; i++) {
         if (shdr_64[i].sh_type == SHT_SYMTAB) {

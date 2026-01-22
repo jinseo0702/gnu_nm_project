@@ -1,0 +1,2543 @@
+struct stat {
+               dev_t     st_dev;     61         /* ID of device containing file */ 
+               ino_t     st_ino;     257196371        /* Inode number */ 
+               mode_t    st_mode;    100755        /* File type and mode */ 
+               nlink_t   st_nlink;   1       /* Number of hard links */ 
+               uid_t     st_uid;     101471      /* User ID of owner */ 
+               gid_t     st_gid;     4223      /* Group ID of owner */ 
+               dev_t     st_rdev;    0      /* Device ID (if special file) */ 
+               off_t     st_size;    60800      /* Total size, in bytes */ 
+               blksize_t st_blksize; 1048576     /* Block size for filesystem I/O */ 
+               blkcnt_t  st_blocks;  120    /* Number of 512B blocks allocated */ 
+}
+
+
+Print  e_ident[] ----
+            EI_MAG0 7F
+              EI_MAG1 E
+              EI_MAG2 L
+              EI_MAG3 F
+              EI_CLASS ELFCLASS64 : This defines the 64-bit architecture
+              EI_DATA ELFDATA2LSB : Two's complement, little-endian.
+              EI_VERSION EV_CURRENT : Current version.
+              EI_OSABI ELFOSABI_NONE : Same as ELFOSABI_SYSV / UNIX System V ABI
+              EI_ABIVERSION 0
+              EI_PAD 0
+              EI_NIDENT 16
+        
+
+typedef struct { 
+               unsigned char e_ident[EI_NIDENT]; 
+               uint16_t      e_type; -> ET_DYN : A shared object. 
+               uint16_t      e_machine; -> EM_X86_64 AMD x86-64 
+               uint32_t      e_version; -> EV_CURRENT : Current version 
+               Elf64_Addr     e_entry; -> 0x21C0
+               Elf64_Off      e_phoff; -> 0x40
+               Elf64_Off      e_shoff; -> 0xE480
+               uint32_t      e_flags; -> (nil)
+               uint16_t      e_ehsize; -> 0x40
+               uint16_t      e_phentsize; -> 0x38
+               uint16_t      e_phnum; -> 0xD
+               uint16_t      e_shentsize; -> 0x40
+               uint16_t      e_shnum; -> 0x24
+               uint16_t      e_shstrndx; -> 0x23
+} Elf64_Ehdr; 
+
+index is 0x0 
+typedef struct { 
+               uint32_t   sh_name; -> (nil) 
+               uint32_t   sh_type; -> SHT_NULL : This value marks the section header as inactive. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> (nil) 
+               uint64_t   sh_size; -> (nil) 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> (nil) 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x1 
+typedef struct { 
+               uint32_t   sh_name; -> 0x1B 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x318 
+               Elf64_Off  sh_offset; -> 0x318 
+               uint64_t   sh_size; -> 0x1C 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x2 
+typedef struct { 
+               uint32_t   sh_name; -> 0x23 
+               uint32_t   sh_type; -> SHT_NOTE : This section holds notes (ElfN_Nhdr). 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x338 
+               Elf64_Off  sh_offset; -> 0x338 
+               uint64_t   sh_size; -> 0x30 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x3 
+typedef struct { 
+               uint32_t   sh_name; -> 0x36 
+               uint32_t   sh_type; -> SHT_NOTE : This section holds notes (ElfN_Nhdr). 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x368 
+               Elf64_Off  sh_offset; -> 0x368 
+               uint64_t   sh_size; -> 0x24 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x4 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x4 
+typedef struct { 
+               uint32_t   sh_name; -> 0x49 
+               uint32_t   sh_type; -> SHT_NOTE : This section holds notes (ElfN_Nhdr). 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x38C 
+               Elf64_Off  sh_offset; -> 0x38C 
+               uint64_t   sh_size; -> 0x20 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x4 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x5 
+typedef struct { 
+               uint32_t   sh_name; -> 0x57 
+               uint32_t   sh_type; -> Out of range 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x3B0 
+               Elf64_Off  sh_offset; -> 0x3B0 
+               uint64_t   sh_size; -> 0x24 
+               uint32_t   sh_link; -> 0x6 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x6 
+typedef struct { 
+               uint32_t   sh_name; -> 0x61 
+               uint32_t   sh_type; -> SHT_DYNSYM : This section holds a minimal set of dynamic linking symbols. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x3D8 
+               Elf64_Off  sh_offset; -> 0x3D8 
+               uint64_t   sh_size; -> 0x1B0 
+               uint32_t   sh_link; -> 0x7 
+               uint32_t   sh_info; -> 0x1 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> 0x18 
+           } Elf64_Shdr; 
+
+index is 0x7 
+typedef struct { 
+               uint32_t   sh_name; -> 0x69 
+               uint32_t   sh_type; -> SHT_STRTAB : This section holds a string table. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x588 
+               Elf64_Off  sh_offset; -> 0x588 
+               uint64_t   sh_size; -> 0xF2 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x8 
+typedef struct { 
+               uint32_t   sh_name; -> 0x71 
+               uint32_t   sh_type; -> Out of range 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x67A 
+               Elf64_Off  sh_offset; -> 0x67A 
+               uint64_t   sh_size; -> 0x24 
+               uint32_t   sh_link; -> 0x6 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x2 
+               uint64_t   sh_entsize; -> 0x2 
+           } Elf64_Shdr; 
+
+index is 0x9 
+typedef struct { 
+               uint32_t   sh_name; -> 0x7E 
+               uint32_t   sh_type; -> Out of range 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x6A0 
+               Elf64_Off  sh_offset; -> 0x6A0 
+               uint64_t   sh_size; -> 0x50 
+               uint32_t   sh_link; -> 0x7 
+               uint32_t   sh_info; -> 0x1 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0xA 
+typedef struct { 
+               uint32_t   sh_name; -> 0x8D 
+               uint32_t   sh_type; -> SHT_RELA : This section holds relocation entries with explicit addends, such as type Elf32_Rela for the 32-bit class of object files. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x6F0 
+               Elf64_Off  sh_offset; -> 0x6F0 
+               uint64_t   sh_size; -> 0x8E8 
+               uint32_t   sh_link; -> 0x6 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> 0x18 
+           } Elf64_Shdr; 
+
+index is 0xB 
+typedef struct { 
+               uint32_t   sh_name; -> 0x97 
+               uint32_t   sh_type; -> SHT_RELA : This section holds relocation entries with explicit addends, such as type Elf32_Rela for the 32-bit class of object files. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0xFD8 
+               Elf64_Off  sh_offset; -> 0xFD8 
+               uint64_t   sh_size; -> 0x120 
+               uint32_t   sh_link; -> 0x6 
+               uint32_t   sh_info; -> 0x18 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> 0x18 
+           } Elf64_Shdr; 
+
+index is 0xC 
+typedef struct { 
+               uint32_t   sh_name; -> 0xA1 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections.
+SHF_EXECINSTR : This section contains executable machine instructions. 
+               Elf64_Addr sh_addr; -> 0x2000 
+               Elf64_Off  sh_offset; -> 0x2000 
+               uint64_t   sh_size; -> 0x1B 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x4 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0xD 
+typedef struct { 
+               uint32_t   sh_name; -> 0x9C 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections.
+SHF_EXECINSTR : This section contains executable machine instructions. 
+               Elf64_Addr sh_addr; -> 0x2020 
+               Elf64_Off  sh_offset; -> 0x2020 
+               uint64_t   sh_size; -> 0xD0 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x10 
+               uint64_t   sh_entsize; -> 0x10 
+           } Elf64_Shdr; 
+
+index is 0xE 
+typedef struct { 
+               uint32_t   sh_name; -> 0xA7 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections.
+SHF_EXECINSTR : This section contains executable machine instructions. 
+               Elf64_Addr sh_addr; -> 0x20F0 
+               Elf64_Off  sh_offset; -> 0x20F0 
+               uint64_t   sh_size; -> 0x10 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x10 
+               uint64_t   sh_entsize; -> 0x10 
+           } Elf64_Shdr; 
+
+index is 0xF 
+typedef struct { 
+               uint32_t   sh_name; -> 0xB0 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections.
+SHF_EXECINSTR : This section contains executable machine instructions. 
+               Elf64_Addr sh_addr; -> 0x2100 
+               Elf64_Off  sh_offset; -> 0x2100 
+               uint64_t   sh_size; -> 0xC0 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x10 
+               uint64_t   sh_entsize; -> 0x10 
+           } Elf64_Shdr; 
+
+index is 0x10 
+typedef struct { 
+               uint32_t   sh_name; -> 0xB9 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections.
+SHF_EXECINSTR : This section contains executable machine instructions. 
+               Elf64_Addr sh_addr; -> 0x21C0 
+               Elf64_Off  sh_offset; -> 0x21C0 
+               uint64_t   sh_size; -> 0x2985 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x10 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x11 
+typedef struct { 
+               uint32_t   sh_name; -> 0xBF 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections.
+SHF_EXECINSTR : This section contains executable machine instructions. 
+               Elf64_Addr sh_addr; -> 0x4B48 
+               Elf64_Off  sh_offset; -> 0x4B48 
+               uint64_t   sh_size; -> 0xD 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x4 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x12 
+typedef struct { 
+               uint32_t   sh_name; -> 0xC5 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x5000 
+               Elf64_Off  sh_offset; -> 0x5000 
+               uint64_t   sh_size; -> 0x2157 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x13 
+typedef struct { 
+               uint32_t   sh_name; -> 0xCD 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x7158 
+               Elf64_Off  sh_offset; -> 0x7158 
+               uint64_t   sh_size; -> 0x15C 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x4 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x14 
+typedef struct { 
+               uint32_t   sh_name; -> 0xDB 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> 
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x72B8 
+               Elf64_Off  sh_offset; -> 0x72B8 
+               uint64_t   sh_size; -> 0x564 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x15 
+typedef struct { 
+               uint32_t   sh_name; -> 0xE5 
+               uint32_t   sh_type; -> Out of range 
+               uint64_t   sh_flags; -> SHF_WRITE : This section contains data that should be writable during process execution.
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x8D60 
+               Elf64_Off  sh_offset; -> 0x7D60 
+               uint64_t   sh_size; -> 0x8 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> 0x8 
+           } Elf64_Shdr; 
+
+index is 0x16 
+typedef struct { 
+               uint32_t   sh_name; -> 0xF1 
+               uint32_t   sh_type; -> Out of range 
+               uint64_t   sh_flags; -> SHF_WRITE : This section contains data that should be writable during process execution.
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x8D68 
+               Elf64_Off  sh_offset; -> 0x7D68 
+               uint64_t   sh_size; -> 0x8 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> 0x8 
+           } Elf64_Shdr; 
+
+index is 0x17 
+typedef struct { 
+               uint32_t   sh_name; -> 0xFD 
+               uint32_t   sh_type; -> SHT_DYNAMIC : This section holds information for dynamic linking.  An object file may have only one dynamic section. 
+               uint64_t   sh_flags; -> SHF_WRITE : This section contains data that should be writable during process execution.
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x8D70 
+               Elf64_Off  sh_offset; -> 0x7D70 
+               uint64_t   sh_size; -> 0x1F0 
+               uint32_t   sh_link; -> 0x7 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> 0x10 
+           } Elf64_Shdr; 
+
+index is 0x18 
+typedef struct { 
+               uint32_t   sh_name; -> 0xAB 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> SHF_WRITE : This section contains data that should be writable during process execution.
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x8F60 
+               Elf64_Off  sh_offset; -> 0x7F60 
+               uint64_t   sh_size; -> 0xA0 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> 0x8 
+           } Elf64_Shdr; 
+
+index is 0x19 
+typedef struct { 
+               uint32_t   sh_name; -> 0x106 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> SHF_WRITE : This section contains data that should be writable during process execution.
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x9000 
+               Elf64_Off  sh_offset; -> 0x8000 
+               uint64_t   sh_size; -> 0xE20 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x20 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x1A 
+typedef struct { 
+               uint32_t   sh_name; -> 0x10C 
+               uint32_t   sh_type; -> SHT_NOBITS : A section of this type occupies no space in the file but otherwise resembles SHT_PROGBITS. 
+               uint64_t   sh_flags; -> SHF_WRITE : This section contains data that should be writable during process execution.
+SHF_ALLOC : This section occupies memory during process execution.  Some control sections do not reside in the memory image of an object file.  This attribute is off for those sections. 
+               Elf64_Addr sh_addr; -> 0x9E20 
+               Elf64_Off  sh_offset; -> 0x8E20 
+               uint64_t   sh_size; -> 0x10 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x1B 
+typedef struct { 
+               uint32_t   sh_name; -> 0x111 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0x8E20 
+               uint64_t   sh_size; -> 0x2D 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> 0x1 
+           } Elf64_Shdr; 
+
+index is 0x1C 
+typedef struct { 
+               uint32_t   sh_name; -> 0x11A 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0x8E4D 
+               uint64_t   sh_size; -> 0x1B0 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x1D 
+typedef struct { 
+               uint32_t   sh_name; -> 0x129 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0x8FFD 
+               uint64_t   sh_size; -> 0x1F91 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x1E 
+typedef struct { 
+               uint32_t   sh_name; -> 0x135 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0xAF8E 
+               uint64_t   sh_size; -> 0x84B 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x1F 
+typedef struct { 
+               uint32_t   sh_name; -> 0x143 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0xB7D9 
+               uint64_t   sh_size; -> 0x11ED 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x20 
+typedef struct { 
+               uint32_t   sh_name; -> 0x14F 
+               uint32_t   sh_type; -> SHT_PROGBITS : This section holds information defined by the program, whose format and meaning are determined solely by the program. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0xC9C6 
+               uint64_t   sh_size; -> 0x8E8 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> 0x1 
+           } Elf64_Shdr; 
+
+index is 0x21 
+typedef struct { 
+               uint32_t   sh_name; -> 0x1 
+               uint32_t   sh_type; -> SHT_SYMTAB : This  section  holds a symbol table. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0xD2B0 
+               uint64_t   sh_size; -> 0xA38 
+               uint32_t   sh_link; -> 0x22 
+               uint32_t   sh_info; -> 0x32 
+               uint64_t   sh_addralign; -> 0x8 
+               uint64_t   sh_entsize; -> 0x18 
+           } Elf64_Shdr; 
+
+index is 0x22 
+typedef struct { 
+               uint32_t   sh_name; -> 0x9 
+               uint32_t   sh_type; -> SHT_STRTAB : This section holds a string table. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0xDCE8 
+               uint64_t   sh_size; -> 0x63B 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+index is 0x23 
+typedef struct { 
+               uint32_t   sh_name; -> 0x11 
+               uint32_t   sh_type; -> SHT_STRTAB : This section holds a string table. 
+               uint64_t   sh_flags; -> Out of range 
+               Elf64_Addr sh_addr; -> (nil) 
+               Elf64_Off  sh_offset; -> 0xE323 
+               uint64_t   sh_size; -> 0x15A 
+               uint32_t   sh_link; -> (nil) 
+               uint32_t   sh_info; -> (nil) 
+               uint64_t   sh_addralign; -> 0x1 
+               uint64_t   sh_entsize; -> (nil) 
+           } Elf64_Shdr; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x0 
+               uint32_t      st_name; ->  
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x1 
+               uint32_t      st_name; -> Scrt1.o 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x9 
+               uint32_t      st_name; -> __abi_tag 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 4 
+               Elf64_Addr    st_value; -> 0x38C 
+               uint64_t      st_size; -> 0x20 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x13 
+               uint32_t      st_name; -> crtstuff.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x1E 
+               uint32_t      st_name; -> deregister_tm_clones 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x21F0 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x20 
+               uint32_t      st_name; -> register_tm_clones 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x2220 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x33 
+               uint32_t      st_name; -> __do_global_dtors_aux 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x2260 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x49 
+               uint32_t      st_name; -> completed.0 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 26 
+               Elf64_Addr    st_value; -> 0x9E20 
+               uint64_t      st_size; -> 0x1 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x55 
+               uint32_t      st_name; -> __do_global_dtors_aux_fini_array_entry 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 22 
+               Elf64_Addr    st_value; -> 0x8D68 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x7C 
+               uint32_t      st_name; -> frame_dummy 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x22A0 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x88 
+               uint32_t      st_name; -> __frame_dummy_init_array_entry 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 21 
+               Elf64_Addr    st_value; -> 0x8D60 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0xA7 
+               uint32_t      st_name; -> testElfprint.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0xB6 
+               uint32_t      st_name; -> utils.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0xBE 
+               uint32_t      st_name; -> e_ident_ei_class 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9020 
+               uint64_t      st_size; -> 0x18 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0xCF 
+               uint32_t      st_name; -> e_ident_ei_data 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9040 
+               uint64_t      st_size; -> 0x18 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0xDF 
+               uint32_t      st_name; -> e_ident_ei_version 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9060 
+               uint64_t      st_size; -> 0x10 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0xF2 
+               uint32_t      st_name; -> e_ident_ei_osabi 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9080 
+               uint64_t      st_size; -> 0x800 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x103 
+               uint32_t      st_name; -> e_type_str 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9880 
+               uint64_t      st_size; -> 0x28 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x10E 
+               uint32_t      st_name; -> e_machine_str 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x98C0 
+               uint64_t      st_size; -> 0x260 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x11C 
+               uint32_t      st_name; -> e_version_str 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9B20 
+               uint64_t      st_size; -> 0x10 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x12A 
+               uint32_t      st_name; -> Elf64_Shdr_sh_type 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9B40 
+               uint64_t      st_size; -> 0x60 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x13D 
+               uint32_t      st_name; -> Elf64_Shdr_sh_flags 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9BA0 
+               uint64_t      st_size; -> 0x28 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x151 
+               uint32_t      st_name; -> print_elf64_shdr 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x26F6 
+               uint64_t      st_size; -> 0x27C 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x162 
+               uint32_t      st_name; -> Elf64_Sym_st_info_stt 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9BE0 
+               uint64_t      st_size; -> 0x70 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x178 
+               uint32_t      st_name; -> Elf64_Sym_st_info_stb 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9C60 
+               uint64_t      st_size; -> 0x70 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x18E 
+               uint32_t      st_name; -> Elf64_Sym_st_other 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9CE0 
+               uint64_t      st_size; -> 0x20 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x1A1 
+               uint32_t      st_name; -> print_elf64_Sym_all 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x29E7 
+               uint64_t      st_size; -> 0xD8 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x1B5 
+               uint32_t      st_name; -> Elf64_Sym_st_info_stt_s 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9D00 
+               uint64_t      st_size; -> 0x70 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x1CD 
+               uint32_t      st_name; -> Elf64_Sym_st_info_stb_s 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9D80 
+               uint64_t      st_size; -> 0x70 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x1E5 
+               uint32_t      st_name; -> Elf64_Sym_st_other_s 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9E00 
+               uint64_t      st_size; -> 0x20 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x1FA 
+               uint32_t      st_name; -> print_elf64_Sym_import 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x2ABF 
+               uint64_t      st_size; -> 0x274 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x211 
+               uint32_t      st_name; -> g_strtab 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 26 
+               Elf64_Addr    st_value; -> 0x9E28 
+               uint64_t      st_size; -> 0x8 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x21A 
+               uint32_t      st_name; -> cmp_sym_by_value 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x2D33 
+               uint64_t      st_size; -> 0x93 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x22B 
+               uint32_t      st_name; -> ft_fprintf.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x238 
+               uint32_t      st_name; -> ft_ftype 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3019 
+               uint64_t      st_size; -> 0x489 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x241 
+               uint32_t      st_name; -> ft_fcallstr 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x34A2 
+               uint64_t      st_size; -> 0x9D 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x24D 
+               uint32_t      st_name; -> ft_printf.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x259 
+               uint32_t      st_name; -> ft_type 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x367B 
+               uint64_t      st_size; -> 0x438 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x261 
+               uint32_t      st_name; -> ft_callstr 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3AB3 
+               uint64_t      st_size; -> 0x8E 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x26C 
+               uint32_t      st_name; -> ft_putchar.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x279 
+               uint32_t      st_name; -> ft_putstr.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x285 
+               uint32_t      st_name; -> ft_putaddress.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x295 
+               uint32_t      st_name; -> ft_putnbr.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x2A1 
+               uint32_t      st_name; -> ft_memset.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x13 
+               uint32_t      st_name; -> crtstuff.c 
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x2AD 
+               uint32_t      st_name; -> __FRAME_END__ 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 20 
+               Elf64_Addr    st_value; -> 0x7818 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x0 
+               uint32_t      st_name; ->  
+               unsigned char st_info_stt; -> STT_FILE : By convention, the symbol's name gives the name of the source file associated with the object file.  A file symbol has STB_LOCAL bindings, its section index is SHN_ABS, and it  precedes  the  other  STB_LOCAL 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 65521 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x2BB 
+               uint32_t      st_name; -> _DYNAMIC 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 23 
+               Elf64_Addr    st_value; -> 0x8D70 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x2C4 
+               uint32_t      st_name; -> __GNU_EH_FRAME_HDR 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 19 
+               Elf64_Addr    st_value; -> 0x7158 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x2D7 
+               uint32_t      st_name; -> _GLOBAL_OFFSET_TABLE_ 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_LOCAL : Local symbols are not visible outside the object file containing their definition.  Local symbols of the same name may exist in multiple files without interfering with each other. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 24 
+               Elf64_Addr    st_value; -> 0x8F60 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x2ED 
+               uint32_t      st_name; -> free@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x2FE 
+               uint32_t      st_name; -> __libc_start_main@GLIBC_2.34 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x31B 
+               uint32_t      st_name; -> prints_elf64_shdr 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x2972 
+               uint64_t      st_size; -> 0x75 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x32D 
+               uint32_t      st_name; -> _ITM_deregisterTMCloneTable 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_WEAK : Weak symbols resemble global symbols, but their definitions have lower precedence. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x452 
+               uint32_t      st_name; -> data_start 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_WEAK : Weak symbols resemble global symbols, but their definitions have lower precedence. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9000 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x349 
+               uint32_t      st_name; -> print_elf64_sym 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x2DC6 
+               uint64_t      st_size; -> 0x253 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x359 
+               uint32_t      st_name; -> ft_fput_hex 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x456D 
+               uint64_t      st_size; -> 0xE3 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x365 
+               uint32_t      st_name; -> qsort@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x377 
+               uint32_t      st_name; -> ft_fput_hex_upper 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x4650 
+               uint64_t      st_size; -> 0xE3 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x389 
+               uint32_t      st_name; -> write@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x39B 
+               uint32_t      st_name; -> ft_fputstr 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3D5A 
+               uint64_t      st_size; -> 0x77 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x3A6 
+               uint32_t      st_name; -> _edata 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9E20 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x3AD 
+               uint32_t      st_name; -> _fini 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Symbol is unavailable to other modules; references in the local module always resolve to the local symbol (i.e., the symbol can't be interposed by definitions in other modules). 
+               uint16_t      st_shndx; -> 17 
+               Elf64_Addr    st_value; -> 0x4B48 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x3B3 
+               uint32_t      st_name; -> strlen@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x3C6 
+               uint32_t      st_name; -> __stack_chk_fail@GLIBC_2.4 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x3E1 
+               uint32_t      st_name; -> mmap@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x3F2 
+               uint32_t      st_name; -> ft_fputaddress 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x433B 
+               uint64_t      st_size; -> 0x119 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x401 
+               uint32_t      st_name; -> print_elf_64 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x25BB 
+               uint64_t      st_size; -> 0x117 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x40E 
+               uint32_t      st_name; -> memset@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x421 
+               uint32_t      st_name; -> ft_put_octal 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x425E 
+               uint64_t      st_size; -> 0xDD 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x42E 
+               uint32_t      st_name; -> ft_memset 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x4AF4 
+               uint64_t      st_size; -> 0x51 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x438 
+               uint32_t      st_name; -> global_var 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9010 
+               uint64_t      st_size; -> 0x4 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x443 
+               uint32_t      st_name; -> ft_putnbr_un 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x48E1 
+               uint64_t      st_size; -> 0x99 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x450 
+               uint32_t      st_name; -> __data_start 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9000 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x45D 
+               uint32_t      st_name; -> strcmp@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x470 
+               uint32_t      st_name; -> __gmon_start__ 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_WEAK : Weak symbols resemble global symbols, but their definitions have lower precedence. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x47F 
+               uint32_t      st_name; -> __dso_handle 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Symbol is unavailable to other modules; references in the local module always resolve to the local symbol (i.e., the symbol can't be interposed by definitions in other modules). 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9008 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x48C 
+               uint32_t      st_name; -> ft_fputnbr_un 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x4A50 
+               uint64_t      st_size; -> 0xA4 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x49A 
+               uint32_t      st_name; -> ft_put_hex_upper 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x4181 
+               uint64_t      st_size; -> 0xDD 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x4AB 
+               uint32_t      st_name; -> _IO_stdin_used 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 18 
+               Elf64_Addr    st_value; -> 0x5000 
+               uint64_t      st_size; -> 0x4 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x4BA 
+               uint32_t      st_name; -> ft_put_hex 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x40A4 
+               uint64_t      st_size; -> 0xDD 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x4C5 
+               uint32_t      st_name; -> ft_putchar 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3C72 
+               uint64_t      st_size; -> 0x39 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x4D0 
+               uint32_t      st_name; -> malloc@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x4E3 
+               uint32_t      st_name; -> _end 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 26 
+               Elf64_Addr    st_value; -> 0x9E30 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x456 
+               uint32_t      st_name; -> _start 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x21C0 
+               uint64_t      st_size; -> 0x26 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x4E8 
+               uint32_t      st_name; -> ft_put_space 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3DD1 
+               uint64_t      st_size; -> 0x58 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x4F5 
+               uint32_t      st_name; -> ft_fputaddress_upper 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x4454 
+               uint64_t      st_size; -> 0x119 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x50A 
+               uint32_t      st_name; -> ft_putaddress_upper 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3F95 
+               uint64_t      st_size; -> 0x10F 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x51E 
+               uint32_t      st_name; -> print_stat 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x240F 
+               uint64_t      st_size; -> 0x8E 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x529 
+               uint32_t      st_name; -> __bss_start 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 26 
+               Elf64_Addr    st_value; -> 0x9E20 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x535 
+               uint32_t      st_name; -> ft_putnbr 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x4816 
+               uint64_t      st_size; -> 0xCB 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x53F 
+               uint32_t      st_name; -> main 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x22A9 
+               uint64_t      st_size; -> 0x166 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x544 
+               uint32_t      st_name; -> print_elf_32 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x26D2 
+               uint64_t      st_size; -> 0x24 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x551 
+               uint32_t      st_name; -> ft_fputnbr 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x497A 
+               uint64_t      st_size; -> 0xD6 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x55C 
+               uint32_t      st_name; -> ft_fprintf 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x353F 
+               uint64_t      st_size; -> 0x13C 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x567 
+               uint32_t      st_name; -> open@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x578 
+               uint32_t      st_name; -> ft_fput_octal 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x4733 
+               uint64_t      st_size; -> 0xE3 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x586 
+               uint32_t      st_name; -> ft_printf 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3B41 
+               uint64_t      st_size; -> 0x131 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x590 
+               uint32_t      st_name; -> ft_putstr 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3CEB 
+               uint64_t      st_size; -> 0x6F 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x59A 
+               uint32_t      st_name; -> strcat@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x5AD 
+               uint32_t      st_name; -> __TMC_END__ 
+               unsigned char st_info_stt; -> STT_OBJECT : The symbol is associated with a data object. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Symbol is unavailable to other modules; references in the local module always resolve to the local symbol (i.e., the symbol can't be interposed by definitions in other modules). 
+               uint16_t      st_shndx; -> 25 
+               Elf64_Addr    st_value; -> 0x9E20 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x5B9 
+               uint32_t      st_name; -> _ITM_registerTMCloneTable 
+               unsigned char st_info_stt; -> STT_NOTYPE : The symbol's type is not defined. 
+               unsigned char st_info_stb; -> STB_WEAK : Weak symbols resemble global symbols, but their definitions have lower precedence. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x5D3 
+               uint32_t      st_name; -> print_e_ident 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x249D 
+               uint64_t      st_size; -> 0x11E 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x5E1 
+               uint32_t      st_name; -> ft_fputchar 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3CAB 
+               uint64_t      st_size; -> 0x40 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x5ED 
+               uint32_t      st_name; -> ft_fput_space 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3E29 
+               uint64_t      st_size; -> 0x5D 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x5FB 
+               uint32_t      st_name; -> fstat@GLIBC_2.33 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x60C 
+               uint32_t      st_name; -> __cxa_finalize@GLIBC_2.2.5 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_WEAK : Weak symbols resemble global symbols, but their definitions have lower precedence. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 0 
+               Elf64_Addr    st_value; -> (nil) 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x627 
+               uint32_t      st_name; -> _init 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Symbol is unavailable to other modules; references in the local module always resolve to the local symbol (i.e., the symbol can't be interposed by definitions in other modules). 
+               uint16_t      st_shndx; -> 12 
+               Elf64_Addr    st_value; -> 0x2000 
+               uint64_t      st_size; -> 0x0 
+           } Elf64_Sym; 
+
+typedef struct { 
+               uint32_t      st_name; -> 0x62D 
+               uint32_t      st_name; -> ft_putaddress 
+               unsigned char st_info_stt; -> STT_FUNC : The symbol is associated with a function or other executable code. 
+               unsigned char st_info_stb; -> STB_GLOBAL : Global symbols are visible to all object files being combined.  One file's definition of a global symbol will satisfy another file's undefined reference to the same symbol. 
+               unsigned char st_other; -> Default symbol visibility rules.  Global and weak symbols are available to other modules; references in the local module can be interposed by definitions in other modules. 
+               uint16_t      st_shndx; -> 16 
+               Elf64_Addr    st_value; -> 0x3E86 
+               uint64_t      st_size; -> 0x10F 
+           } Elf64_Sym; 
+
+               uint32_t      st_name; ->  
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; ->  
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Scrt1.o 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> _ITM_deregisterTMCloneTable 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_WEAK 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> _ITM_registerTMCloneTable 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_WEAK 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __cxa_finalize@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_WEAK 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __gmon_start__ 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_WEAK 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __libc_start_main@GLIBC_2.34 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __stack_chk_fail@GLIBC_2.4 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> crtstuff.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> crtstuff.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> free@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> fstat@GLIBC_2.33 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fprintf.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_memset.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_printf.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putaddress.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putchar.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putnbr.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putstr.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> malloc@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> memset@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> mmap@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> open@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> qsort@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> strcat@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> strcmp@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> strlen@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> testElfprint.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> utils.c 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> ABS 
+               st_info_stt; -> STT_FILE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> write@GLIBC_2.2.5 
+               Elf64_Addr    st_value; -> 0 
+               section name is -> UND 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __abi_tag 
+               Elf64_Addr    st_value; -> 38c 
+               section name is -> .note.ABI-tag 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> _init 
+               Elf64_Addr    st_value; -> 2000 
+               section name is -> .init 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_HIDDEN 
+               
+               uint32_t      st_name; -> _start 
+               Elf64_Addr    st_value; -> 21c0 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> deregister_tm_clones 
+               Elf64_Addr    st_value; -> 21f0 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> register_tm_clones 
+               Elf64_Addr    st_value; -> 2220 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __do_global_dtors_aux 
+               Elf64_Addr    st_value; -> 2260 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> frame_dummy 
+               Elf64_Addr    st_value; -> 22a0 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> main 
+               Elf64_Addr    st_value; -> 22a9 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> print_stat 
+               Elf64_Addr    st_value; -> 240f 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> print_e_ident 
+               Elf64_Addr    st_value; -> 249d 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> print_elf_64 
+               Elf64_Addr    st_value; -> 25bb 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> print_elf_32 
+               Elf64_Addr    st_value; -> 26d2 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> print_elf64_shdr 
+               Elf64_Addr    st_value; -> 26f6 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> prints_elf64_shdr 
+               Elf64_Addr    st_value; -> 2972 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> print_elf64_Sym_all 
+               Elf64_Addr    st_value; -> 29e7 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> print_elf64_Sym_import 
+               Elf64_Addr    st_value; -> 2abf 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> cmp_sym_by_value 
+               Elf64_Addr    st_value; -> 2d33 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> print_elf64_sym 
+               Elf64_Addr    st_value; -> 2dc6 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_ftype 
+               Elf64_Addr    st_value; -> 3019 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fcallstr 
+               Elf64_Addr    st_value; -> 34a2 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fprintf 
+               Elf64_Addr    st_value; -> 353f 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_type 
+               Elf64_Addr    st_value; -> 367b 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_callstr 
+               Elf64_Addr    st_value; -> 3ab3 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_printf 
+               Elf64_Addr    st_value; -> 3b41 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putchar 
+               Elf64_Addr    st_value; -> 3c72 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fputchar 
+               Elf64_Addr    st_value; -> 3cab 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putstr 
+               Elf64_Addr    st_value; -> 3ceb 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fputstr 
+               Elf64_Addr    st_value; -> 3d5a 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_put_space 
+               Elf64_Addr    st_value; -> 3dd1 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fput_space 
+               Elf64_Addr    st_value; -> 3e29 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putaddress 
+               Elf64_Addr    st_value; -> 3e86 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putaddress_upper 
+               Elf64_Addr    st_value; -> 3f95 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_put_hex 
+               Elf64_Addr    st_value; -> 40a4 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_put_hex_upper 
+               Elf64_Addr    st_value; -> 4181 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_put_octal 
+               Elf64_Addr    st_value; -> 425e 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fputaddress 
+               Elf64_Addr    st_value; -> 433b 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fputaddress_upper 
+               Elf64_Addr    st_value; -> 4454 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fput_hex 
+               Elf64_Addr    st_value; -> 456d 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fput_hex_upper 
+               Elf64_Addr    st_value; -> 4650 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fput_octal 
+               Elf64_Addr    st_value; -> 4733 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putnbr 
+               Elf64_Addr    st_value; -> 4816 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_putnbr_un 
+               Elf64_Addr    st_value; -> 48e1 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fputnbr 
+               Elf64_Addr    st_value; -> 497a 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_fputnbr_un 
+               Elf64_Addr    st_value; -> 4a50 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> ft_memset 
+               Elf64_Addr    st_value; -> 4af4 
+               section name is -> .text 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> _fini 
+               Elf64_Addr    st_value; -> 4b48 
+               section name is -> .fini 
+               st_info_stt; -> STT_FUNC 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_HIDDEN 
+               
+               uint32_t      st_name; -> _IO_stdin_used 
+               Elf64_Addr    st_value; -> 5000 
+               section name is -> .rodata 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __GNU_EH_FRAME_HDR 
+               Elf64_Addr    st_value; -> 7158 
+               section name is -> .eh_frame_hdr 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __FRAME_END__ 
+               Elf64_Addr    st_value; -> 7818 
+               section name is -> .eh_frame 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __frame_dummy_init_array_entry 
+               Elf64_Addr    st_value; -> 8d60 
+               section name is -> .init_array 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __do_global_dtors_aux_fini_array_entry 
+               Elf64_Addr    st_value; -> 8d68 
+               section name is -> .fini_array 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> _DYNAMIC 
+               Elf64_Addr    st_value; -> 8d70 
+               section name is -> .dynamic 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> _GLOBAL_OFFSET_TABLE_ 
+               Elf64_Addr    st_value; -> 8f60 
+               section name is -> .got 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __data_start 
+               Elf64_Addr    st_value; -> 9000 
+               section name is -> .data 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> data_start 
+               Elf64_Addr    st_value; -> 9000 
+               section name is -> .data 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_WEAK 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __dso_handle 
+               Elf64_Addr    st_value; -> 9008 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_HIDDEN 
+               
+               uint32_t      st_name; -> global_var 
+               Elf64_Addr    st_value; -> 9010 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> e_ident_ei_class 
+               Elf64_Addr    st_value; -> 9020 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> e_ident_ei_data 
+               Elf64_Addr    st_value; -> 9040 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> e_ident_ei_version 
+               Elf64_Addr    st_value; -> 9060 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> e_ident_ei_osabi 
+               Elf64_Addr    st_value; -> 9080 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> e_type_str 
+               Elf64_Addr    st_value; -> 9880 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> e_machine_str 
+               Elf64_Addr    st_value; -> 98c0 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> e_version_str 
+               Elf64_Addr    st_value; -> 9b20 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Elf64_Shdr_sh_type 
+               Elf64_Addr    st_value; -> 9b40 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Elf64_Shdr_sh_flags 
+               Elf64_Addr    st_value; -> 9ba0 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Elf64_Sym_st_info_stt 
+               Elf64_Addr    st_value; -> 9be0 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Elf64_Sym_st_info_stb 
+               Elf64_Addr    st_value; -> 9c60 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Elf64_Sym_st_other 
+               Elf64_Addr    st_value; -> 9ce0 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Elf64_Sym_st_info_stt_s 
+               Elf64_Addr    st_value; -> 9d00 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Elf64_Sym_st_info_stb_s 
+               Elf64_Addr    st_value; -> 9d80 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> Elf64_Sym_st_other_s 
+               Elf64_Addr    st_value; -> 9e00 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> __TMC_END__ 
+               Elf64_Addr    st_value; -> 9e20 
+               section name is -> .data 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_HIDDEN 
+               
+               uint32_t      st_name; -> __bss_start 
+               Elf64_Addr    st_value; -> 9e20 
+               section name is -> .bss 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> _edata 
+               Elf64_Addr    st_value; -> 9e20 
+               section name is -> .data 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> completed.0 
+               Elf64_Addr    st_value; -> 9e20 
+               section name is -> .bss 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> g_strtab 
+               Elf64_Addr    st_value; -> 9e28 
+               section name is -> .bss 
+               st_info_stt; -> STT_OBJECT 
+               st_info_stb; -> STB_LOCAL 
+               st_other; -> STV_DEFAULT 
+               
+               uint32_t      st_name; -> _end 
+               Elf64_Addr    st_value; -> 9e30 
+               section name is -> .bss 
+               st_info_stt; -> STT_NOTYPE 
+               st_info_stb; -> STB_GLOBAL 
+               st_other; -> STV_DEFAULT 
+               
