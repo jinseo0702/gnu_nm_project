@@ -1,33 +1,36 @@
 nm 설계를 해보자
 
 알아낸 결과 32/64 비트의 차이점은  st_info , st_other 의 해석 차이만 존재한다. 즉 이 과정만 고려하면 문제 없이 출력을 할 수 있다는 것이다.
-1.0ver의 문제점은 구조체의 정규화가 되지 않았다. 
-    - 구조체가 bit type 에 따라 존재하고 그 구조체에 맞는 함수들이 존재해야한다
-    - 구조체를 하나로 통일을 할 수 있는 방법은 무엇 일까?
-        * 내가 어떤 정보를 사용하고 어떤일을 하는지 알아보자.
-            - ElfN_Shdr
-                * sh_type : 이 멤버는 섹션의 내용과 의미를 분류합니다.
-                    - 32 : uint32_t
-                    - 64 : uint32_t
-                * sh_flags : 섹션은 다양한 속성을 설명하는 1비트 플래그를 지원합니다.
-                    - 32 : uint32_t
-                    - 64 : uint64_t
-            - ElfN_Sym
-                * st_name : 심볼 문자열 테이블(symbol string table)에 대한 인덱스를 보유한다.
-                    - 32 : uint32_t
-                    - 64 : uint32_t                
-                * st_value : 
-                    - 32 : Elf32_Addr
-                    - 64 : Elf64_Addr                
-                * st_size :
-                    - 32 : uint32_t
-                    - 64 : uint64_t                
-                * st_info :
-                    - 32 : unsigned char
-                    - 64 : unsigned char                
-                * st_shndx :
-                    - 32 : uint16_t
-                    - 64 : uint16_t                
+
+1.0ver의 문제점은 구조체의 정규화가 되지 않았다.
+- 구조체가 bit type 에 따라 존재하고 그 구조체에 맞는 함수들이 존재해야한다
+- 구조체를 하나로 통일을 할 수 있는 방법은 무엇 일까?
+    * 내가 어떤 정보를 사용하고 어떤일을 하는지 알아보자.
+        - ElfN_Shdr
+            * sh_type : 이 멤버는 섹션의 내용과 의미를 분류합니다.
+                - 32 : uint32_t
+                - 64 : uint32_t
+            * sh_flags : 섹션은 다양한 속성을 설명하는 1비트 플래그를 지원합니다.
+                - 32 : uint32_t
+                - 64 : uint64_t
+        - ElfN_Sym
+            * st_name : 심볼 문자열 테이블(symbol string table)에 대한 인덱스를 보유한다.
+                - 32 : uint32_t
+                - 64 : uint32_t                
+            * st_value : 이 멤버는 연관된 심볼의 값을 제공합니다.
+                - 32 : Elf32_Addr
+                - 64 : Elf64_Addr                
+            * st_size : 많은 심볼은 연관된 크기를 갖습니다.
+                - 32 : uint32_t
+                - 64 : uint64_t                
+            * st_info : 이 멤버는 심볼의 유형(type) 및 바인딩 속성(binding attributes)을 지정합니다. 
+                - 32 : unsigned char
+                - 64 : unsigned char                
+            * st_shndx : 모든 심볼 테이블 엔트리는 특정 섹션과 관련하여 "정의"됩니다. 
+                - 32 : uint16_t
+                - 64 : uint16_t
+
+
 
 
 ## 의사코드를 작성한다.
