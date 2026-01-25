@@ -3,6 +3,7 @@ RM = rm -rf
 
 NAME = nm
 
+# DEBUG=1 로 빌드하면 include/debug.h 의 디버그 매크로가 활성화됩니다.
 DEBUG ?= 0
 
 CFLAG = -Wall -Wextra -Werror
@@ -15,11 +16,18 @@ endif
 LIBFT_A = libft/libft.a
 PRINTF_A = ft_printf/libftprintf.a
 
-SRC = src/nm.c
+SRC_MAIN = src/nm.c
+ifeq ($(DEBUG),1)
+SRC_MAIN = src/testElfprint.c
+endif
+
+SRC = $(SRC_MAIN) \
+	src/utils.c
 
 OBJS = $(SRC:.c=.o)
 
 HEADER = include/nm.h \
+	include/debug.h \
 	libft/libft.h \
 	ft_printf/libftprintf.h
 
@@ -50,7 +58,7 @@ fclean :
 	@make fclean -C ft_printf/
 	@$(RM) $(OBJS) $(NAME)
 
-re :
+re : 
 	@make fclean
 	@make all
 

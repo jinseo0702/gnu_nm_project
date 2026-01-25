@@ -1,10 +1,11 @@
-#include "../include/debug.h"
+#include "../include_ori/debug.h"
 
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <elf.h>
 #include <string.h>
+#include <sys/types.h>
 #include "../ft_printf/libftprintf.h"
 
 int global_var = 1;
