@@ -15,7 +15,14 @@ endif
 LIBFT_A = libft/libft.a
 PRINTF_A = ft_printf/libftprintf.a
 
-SRC = src/nm.c
+SRC = src/nm.c \
+	src/arg.c \
+	src/io_unit.c \
+	src/format_router.c \
+	src/ar_parser.c \
+	src/elf_parser.c \
+	src/sym_classify.c \
+	src/sort_filter_print.c
 
 OBJS = $(SRC:.c=.o)
 
