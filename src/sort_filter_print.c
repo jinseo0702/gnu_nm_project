@@ -6,11 +6,16 @@ static int is_visible(const t_NmSymData *sym, uint32_t opt)
 	int show_external;
 	int show_undefined;
 
-	if (!sym->name || sym->name[0] == '\0')
-		return 0;
-	if (sym->st_info_type == STT_FILE || sym->st_info_type == STT_SECTION)
+	if ( sym->type == 'U' && (!sym->name || sym->name[0] == '\0'))
 		return 0;
 	show_all = HASOPT(opt, OPT_a);
+	if (!show_all)
+	{
+		if (sym->st_info_type == STT_FILE || sym->st_info_type == STT_SECTION)
+			return 0;
+		if (!sym->name || sym->name[0] == '\0')
+			return 0;
+	}
 	show_external = HASOPT(opt, OPT_g);
 	show_undefined = HASOPT(opt, OPT_u);
 	if (!show_all && !show_external && !show_undefined)
@@ -62,6 +67,13 @@ static int compare_by_name(const t_NmSymData *a, const t_NmSymData *b)
 
 static int compare_by_value(const t_NmSymData *a, const t_NmSymData *b)
 {
+	if (a->st_value == 0 && b->st_value == 0) 
+	{
+		if (a->type == 'a' && (b->type == 'U' || b->type == 'w'))
+			return 1;
+		else if ((a->type == 'U' || a->type == 'w') && b->type == 'a')
+			return -1;
+	}
 	if (a->st_value < b->st_value)
 		return -1;
 	if (a->st_value > b->st_value)
@@ -112,22 +124,39 @@ static void quicksort(t_NmSymData *arr, int low, int high, int (*cmp)(const t_Nm
 	}
 }
 
+static void write_hex(uint64_t addr, char *dest) {
+    int i = 15;
+    const char *base = "0123456789abcdef";
+
+    while (i >= 0) {
+        dest[i] = base[addr & 0xF]; // 마지막 4비트 추출
+        addr >>= 4;                // 4비트 오른쪽으로 밀기
+        i--;
+    }
+    dest[16] = '\0';
+}
+
 static void print_symbol(const t_NmSymData *sym, uint32_t opt)
 {
 	if (HASOPT(opt, OPT_P))
 	{
-		dprintf(1, "%s %c ", sym->name, sym->type);
+		ft_printf("%s %c ", sym->name, sym->type);
 		if (sym->type == 'U' || sym->type == 'w' || sym->type == 'v')
-			dprintf(1, "\n");
+			ft_printf("\n");
 		else
-			dprintf(1, "%016lx\n", sym->st_value);
+		ft_printf("%x\n", sym->st_value);
 	}
 	else
 	{
-		if (sym->type == 'U' || sym->type == 'w' || sym->type == 'v')
-			dprintf(1, "                 %c %s\n", sym->type, sym->name);
-		else
-			dprintf(1, "%016lx %c %s\n", sym->st_value, sym->type, sym->name);
+		char arr[17] = {0,};
+		if (sym->type == 'U' || sym->type == 'w' || sym->type == 'v'){
+			ft_memset(arr, ' ', 16);
+			ft_printf("%s %c %s\n", arr , sym->type, sym->name);
+		}
+		else{
+			write_hex(sym->st_value, arr);
+			ft_printf("%s %c %s\n", arr, sym->type, sym->name);
+		}
 	}
 }
 
@@ -139,7 +168,7 @@ int sort_and_print_symbols(t_NmSymData *symbols, uint64_t count, uint32_t opt, c
 	uint64_t j;
 
 	if (multiple_files && filename)
-		dprintf(1, "\n%s:\n", filename);
+		ft_printf("\n%s:\n", filename);
 	visible = malloc(sizeof(t_NmSymData) * count);
 	if (!visible)
 		return FAIL_PATH;

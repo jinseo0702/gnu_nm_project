@@ -1,7 +1,7 @@
 CC = gcc
 RM = rm -rf
 
-NAME = nm
+NAME = ft_nm
 
 DEBUG ?= 0
 

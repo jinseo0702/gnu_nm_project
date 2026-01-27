@@ -16,9 +16,10 @@ const char *get_error_msg(t_error err)
 void print_error(t_error err, const char *path)
 {
 	if (path)
-		ft_fprintf(2, "ft_nm: %s: %s\n", path, get_error_msg(err));
-	else
-		ft_fprintf(2, "ft_nm: %s\n", get_error_msg(err));
+		NM_LOG(path, get_error_msg(err));
+	else{
+		NM_LOG(get_error_msg(err), "");
+	}
 }
 
 int main(int argc, char **argv)

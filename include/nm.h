@@ -130,4 +130,15 @@ unsigned char classify_symbol(const t_unit *unit, const t_MetaData *meta, const 
 int sort_and_print_symbols(t_NmSymData *symbols, uint64_t count, uint32_t opt, const char *filename, int multiple_files);
 const char *safe_get_string(const t_unit *unit, uint64_t strtab_offset, uint64_t strtab_size, uint32_t str_offset);
 
+#ifdef DEBUG
+#define NM_LOG(str, str2) real_print_error(str, str2, __FILE__, __LINE__)
+#else
+#define NM_LOG(str, str2) real_print_error(str, str2, NULL, 0)
+#endif
+
+static inline void real_print_error(const char *str, const char *str2, const char *file, int line){
+	ft_fprintf(2, "ft_nm: '%s': %s\n", str ,str2);
+	if(file != NULL) ft_fprintf(2, "file : %s line : %d\n", file, line);
+}
+
 #endif

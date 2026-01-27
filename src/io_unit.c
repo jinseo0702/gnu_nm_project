@@ -12,12 +12,12 @@ int process_path(const char *path, uint32_t opt, int multiple_files)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_fprintf(2, "ft_nm: '%s': %s\n", path, strerror(errno));
+		NM_LOG(path, strerror(errno));
 		return FAIL_PATH;
 	}
 	if (fstat(fd, &st) < 0)
 	{
-		ft_fprintf(2, "ft_nm: '%s': %s\n", path, strerror(errno));
+		NM_LOG(path, strerror(errno));
 		close(fd);
 		return FAIL_PATH;
 	}
@@ -29,7 +29,7 @@ int process_path(const char *path, uint32_t opt, int multiple_files)
 	map = mmap(NULL, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 	if (map == MAP_FAILED)
 	{
-		ft_fprintf(2, "ft_nm: '%s': %s\n", path, strerror(errno));
+		NM_LOG(path, strerror(errno));
 		close(fd);
 		return FAIL_PATH;
 	}
@@ -43,7 +43,7 @@ int process_path(const char *path, uint32_t opt, int multiple_files)
 		ret = process_ar_archive(&unit, opt);
 	else
 	{
-		ft_fprintf(2, "ft_nm: %s: file format not recognized\n", path);
+		NM_LOG(path, "file format not recognized");
 		ret = FAIL_PATH;
 	}
 	munmap(map, st.st_size);

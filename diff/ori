@@ -1,0 +1,554 @@
+
+ft_isalnum.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_isalnum
+0000000000000000 a ft_isalnum.c
+
+ft_isalpha.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_isalpha
+0000000000000000 a ft_isalpha.c
+
+ft_isascii.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_isascii
+0000000000000000 a ft_isascii.c
+
+ft_isinstr.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_isinstr
+0000000000000000 a ft_isinstr.c
+
+ft_atoi.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_atoi
+0000000000000000 a ft_atoi.c
+
+ft_atoi_longlong.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_atoi_longlong
+0000000000000000 a ft_atoi_longlong.c
+
+ft_atof.o:
+                 U ft_isdigit
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 r .rodata
+0000000000000000 t .text
+0000000000000000 a ft_atof.c
+0000000000000000 t is_minus
+0000000000000097 T ft_atof
+
+ft_bzero.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_bzero
+0000000000000000 a ft_bzero.c
+
+ft_isprint.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_isprint
+0000000000000000 a ft_isprint.c
+
+ft_isdigit.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_isdigit
+0000000000000000 a ft_isdigit.c
+
+ft_memchr.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_memchr
+0000000000000000 a ft_memchr.c
+
+ft_memcmp.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_memcmp
+0000000000000000 a ft_memcmp.c
+
+ft_memcpy.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_memcpy
+0000000000000000 a ft_memcpy.c
+
+ft_memmove.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_memmove
+0000000000000000 a ft_memmove.c
+
+ft_memset.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_memset
+0000000000000000 a ft_memset.c
+
+ft_onlyisspace.o:
+                 U ft_isspace
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_onlyisspace
+0000000000000000 a ft_onlyisspace.c
+
+ft_strchr.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strchr
+0000000000000000 a ft_strchr.c
+
+ft_strlcpy.o:
+                 U ft_strlen
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strlcpy
+0000000000000000 a ft_strlcpy.c
+
+ft_strlcat.o:
+                 U ft_strlen
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strlcat
+0000000000000000 a ft_strlcat.c
+
+ft_strlen.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strlen
+0000000000000000 a ft_strlen.c
+
+ft_strncmp.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strncmp
+0000000000000000 a ft_strncmp.c
+
+ft_strnstr.o:
+                 U ft_strlen
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strnstr
+0000000000000000 a ft_strnstr.c
+
+ft_strrchr.o:
+                 U ft_strlen
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strrchr
+0000000000000000 a ft_strrchr.c
+
+ft_tolower.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_tolower
+0000000000000000 a ft_tolower.c
+
+ft_toupper.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_toupper
+0000000000000000 a ft_toupper.c
+
+ft_calloc.o:
+                 U ft_memset
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_calloc
+0000000000000000 a ft_calloc.c
+
+ft_strdup.o:
+                 U exit
+                 U ft_calloc
+                 U ft_strlen
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strdup
+0000000000000000 a ft_strdup.c
+
+ft_strdup_flag.o:
+                 U exit
+                 U ft_strlen
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strdup_flag
+0000000000000000 a ft_strdup_flag.c
+
+ft_substr.o:
+                 U exit
+                 U ft_bzero
+                 U ft_calloc
+                 U ft_strlcpy
+                 U ft_strlen
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_substr
+0000000000000000 a ft_substr.c
+
+ft_strjoin.o:
+                 U ft_strlcat
+                 U ft_strlcpy
+                 U ft_strlen
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strjoin
+0000000000000000 a ft_strjoin.c
+
+ft_strtrim.o:
+                 U ft_calloc
+                 U ft_strlcpy
+                 U ft_strlen
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 t ft_check
+0000000000000000 a ft_strtrim.c
+000000000000003d T ft_strtrim
+
+ft_split.o:
+                 U exit
+                 U free
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 a ft_split.c
+0000000000000000 t ft_strfree
+0000000000000065 t ft_wordcount
+00000000000000f5 t ft_len
+0000000000000141 t ft_save
+00000000000001d8 T ft_split
+
+ft_split_str.o:
+                 U free
+                 U ft_strchr
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 a ft_split_str.c
+0000000000000000 t ft_strfree
+0000000000000065 t ft_wordcount
+0000000000000132 t ft_len
+0000000000000192 t ft_save
+0000000000000226 T ft_split_str
+
+ft_itoa.o:
+                 U __stack_chk_fail
+                 U ft_memset
+                 U ft_strlcpy
+                 U ft_strlen
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 r .rodata
+0000000000000000 t .text
+0000000000000000 t ft_in_nbr
+0000000000000000 a ft_itoa.c
+00000000000000ea T ft_itoa
+
+ft_putchar_fd.o:
+                 U write
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_putchar_fd
+0000000000000000 a ft_putchar_fd.c
+
+ft_putstr_fd.o:
+                 U write
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_putstr_fd
+0000000000000000 a ft_putstr_fd.c
+
+ft_putendl_fd.o:
+                 U write
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 r .rodata
+0000000000000000 t .text
+0000000000000000 T ft_putendl_fd
+0000000000000000 a ft_putendl_fd.c
+
+ft_putnbr_fd.o:
+                 U ft_putchar_fd
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_putnbr_fd
+0000000000000000 a ft_putnbr_fd.c
+
+ft_strmapi.o:
+                 U ft_strlen
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strmapi
+0000000000000000 a ft_strmapi.c
+
+ft_striteri.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_striteri
+0000000000000000 a ft_striteri.c
+
+ft_isspace.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_isspace
+0000000000000000 a ft_isspace.c
+
+ft_strndup.o:
+                 U ft_strlen
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strndup
+0000000000000000 a ft_strndup.c
+
+ft_freenull.o:
+                 U free
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_freenull
+0000000000000000 a ft_freenull.c
+
+ft_free_two.o:
+                 U free
+                 U ft_freenull
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_free_two
+0000000000000000 a ft_free_two.c
+
+ft_strchr_len.o:
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strchr_len
+0000000000000000 a ft_strchr_len.c
+
+ft_strrstr.o:
+                 U ft_strlen
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T ft_strrstr
+0000000000000000 a ft_strrstr.c
+
+get_next_line.o:
+                 U __stack_chk_fail
+                 U free_backup
+                 U ft_gnl_strdup
+                 U ft_gnl_strjoin
+                 U ft_gnl_strlen
+                 U ft_gnl_substr
+                 U malloc
+                 U read
+0000000000000000 b .bss
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 b backup.0
+0000000000000000 T ft_get_head
+0000000000000000 a get_next_line.c
+00000000000000bf T ft_new_line
+000000000000014c T ft_read_file
+0000000000000283 T ft_read_sub
+00000000000002e5 T get_next_line
+
+get_next_line_utils.o:
+                 U free
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T free_backup
+0000000000000000 a get_next_line_utils.c
+000000000000003d T ft_gnl_strjoin
+0000000000000137 T ft_gnl_strlen
+000000000000016a T ft_gnl_strdup
+0000000000000209 T ft_gnl_substr
+
+get_next_line_bonus.o:
+                 U __stack_chk_fail
+                 U free_backup
+                 U ft_gnl_strdup
+                 U ft_gnl_strjoin
+                 U ft_gnl_strlen
+                 U ft_gnl_substr
+                 U malloc
+                 U read
+0000000000000000 b .bss
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 b backup.0
+0000000000000000 T ft_get_head
+0000000000000000 a get_next_line_bonus.c
+00000000000000c3 T ft_new_line
+000000000000015e T ft_read_file
+0000000000000295 T ft_read_sub
+00000000000002f4 T get_next_line
+
+get_next_line_utils_bonus.o:
+                 U free
+                 U malloc
+0000000000000000 N .debug_abbrev
+0000000000000000 N .debug_info
+0000000000000000 N .debug_line
+0000000000000000 N .debug_str
+0000000000000000 t .text
+0000000000000000 T free_backup
+0000000000000000 a get_next_line_utils_bonus.c
+000000000000003d T ft_gnl_strjoin
+0000000000000137 T ft_gnl_strlen
+000000000000016a T ft_gnl_strdup
+0000000000000209 T ft_gnl_substr

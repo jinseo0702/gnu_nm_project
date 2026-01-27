@@ -33,19 +33,19 @@ static unsigned char classify_by_shndx(const t_NmSymData *sym, const t_NmShdrDat
 			return 'b';
 		return 'B';
 	}
-	if (sh_type == SHT_PROGBITS && (sh_flags & SHF_ALLOC) && (sh_flags & SHF_EXECINSTR))
+	if ((sh_flags & SHF_ALLOC) && (sh_flags & SHF_EXECINSTR))
 	{
 		if (sym->st_info_bind == STB_LOCAL)
 			return 't';
 		return 'T';
 	}
-	if (sh_type == SHT_PROGBITS && (sh_flags & SHF_ALLOC) && (sh_flags & SHF_WRITE))
+	if ((sh_flags & SHF_ALLOC) == SHF_ALLOC && (sh_flags & SHF_WRITE) == SHF_WRITE)
 	{
 		if (sym->st_info_bind == STB_LOCAL)
 			return 'd';
 		return 'D';
 	}
-	if (sh_type == SHT_PROGBITS && (sh_flags & SHF_ALLOC) && !(sh_flags & SHF_WRITE))
+	if ((sh_flags & SHF_ALLOC) && !(sh_flags & SHF_WRITE))
 	{
 		if (sym->st_info_bind == STB_LOCAL)
 			return 'r';

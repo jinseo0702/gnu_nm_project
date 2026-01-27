@@ -14,7 +14,10 @@ static int parse_option_string(const char *str, uint32_t *opts)
 	{
 		if (!is_valid_option(str[i]))
 		{
-			ft_fprintf(2, "ft_nm: invalid option -- '%c'\n", str[i]);
+			char arr[3] = {0,};
+			arr[0] = str[i];
+			arr[1] = '\'';
+			NM_LOG("invalid option -- '", arr);
 			return FATAL;
 		}
 		if (str[i] == 'a')

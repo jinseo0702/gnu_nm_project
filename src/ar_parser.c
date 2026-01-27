@@ -101,7 +101,7 @@ int process_ar_archive(const t_unit *unit, uint32_t opt)
 			member_unit.display_name = member_name;
 			if (detect_format(&member_unit) == FMT_ELF)
 			{
-				ft_fprintf(1, "\n%s:\n", member_name);
+				ft_printf("\n%s:\n", member_name);
 				process_elf_unit(&member_unit, opt, 0);
 			}
 		}

@@ -1,4 +1,6 @@
 #include "../include/nm.h"
+#include <elf.h>
+#include <stdint.h>
 
 const char *safe_get_string(const t_unit *unit, uint64_t strtab_offset, uint64_t strtab_size, uint32_t str_offset)
 {
@@ -14,6 +16,36 @@ const char *safe_get_string(const t_unit *unit, uint64_t strtab_offset, uint64_t
 	if (!ft_memchr(strtab + str_offset, '\0', remaining))
 		return NULL;
 	return strtab + str_offset;
+}
+
+static uint64_t check_debug_symbol(const t_unit *unit, t_MetaData *meta) {
+	if (meta->elf_class == ELFCLASS64)
+	{
+		uint16_t idx = meta->ElfN_Ehdr.Ehdr64->e_shstrndx;
+		uint64_t offset = meta->ElfN_Shdr.Shdr64[idx].sh_offset;
+		return offset;
+	}
+	else
+	{
+		uint16_t idx = meta->ElfN_Ehdr.Ehdr32->e_shstrndx;
+		uint64_t offset = meta->ElfN_Shdr.Shdr32[idx].sh_offset;
+		return offset;
+	}
+}
+
+static uint64_t check_debug_section_size(const t_unit *unit, t_MetaData *meta) {
+	if (meta->elf_class == ELFCLASS64)
+	{
+		uint16_t idx = meta->ElfN_Ehdr.Ehdr64->e_shstrndx;
+		uint64_t sh_size = meta->ElfN_Shdr.Shdr64[idx].sh_size;
+		return sh_size;
+	}
+	else
+	{
+		uint16_t idx = meta->ElfN_Ehdr.Ehdr32->e_shstrndx;
+		uint64_t sh_size = meta->ElfN_Shdr.Shdr32[idx].sh_size;
+		return sh_size;
+	}
 }
 
 static int verify_elf_header(const t_unit *unit, t_MetaData *meta)
@@ -67,15 +99,15 @@ static int find_symbol_table(const t_unit *unit, t_MetaData *meta)
 	const Elf32_Shdr *shdr32;
 	uint64_t sh_type;
 	int found_symtab;
-	int found_dynsym;
+	// int found_dynsym;
 	uint16_t symtab_idx;
-	uint16_t dynsym_idx;
+	// uint16_t dynsym_idx;
 	uint16_t shnum;
 
 	found_symtab = 0;
-	found_dynsym = 0;
+	// found_dynsym = 0;
 	symtab_idx = 0;
-	dynsym_idx = 0;
+	// dynsym_idx = 0;
 	if (meta->elf_class == ELFCLASS64)
 	{
 		meta->ElfN_Shdr.Shdr64 = (const Elf64_Shdr *)MOVE_ADDRESS(unit->base, meta->ElfN_Ehdr.Ehdr64->e_shoff);
@@ -114,10 +146,11 @@ static int find_symbol_table(const t_unit *unit, t_MetaData *meta)
 	}
 	if (found_symtab)
 		i = symtab_idx;
-	else if (found_dynsym)
-		i = dynsym_idx;
+	// else if (found_dynsym)
+	// 	i = dynsym_idx;
 	else
 	{
+		NM_LOG(unit->display_name, "no symbols");
 		return FAIL_PATH;
 	}
 	if (meta->elf_class == ELFCLASS64)
@@ -215,6 +248,15 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 		if (!(*symbols)[i].name)
 			(*symbols)[i].name = "";
 		(*symbols)[i].type = classify_symbol(unit, meta, &(*symbols)[i], *shdr_cache);
+		if ((*symbols)[i].type == 'N') {
+			uint64_t offset = check_debug_symbol(unit, meta);
+			uint64_t size = check_debug_section_size(unit, meta);
+			if (offset != 0 && size != 0) {
+				(*symbols)[i].name = safe_get_string(unit, offset, size, (*symbols)[i].st_name);
+				if (!(*symbols)[i].name)
+					(*symbols)[i].name = "";
+			}
+		}
 		i++;
 	}
 	return OK;
