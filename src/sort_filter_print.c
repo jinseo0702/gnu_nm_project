@@ -145,11 +145,16 @@ static void print_symbol(const t_NmSymData *sym, uint32_t opt)
 {
 	if (HASOPT(opt, OPT_P))
 	{
-		ft_printf("%s %c ", sym->name, sym->type);
+		ft_printf("%s %c", sym->name, sym->type);
 		if (sym->type == 'U' || sym->type == 'w' || sym->type == 'v')
 			ft_printf("\n");
-		else
-		ft_printf("%x\n", sym->st_value);
+		else{
+			ft_printf(" %x", sym->st_value);
+			if (sym->st_size != 0) {
+				ft_printf(" %x", sym->st_size);
+			}
+			ft_printf("\n");
+		}
 	}
 	else
 	{

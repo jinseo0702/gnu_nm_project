@@ -1,4 +1,5 @@
 from ast import Try
+import difflib
 import itertools
 from math import exp
 from optparse import Option
@@ -27,11 +28,29 @@ class TargetGenerator:
             return 0;
         }
         """
+
+        self.source_code_for32 = """
+        int add(int a, int b) { return a + b; }
+
+        int global = 42;
+        static int sglobal = 7;
+
+        int main(void) {
+            return add(global, sglobal);
+        }
+        """
     
     def create_source_file(self, filename="temp_source.c"):
         """C 소스코드를 파일로 저장합니다."""
         with open(filename, "w") as f :
             f.write(self.source_code)
+        self.generator_files.append(filename)
+        return filename
+
+    def create_source_file32bit(self, filename="temp_source.c"):
+        """C 소스코드를 파일로 저장합니다."""
+        with open(filename, "w") as f :
+            f.write(self.source_code_for32)
         self.generator_files.append(filename)
         return filename
     
@@ -51,6 +70,7 @@ class TargetGenerator:
     def make_all(self):
         """다양한 종류의 파일을 한 번에 생성합니다."""
         src = self.create_source_file()
+        src32 = self.create_source_file32bit()
         targets = []
 
         print("--- 파일 생성 시작 ---")
@@ -64,7 +84,7 @@ class TargetGenerator:
         if res := self.compile(src, "test_obj.so", ["-shared", "-fPIC"]):
             targets.append(res)
     
-        if res := self.compile(src, "test_32bit.o", ["-c", "-m32"]):
+        if res := self.compile(src32, "test_32bit.o", ["-c", "-m32"]):
             targets.append(res)
         
         return targets
@@ -97,14 +117,14 @@ class FileCorruptor:
         return bad_filename
 
 class TestRunner:
-    def __init__(self, ft_nm="./ft_nm", sys_nm="LC_ALL=C nm") -> None:
+    def __init__(self, ft_nm="./ft_nm", sys_nm="nm") -> None:
         self.ft_nm = ft_nm
         self.sys_nm = sys_nm
         self.corruptor = FileCorruptor()
 
     def get_option_combibations(self):
         """옵션 조합 생성기 역할"""
-        option = ['a', '-P', 'u', 'r', 'g', 'n', 'z']
+        option = ['-a', '-P', '-u', '-r', '-g', '-n', '-z']
         combos = []
         for r in range(8):
             for c in itertools.combinations(option, r):
@@ -113,13 +133,16 @@ class TestRunner:
     
     def run_command(self, cmd):
         """명령어 실행 도우미"""
+
+        custom_env = os.environ.copy()
+        custom_env["LC_ALL"] = "C"
         try:
-            return subprocess.check_output(cmd, strerr=subprocess.DEVNULL, timeout=1)
+            return subprocess.check_output(cmd, stderr=subprocess.DEVNULL, timeout=1, env=custom_env)
         except subprocess.TimeoutExpired:
-            return "TIMEOUT"
+            return b"TIMEOUT"
         except subprocess.CalledProcessError as e:
-            if e.returncode < 0: return f"CRASH({e.returncode})"
-            return "ERROR"
+            if e.returncode < 0: return f"CRASH({e.returncode})".encode()
+            return b"ERROR"
     
     def run_tests(self, targets):
         print(f"테스트 시작 : 대상 파일 {len(targets)}개\\n")
@@ -132,10 +155,16 @@ class TestRunner:
                 sys_res = self.run_command([self.sys_nm] + flags + [target])
                 my_sys = self.run_command([self.ft_nm] + flags + [target])
 
-                if sys_res == my_sys:
+                if sys_res.decode().split() == my_sys.decode().split():
                     print(f"    [PASS] Flags: {flags}")
                 else:
                     print(f"    [FAIL] Flags: {flags} -> 결과 다름")
+
+            sys_line = sys_res.decode().splitlines()
+            my_line = my_sys.decode().splitlines()
+            diff = difflib.unified_diff(sys_line, my_line, fromfile='Original', tofile='Mine', lineterm='')
+            for line in diff:
+                print(line)
 
             bad_file = self.corruptor.create_bad_file(target)
             print(f"    Fuzzing: {bad_file}...", end=" ")

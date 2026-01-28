@@ -1,0 +1,111 @@
+CHECK_RANGE t 1c8c 32					      |	CHECK_RANGE t 1c9a 32
+CHECK_RANGE t 21d6 32					      |	CHECK_RANGE t 21e4 32
+MOVE_ADDRESS t 1c5d 2f					      |	MOVE_ADDRESS t 1c6b 2f
+MOVE_ADDRESS t 21a7 2f					      |	MOVE_ADDRESS t 21b5 2f
+_DYNAMIC d 8d78						      |	_DYNAMIC d 8d78 
+_GLOBAL_OFFSET_TABLE_ d 8f68				      |	_GLOBAL_OFFSET_TABLE_ d 8f68 
+_IO_stdin_used R 6000 4						_IO_stdin_used R 6000 4
+_ITM_deregisterTMCloneTable w 				      |	_ITM_deregisterTMCloneTable w         
+_ITM_registerTMCloneTable w 				      |	_ITM_registerTMCloneTable w         
+__FRAME_END__ r 6db8					      |	__FRAME_END__ r 6de8 
+__GNU_EH_FRAME_HDR r 622c				      |	__GNU_EH_FRAME_HDR r 625c 
+__TMC_END__ D 9088					      |	__TMC_END__ D 9088 
+__abi_tag r 38c 20						__abi_tag r 38c 20
+__bss_start B 9088					      |	__bss_start B 9088 
+__cxa_finalize@GLIBC_2.2.5 w 				      |	__cxa_finalize@GLIBC_2.2.5 w         
+__data_start D 9000					      |	__data_start D 9000 
+__do_global_dtors_aux t 1240				      |	__do_global_dtors_aux t 1240 
+__do_global_dtors_aux_fini_array_entry d 8d70		      |	__do_global_dtors_aux_fini_array_entry d 8d70 
+__dso_handle D 9008					      |	__dso_handle D 9008 
+__errno_location@GLIBC_2.2.5 U 				      |	__errno_location@GLIBC_2.2.5 U         
+__frame_dummy_init_array_entry d 8d68			      |	__frame_dummy_init_array_entry d 8d68 
+__gmon_start__ w 					      |	__gmon_start__ w         
+__libc_start_main@GLIBC_2.34 U 				      |	__libc_start_main@GLIBC_2.34 U         
+__stack_chk_fail@GLIBC_2.4 U 				      |	__stack_chk_fail@GLIBC_2.4 U         
+_edata D 9088						      |	_edata D 9088 
+_end B a0d8						      |	_end B a0d8 
+_fini T 5b24						      |	_fini T 5afc 
+_init T 1000						      |	_init T 1000 
+_start T 11a0 26						_start T 11a0 26
+check_debug_section_size t 23a8 7f			      |	check_debug_section_size t 23b6 7f
+check_debug_symbol t 2329 7f				      |	check_debug_symbol t 2337 7f
+check_section_name t 2427 5f				      |	check_section_name t 2435 5f
+classify_by_shndx t 31ca 1f8				      |	classify_by_shndx t 31da 1f8
+classify_symbol T 33c2 a4				      |	classify_symbol T 33d2 a4
+close@GLIBC_2.2.5 U 					      |	close@GLIBC_2.2.5 U         
+compare_by_name t 3668 78				      |	compare_by_name t 3678 78
+compare_by_value t 36e0 ee				      |	compare_by_value t 36f0 ee
+completed.0 b 90a0 1						completed.0 b 90a0 1
+data_start W 9000					      |	data_start W 9000 
+deregister_tm_clones t 11d0				      |	deregister_tm_clones t 11d0 
+detect_format T 1bc4 99					      |	detect_format T 1bd2 99
+extract_ar_name t 1d46 21b				      |	extract_ar_name t 1d54 21b
+find_symbol_table t 2704 376				      |	find_symbol_table t 2712 378
+frame_dummy t 1280					      |	frame_dummy t 1280 
+free@GLIBC_2.2.5 U 					      |	free@GLIBC_2.2.5 U         
+fstat@GLIBC_2.33 U 					      |	fstat@GLIBC_2.33 U         
+ft_callstr t 4ae2 8e					      |	ft_callstr t 4ab8 8e
+ft_fcallstr t 44d1 9d					      |	ft_fcallstr t 44a7 9d
+ft_fprintf T 456e 13c					      |	ft_fprintf T 4544 13c
+ft_fput_hex T 559c e3					      |	ft_fput_hex T 5572 e3
+ft_fput_hex_upper T 567f e3				      |	ft_fput_hex_upper T 5655 e3
+ft_fput_octal T 5762 e3					      |	ft_fput_octal T 5738 e3
+ft_fput_space T 4e58 5d					      |	ft_fput_space T 4e2e 5d
+ft_fputaddress T 536a 119				      |	ft_fputaddress T 5340 119
+ft_fputaddress_upper T 5483 119				      |	ft_fputaddress_upper T 5459 119
+ft_fputchar T 4cda 40					      |	ft_fputchar T 4cb0 40
+ft_fputnbr T 59a9 d6					      |	ft_fputnbr T 597f d6
+ft_fputnbr_un T 5a7f a4					      |	ft_fputnbr_un T 5a55 a4
+ft_fputstr T 4d89 77					      |	ft_fputstr T 4d5f 77
+ft_ftype t 4048 489					      |	ft_ftype t 401e 489
+ft_memchr T 3eea 55					      |	ft_memchr T 3ec0 55
+ft_memcmp T 3f3f 7a					      |	ft_memcmp T 3f15 7a
+ft_memset T 3fb9 51					      |	ft_memset T 3f8f 51
+ft_printf T 4b70 131					      |	ft_printf T 4b46 131
+ft_put_hex T 50d3 dd					      |	ft_put_hex T 50a9 dd
+ft_put_hex_upper T 51b0 dd				      |	ft_put_hex_upper T 5186 dd
+ft_put_octal T 528d dd					      |	ft_put_octal T 5263 dd
+ft_put_space T 4e00 58					      |	ft_put_space T 4dd6 58
+ft_putaddress T 4eb5 10f				      |	ft_putaddress T 4e8b 10f
+ft_putaddress_upper T 4fc4 10f				      |	ft_putaddress_upper T 4f9a 10f
+ft_putchar T 4ca1 39					      |	ft_putchar T 4c77 39
+ft_putnbr T 5845 cb					      |	ft_putnbr T 581b cb
+ft_putnbr_un T 5910 99					      |	ft_putnbr_un T 58e6 99
+ft_putstr T 4d1a 6f					      |	ft_putstr T 4cf0 6f
+ft_strlen T 400a 3e					      |	ft_strlen T 3fe0 3e
+ft_type t 46aa 438					      |	ft_type t 4680 438
+g_error_table d 9020 68						g_error_table d 9020 68
+get_error_msg T 12f0 32						get_error_msg T 12f0 32
+is_valid_option t 1517 3f				      |	is_valid_option t 151b 3f
+is_visible t 3466 1a4					      |	is_visible t 3476 1a4
+load_symbols t 2a7a 64e					      |	load_symbols t 2a8a 64e
+long_name_buf.1 b 90c0 fff					long_name_buf.1 b 90c0 fff
+main T 1387 129						      |	main T 138b 129
+malloc@GLIBC_2.2.5 U 					      |	malloc@GLIBC_2.2.5 U         
+mmap@GLIBC_2.2.5 U 					      |	mmap@GLIBC_2.2.5 U         
+munmap@GLIBC_2.2.5 U 					      |	munmap@GLIBC_2.2.5 U         
+name_buf.0 b a0c0 11						name_buf.0 b a0c0 11
+open@GLIBC_2.2.5 U 					      |	open@GLIBC_2.2.5 U         
+parse_ar_size t 1cbe 88					      |	parse_ar_size t 1ccc 88
+parse_arguments T 1710 1ca				      |	parse_arguments T 1716 1ca
+parse_option_string t 1556 1ba				      |	parse_option_string t 155a 1bc
+partition t 3882 127					      |	partition t 3892 127
+print_error T 1322 65					      |	print_error T 1322 69
+print_symbol t 3aa9 1ef					      |	print_symbol t 3ab9 1b5
+process_ar_archive T 1f61 246				      |	process_ar_archive T 1f6f 246
+process_elf_unit T 30c8 102				      |	process_elf_unit T 30d8 102
+process_path T 1941 283					      |	process_path T 1947 28b
+quicksort t 39a9 75					      |	quicksort t 39b9 75
+real_print_error t 1289 67					real_print_error t 1289 67
+real_print_error t 14b0 67				      |	real_print_error t 14b4 67
+real_print_error t 18da 67				      |	real_print_error t 18e0 67
+real_print_error t 2208 67				      |	real_print_error t 2216 67
+register_tm_clones t 1200				      |	register_tm_clones t 1200 
+safe_get_string T 226f ba				      |	safe_get_string T 227d ba
+sort_and_print_symbols T 3c98 252			      |	sort_and_print_symbols T 3c6e 252
+str_compare t 360a 5e					      |	str_compare t 361a 5e
+strerror@GLIBC_2.2.5 U 					      |	strerror@GLIBC_2.2.5 U         
+swap_symbols t 37ce b4					      |	swap_symbols t 37de b4
+verify_elf_header t 2486 27e				      |	verify_elf_header t 2494 27e
+write@GLIBC_2.2.5 U 					      |	write@GLIBC_2.2.5 U         
+write_hex t 3a1e 8b					      |	write_hex t 3a2e 8b
