@@ -159,12 +159,11 @@ class TestRunner:
                     print(f"    [PASS] Flags: {flags}")
                 else:
                     print(f"    [FAIL] Flags: {flags} -> 결과 다름")
-
-            sys_line = sys_res.decode().splitlines()
-            my_line = my_sys.decode().splitlines()
-            diff = difflib.unified_diff(sys_line, my_line, fromfile='Original', tofile='Mine', lineterm='')
-            for line in diff:
-                print(line)
+                    sys_line = sys_res.decode().splitlines()
+                    my_line = my_sys.decode().splitlines()
+                    diff = difflib.unified_diff(sys_line, my_line, fromfile='Original', tofile='Mine', lineterm='')
+                    for line in diff:
+                        print(line)
 
             bad_file = self.corruptor.create_bad_file(target)
             print(f"    Fuzzing: {bad_file}...", end=" ")

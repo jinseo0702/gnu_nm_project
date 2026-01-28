@@ -5,11 +5,17 @@ NAME = ft_nm
 
 DEBUG ?= 0
 
-CFLAG = -Wall -Wextra -Werror
+CFLAG = -Wall -Wextra -Werror 
 CFLAG += -Wno-unused-parameter
 CFLAG += -Iinclude -Ilibft -Ift_printf
+
+LDFLAGS =
+SANFLAGS = -fsanitize=address
+
 ifeq ($(DEBUG),1)
-CFLAG += -g -DDEBUG
+CFLAGS += -g -DDEBUG
+CFLAGS += $(SANFLAGS)
+LDFLAGS += $(SANFLAGS)
 endif
 
 LIBFT_A = libft/libft.a
@@ -32,8 +38,11 @@ HEADER = include/nm.h \
 
 all : $(NAME)
 
+# $(NAME): $(OBJS) $(LIBFT_A) $(PRINTF_A)
+# 	@$(CC) -o $@ $^
+
 $(NAME): $(OBJS) $(LIBFT_A) $(PRINTF_A)
-	@$(CC) -o $@ $^
+	@$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 debug: fclean
 	@make DEBUG=1 all

@@ -202,7 +202,7 @@ int sort_and_print_symbols(t_NmSymData *symbols, uint64_t count, uint32_t opt, c
 		else
 			quicksort(visible, 0, visible_count - 1, compare_by_name);
 	}
-	if (HASOPT(opt, OPT_r))
+	if (HASOPT(opt, OPT_r) && visible_count > 1)
 	{
 		i = 0;
 		j = visible_count - 1;

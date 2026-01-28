@@ -155,7 +155,7 @@ Target: test_obj.o
     [PASS] Flags: ['-P', '-g']
     [PASS] Flags: ['-P', '-n']
     [PASS] Flags: ['-P', '-z']
-    [FAIL] Flags: ['-u', '-r'] -> 결과 다름
+    [PASS] Flags: ['-u', '-r']
     [PASS] Flags: ['-u', '-g']
     [PASS] Flags: ['-u', '-n']
     [PASS] Flags: ['-u', '-z']
@@ -170,7 +170,7 @@ Target: test_obj.o
     [PASS] Flags: ['-a', '-P', '-g']
     [PASS] Flags: ['-a', '-P', '-n']
     [PASS] Flags: ['-a', '-P', '-z']
-    [FAIL] Flags: ['-a', '-u', '-r'] -> 결과 다름
+    [PASS] Flags: ['-a', '-u', '-r']
     [PASS] Flags: ['-a', '-u', '-g']
     [PASS] Flags: ['-a', '-u', '-n']
     [PASS] Flags: ['-a', '-u', '-z']
@@ -180,7 +180,7 @@ Target: test_obj.o
     [PASS] Flags: ['-a', '-g', '-n']
     [PASS] Flags: ['-a', '-g', '-z']
     [PASS] Flags: ['-a', '-n', '-z']
-    [FAIL] Flags: ['-P', '-u', '-r'] -> 결과 다름
+    [PASS] Flags: ['-P', '-u', '-r']
     [PASS] Flags: ['-P', '-u', '-g']
     [PASS] Flags: ['-P', '-u', '-n']
     [PASS] Flags: ['-P', '-u', '-z']
@@ -190,8 +190,8 @@ Target: test_obj.o
     [PASS] Flags: ['-P', '-g', '-n']
     [PASS] Flags: ['-P', '-g', '-z']
     [PASS] Flags: ['-P', '-n', '-z']
-    [FAIL] Flags: ['-u', '-r', '-g'] -> 결과 다름
-    [FAIL] Flags: ['-u', '-r', '-n'] -> 결과 다름
+    [PASS] Flags: ['-u', '-r', '-g']
+    [PASS] Flags: ['-u', '-r', '-n']
     [PASS] Flags: ['-u', '-r', '-z']
     [PASS] Flags: ['-u', '-g', '-n']
     [PASS] Flags: ['-u', '-g', '-z']
@@ -200,7 +200,7 @@ Target: test_obj.o
     [PASS] Flags: ['-r', '-g', '-z']
     [PASS] Flags: ['-r', '-n', '-z']
     [PASS] Flags: ['-g', '-n', '-z']
-    [FAIL] Flags: ['-a', '-P', '-u', '-r'] -> 결과 다름
+    [PASS] Flags: ['-a', '-P', '-u', '-r']
     [PASS] Flags: ['-a', '-P', '-u', '-g']
     [PASS] Flags: ['-a', '-P', '-u', '-n']
     [PASS] Flags: ['-a', '-P', '-u', '-z']
@@ -210,8 +210,8 @@ Target: test_obj.o
     [PASS] Flags: ['-a', '-P', '-g', '-n']
     [PASS] Flags: ['-a', '-P', '-g', '-z']
     [PASS] Flags: ['-a', '-P', '-n', '-z']
-    [FAIL] Flags: ['-a', '-u', '-r', '-g'] -> 결과 다름
-    [FAIL] Flags: ['-a', '-u', '-r', '-n'] -> 결과 다름
+    [PASS] Flags: ['-a', '-u', '-r', '-g']
+    [PASS] Flags: ['-a', '-u', '-r', '-n']
     [PASS] Flags: ['-a', '-u', '-r', '-z']
     [PASS] Flags: ['-a', '-u', '-g', '-n']
     [PASS] Flags: ['-a', '-u', '-g', '-z']
@@ -220,8 +220,8 @@ Target: test_obj.o
     [PASS] Flags: ['-a', '-r', '-g', '-z']
     [PASS] Flags: ['-a', '-r', '-n', '-z']
     [PASS] Flags: ['-a', '-g', '-n', '-z']
-    [FAIL] Flags: ['-P', '-u', '-r', '-g'] -> 결과 다름
-    [FAIL] Flags: ['-P', '-u', '-r', '-n'] -> 결과 다름
+    [PASS] Flags: ['-P', '-u', '-r', '-g']
+    [PASS] Flags: ['-P', '-u', '-r', '-n']
     [PASS] Flags: ['-P', '-u', '-r', '-z']
     [PASS] Flags: ['-P', '-u', '-g', '-n']
     [PASS] Flags: ['-P', '-u', '-g', '-z']
@@ -230,13 +230,13 @@ Target: test_obj.o
     [PASS] Flags: ['-P', '-r', '-g', '-z']
     [PASS] Flags: ['-P', '-r', '-n', '-z']
     [PASS] Flags: ['-P', '-g', '-n', '-z']
-    [FAIL] Flags: ['-u', '-r', '-g', '-n'] -> 결과 다름
+    [PASS] Flags: ['-u', '-r', '-g', '-n']
     [PASS] Flags: ['-u', '-r', '-g', '-z']
     [PASS] Flags: ['-u', '-r', '-n', '-z']
     [PASS] Flags: ['-u', '-g', '-n', '-z']
     [PASS] Flags: ['-r', '-g', '-n', '-z']
-    [FAIL] Flags: ['-a', '-P', '-u', '-r', '-g'] -> 결과 다름
-    [FAIL] Flags: ['-a', '-P', '-u', '-r', '-n'] -> 결과 다름
+    [PASS] Flags: ['-a', '-P', '-u', '-r', '-g']
+    [PASS] Flags: ['-a', '-P', '-u', '-r', '-n']
     [PASS] Flags: ['-a', '-P', '-u', '-r', '-z']
     [PASS] Flags: ['-a', '-P', '-u', '-g', '-n']
     [PASS] Flags: ['-a', '-P', '-u', '-g', '-z']
@@ -245,18 +245,18 @@ Target: test_obj.o
     [PASS] Flags: ['-a', '-P', '-r', '-g', '-z']
     [PASS] Flags: ['-a', '-P', '-r', '-n', '-z']
     [PASS] Flags: ['-a', '-P', '-g', '-n', '-z']
-    [FAIL] Flags: ['-a', '-u', '-r', '-g', '-n'] -> 결과 다름
+    [PASS] Flags: ['-a', '-u', '-r', '-g', '-n']
     [PASS] Flags: ['-a', '-u', '-r', '-g', '-z']
     [PASS] Flags: ['-a', '-u', '-r', '-n', '-z']
     [PASS] Flags: ['-a', '-u', '-g', '-n', '-z']
     [PASS] Flags: ['-a', '-r', '-g', '-n', '-z']
-    [FAIL] Flags: ['-P', '-u', '-r', '-g', '-n'] -> 결과 다름
+    [PASS] Flags: ['-P', '-u', '-r', '-g', '-n']
     [PASS] Flags: ['-P', '-u', '-r', '-g', '-z']
     [PASS] Flags: ['-P', '-u', '-r', '-n', '-z']
     [PASS] Flags: ['-P', '-u', '-g', '-n', '-z']
     [PASS] Flags: ['-P', '-r', '-g', '-n', '-z']
     [PASS] Flags: ['-u', '-r', '-g', '-n', '-z']
-    [FAIL] Flags: ['-a', '-P', '-u', '-r', '-g', '-n'] -> 결과 다름
+    [PASS] Flags: ['-a', '-P', '-u', '-r', '-g', '-n']
     [PASS] Flags: ['-a', '-P', '-u', '-r', '-g', '-z']
     [PASS] Flags: ['-a', '-P', '-u', '-r', '-n', '-z']
     [PASS] Flags: ['-a', '-P', '-u', '-g', '-n', '-z']
