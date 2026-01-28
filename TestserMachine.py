@@ -1,6 +1,11 @@
 from ast import Try
+import itertools
+from math import exp
+from optparse import Option
+import random
 import subprocess
 import os
+from unittest import result
 
 class TargetGenerator:
     def __init__(self):
@@ -72,6 +77,85 @@ class TargetGenerator:
                 os.remove(file)
                 print(f"    [Delete] {file} 삭제됨")
 
-# class FileCorruptor:
-#     def create_bad_file(self, origin_file):
-#         """"""
+class FileCorruptor:
+    def create_bad_file(self, origin_file):
+        """원본 파일을 읽어 랜덤한 위치를 망가뜨린 복사본을 만듭니다."""
+        bad_filename = f"corruped_{origin_file}"
+
+        with open(origin_file, "rb") as f:
+            data = bytearray(f.read())
+        
+        # 데이터 파괴 (램덤 바이트 변경)
+        if len(data) > 0:
+            # 헤더 부분(앞쪽)을 망가뜨릴 확률을 높임 (치명적임)
+            pos = random.randint(0, min(64, len(data) - 1))
+            data[pos] = 0xFF
+        
+        with open(bad_filename, "wb") as f:
+            f.write(data)
+        
+        return bad_filename
+
+class TestRunner:
+    def __init__(self, ft_nm="./ft_nm", sys_nm="LC_ALL=C nm") -> None:
+        self.ft_nm = ft_nm
+        self.sys_nm = sys_nm
+        self.corruptor = FileCorruptor()
+
+    def get_option_combibations(self):
+        """옵션 조합 생성기 역할"""
+        option = ['a', '-P', 'u', 'r', 'g', 'n', 'z']
+        combos = []
+        for r in range(8):
+            for c in itertools.combinations(option, r):
+                combos.append(list(c))
+        return combos
+    
+    def run_command(self, cmd):
+        """명령어 실행 도우미"""
+        try:
+            return subprocess.check_output(cmd, strerr=subprocess.DEVNULL, timeout=1)
+        except subprocess.TimeoutExpired:
+            return "TIMEOUT"
+        except subprocess.CalledProcessError as e:
+            if e.returncode < 0: return f"CRASH({e.returncode})"
+            return "ERROR"
+    
+    def run_tests(self, targets):
+        print(f"테스트 시작 : 대상 파일 {len(targets)}개\\n")
+        option_combs = self.get_option_combibations()
+
+        for target in targets:
+            print(f"Target: {target}")
+
+            for flags in option_combs:
+                sys_res = self.run_command([self.sys_nm] + flags + [target])
+                my_sys = self.run_command([self.ft_nm] + flags + [target])
+
+                if sys_res == my_sys:
+                    print(f"    [PASS] Flags: {flags}")
+                else:
+                    print(f"    [FAIL] Flags: {flags} -> 결과 다름")
+
+            bad_file = self.corruptor.create_bad_file(target)
+            print(f"    Fuzzing: {bad_file}...", end=" ")
+
+            result = self.run_command([self.ft_nm, bad_file])
+
+            if "CRASH" in str(result) or "TIMEOUT" in str(result):
+                print(f" {result} (Segfault 발생!!)")
+            else:
+                print(" 방어 성공 (Segfault 안남)")
+            
+            if os.path.exists(bad_file): os.remove(bad_file)
+            print("-" * 40)
+
+
+if __name__ == "__main__":
+    gnerator = TargetGenerator()
+    targets = gnerator.make_all()
+
+    runner = TestRunner()
+    runner.run_tests(targets)
+
+    gnerator.cleanup()
