@@ -51,7 +51,7 @@ static unsigned char classify_by_shndx(const t_NmSymData *sym, const t_NmShdrDat
 			return 'r';
 		return 'R';
 	}
-	if (sh_type == SHT_PROGBITS && sh_flags == 0)
+	if (sh_type == SHT_PROGBITS && (sh_flags & SHF_ALLOC) == 0)
 		return 'N';
 	if (sh_type == SHT_PROGBITS)
 		return 'n';

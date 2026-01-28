@@ -1,470 +1,135 @@
-
-ft_isalnum.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_isalnum
-0000000000000000 a ft_isalnum.c
-
-ft_isalpha.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_isalpha
-0000000000000000 a ft_isalpha.c
-
-ft_isascii.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_isascii
-0000000000000000 a ft_isascii.c
-
-ft_isinstr.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_isinstr
-0000000000000000 a ft_isinstr.c
-
-ft_atoi.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_atoi
-0000000000000000 a ft_atoi.c
-
-ft_atof.o:
-0000000000000000 r 
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U ft_isdigit
-0000000000000000 a ft_atof.c
-0000000000000000 t is_minus
-0000000000000097 T ft_atof
-
-ft_bzero.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_bzero
-0000000000000000 a ft_bzero.c
-
-ft_isprint.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_isprint
-0000000000000000 a ft_isprint.c
-
-ft_isdigit.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_isdigit
-0000000000000000 a ft_isdigit.c
-
-ft_memchr.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_memchr
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+                 w __cxa_finalize@GLIBC_2.2.5
+                 U __errno_location@GLIBC_2.2.5
+                 w __gmon_start__
+                 U __libc_start_main@GLIBC_2.34
+                 U __stack_chk_fail@GLIBC_2.4
+                 U close@GLIBC_2.2.5
+                 U free@GLIBC_2.2.5
+                 U fstat@GLIBC_2.33
+                 U malloc@GLIBC_2.2.5
+                 U mmap@GLIBC_2.2.5
+                 U munmap@GLIBC_2.2.5
+                 U open@GLIBC_2.2.5
+                 U strerror@GLIBC_2.2.5
+                 U write@GLIBC_2.2.5
+0000000000000000 a 
+0000000000000000 a Scrt1.o
+0000000000000000 a ar_parser.c
+0000000000000000 a arg.c
+0000000000000000 a crtstuff.c
+0000000000000000 a crtstuff.c
+0000000000000000 a elf_parser.c
+0000000000000000 a format_router.c
+0000000000000000 a ft_fprintf.c
 0000000000000000 a ft_memchr.c
-
-ft_memcmp.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_memcmp
 0000000000000000 a ft_memcmp.c
-
-ft_memcpy.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_memcpy
-0000000000000000 a ft_memcpy.c
-
-ft_memmove.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_memmove
-0000000000000000 a ft_memmove.c
-
-ft_memset.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_memset
 0000000000000000 a ft_memset.c
-
-ft_strchr.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_strchr
-0000000000000000 a ft_strchr.c
-
-ft_strlcpy.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_strlcpy
-                 U ft_strlen
-0000000000000000 a ft_strlcpy.c
-
-ft_strlcat.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_strlcat
-                 U ft_strlen
-0000000000000000 a ft_strlcat.c
-
-ft_strlen.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_strlen
+0000000000000000 a ft_printf.c
+0000000000000000 a ft_putaddress.c
+0000000000000000 a ft_putchar.c
+0000000000000000 a ft_putnbr.c
+0000000000000000 a ft_putstr.c
 0000000000000000 a ft_strlen.c
-
-ft_strncmp.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_strncmp
-0000000000000000 a ft_strncmp.c
-
-ft_strnstr.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U ft_strlen
-0000000000000000 T ft_strnstr
-0000000000000000 a ft_strnstr.c
-
-ft_strrchr.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U ft_strlen
-0000000000000000 T ft_strrchr
-0000000000000000 a ft_strrchr.c
-
-ft_tolower.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_tolower
 0000000000000000 a ft_tolower.c
-
-ft_toupper.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_toupper
-0000000000000000 a ft_toupper.c
-
-ft_calloc.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_calloc
-                 U ft_memset
-                 U malloc
-0000000000000000 a ft_calloc.c
-
-ft_strdup.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U exit
-                 U ft_calloc
-0000000000000000 T ft_strdup
-                 U ft_strlen
-0000000000000000 a ft_strdup.c
-
-ft_substr.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U exit
-                 U ft_bzero
-                 U ft_calloc
-                 U ft_strlcpy
-                 U ft_strlen
-0000000000000000 T ft_substr
-0000000000000000 a ft_substr.c
-
-ft_strjoin.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_strjoin
-                 U ft_strlcat
-                 U ft_strlcpy
-                 U ft_strlen
-                 U malloc
-0000000000000000 a ft_strjoin.c
-
-ft_strtrim.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U ft_calloc
-0000000000000000 t ft_check
-                 U ft_strlcpy
-                 U ft_strlen
-                 U malloc
-0000000000000000 a ft_strtrim.c
-000000000000003d T ft_strtrim
-
-ft_split.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U exit
-                 U free
-0000000000000000 t ft_strfree
-                 U malloc
-0000000000000000 a ft_split.c
-0000000000000065 t ft_wordcount
-00000000000000f5 t ft_len
-0000000000000141 t ft_save
-00000000000001d8 T ft_split
-
-ft_split_str.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U free
-                 U ft_strchr
-0000000000000000 t ft_strfree
-                 U malloc
-0000000000000000 a ft_split_str.c
-0000000000000065 t ft_wordcount
-0000000000000132 t ft_len
-0000000000000192 t ft_save
-0000000000000226 T ft_split_str
-
-ft_itoa.o:
-0000000000000000 r 
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U __stack_chk_fail
-0000000000000000 t ft_in_nbr
-                 U ft_memset
-                 U ft_strlcpy
-                 U ft_strlen
-                 U malloc
-0000000000000000 a ft_itoa.c
-00000000000000ea T ft_itoa
-
-ft_putchar_fd.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_putchar_fd
-                 U write
-0000000000000000 a ft_putchar_fd.c
-
-ft_putstr_fd.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_putstr_fd
-                 U write
-0000000000000000 a ft_putstr_fd.c
-
-ft_putendl_fd.o:
-0000000000000000 r 
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_putendl_fd
-                 U write
-0000000000000000 a ft_putendl_fd.c
-
-ft_putnbr_fd.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U ft_putchar_fd
-0000000000000000 T ft_putnbr_fd
-0000000000000000 a ft_putnbr_fd.c
-
-ft_strmapi.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U ft_strlen
-0000000000000000 T ft_strmapi
-                 U malloc
-0000000000000000 a ft_strmapi.c
-
-ft_striteri.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_striteri
-0000000000000000 a ft_striteri.c
-
-ft_isspace.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_isspace
-0000000000000000 a ft_isspace.c
-
-ft_strndup.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U ft_strlen
-0000000000000000 T ft_strndup
-                 U malloc
-0000000000000000 a ft_strndup.c
-
-ft_freenull.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U free
-0000000000000000 T ft_freenull
-0000000000000000 a ft_freenull.c
-
-ft_free_two.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U free
-0000000000000000 T ft_free_two
-                 U ft_freenull
-0000000000000000 a ft_free_two.c
-
-ft_strchr_len.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 T ft_strchr_len
-0000000000000000 a ft_strchr_len.c
-
-ft_strrstr.o:
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U ft_strlen
-0000000000000000 T ft_strrstr
-0000000000000000 a ft_strrstr.c
-
-get_next_line.o:
-0000000000000000 b 
-0000000000000000 t 
-0000000000000000 n .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-0000000000000000 N .shstrtab
-                 U __stack_chk_fail
-0000000000000000 b backup.0
-                 U free_backup
-0000000000000000 T ft_get_head
-                 U ft_gnl_strdup
-                 U ft_gnl_strjoin
-                 U ft_gnl_strlen
-                 U ft_gnl_substr
-                 U malloc
-                 U read
-0000000000000000 a get_next_line.c
-00000000000000bf T ft_new_line
-000000000000014c T ft_read_file
-0000000000000283 T ft_read_sub
-00000000000002e5 T get_next_line
+0000000000000000 a io_unit.c
+0000000000000000 a nm.c
+0000000000000000 a sort_filter_print.c
+0000000000000000 a sym_classify.c
+000000000000038c r __abi_tag
+0000000000001000 T _init
+00000000000011a0 T _start
+00000000000011d0 t deregister_tm_clones
+0000000000001200 t register_tm_clones
+0000000000001240 t __do_global_dtors_aux
+0000000000001280 t frame_dummy
+0000000000001289 t real_print_error
+00000000000012f0 T get_error_msg
+0000000000001322 T print_error
+000000000000138b T main
+00000000000014b4 t real_print_error
+000000000000151b t is_valid_option
+000000000000155a t parse_option_string
+0000000000001716 T parse_arguments
+00000000000018e0 t real_print_error
+0000000000001947 T process_path
+0000000000001bd2 T detect_format
+0000000000001c6b t MOVE_ADDRESS
+0000000000001c9a t CHECK_RANGE
+0000000000001ccc t parse_ar_size
+0000000000001d54 t extract_ar_name
+0000000000001f6f T process_ar_archive
+00000000000021b5 t MOVE_ADDRESS
+00000000000021e4 t CHECK_RANGE
+0000000000002216 t real_print_error
+000000000000227d T safe_get_string
+0000000000002337 t check_debug_symbol
+00000000000023b6 t check_debug_section_size
+0000000000002435 t check_section_name
+000000000000248a t verify_elf_header
+0000000000002708 t find_symbol_table
+0000000000002a80 t load_symbols
+00000000000031ca T process_elf_unit
+00000000000032cc t classify_by_shndx
+00000000000034c4 T classify_symbol
+0000000000003568 t is_visible
+000000000000370c t str_compare
+000000000000376a t compare_by_name
+00000000000037e2 t compare_by_value
+00000000000038d0 t swap_symbols
+000000000000396c t partition
+0000000000003a9c t quicksort
+0000000000003b11 t write_hex
+0000000000003b75 t print_symbol
+0000000000003cfb T sort_and_print_symbols
+0000000000003f4c T ft_memchr
+0000000000003fa1 T ft_memcmp
+000000000000401b T ft_memset
+000000000000406c T ft_strlen
+00000000000040aa T ft_tolower
+00000000000040d0 t ft_ftype
+0000000000004559 t ft_fcallstr
+00000000000045f6 T ft_fprintf
+0000000000004732 t ft_type
+0000000000004b6a t ft_callstr
+0000000000004bf8 T ft_printf
+0000000000004d29 T ft_putchar
+0000000000004d62 T ft_fputchar
+0000000000004da2 T ft_putstr
+0000000000004e11 T ft_fputstr
+0000000000004e88 T ft_put_space
+0000000000004ee0 T ft_fput_space
+0000000000004f3d T ft_putaddress
+000000000000504c T ft_putaddress_upper
+000000000000515b T ft_put_hex
+0000000000005238 T ft_put_hex_upper
+0000000000005315 T ft_put_octal
+00000000000053f2 T ft_fputaddress
+000000000000550b T ft_fputaddress_upper
+0000000000005624 T ft_fput_hex
+0000000000005707 T ft_fput_hex_upper
+00000000000057ea T ft_fput_octal
+00000000000058cd T ft_putnbr
+0000000000005998 T ft_putnbr_un
+0000000000005a31 T ft_fputnbr
+0000000000005b07 T ft_fputnbr_un
+0000000000005bac T _fini
+0000000000006000 R _IO_stdin_used
+000000000000625c r __GNU_EH_FRAME_HDR
+0000000000006e10 r __FRAME_END__
+0000000000008d68 d __frame_dummy_init_array_entry
+0000000000008d70 d __do_global_dtors_aux_fini_array_entry
+0000000000008d78 d _DYNAMIC
+0000000000008f68 d _GLOBAL_OFFSET_TABLE_
+0000000000009000 D __data_start
+0000000000009000 W data_start
+0000000000009008 D __dso_handle
+0000000000009020 d g_error_table
+0000000000009088 D __TMC_END__
+0000000000009088 B __bss_start
+0000000000009088 D _edata
+00000000000090a0 b completed.0
+00000000000090c0 b long_name_buf.1
+000000000000a0c0 b name_buf.0
+000000000000a0d8 B _end

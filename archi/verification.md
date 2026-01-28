@@ -29,7 +29,8 @@
 8. archive format 에서 정렬이 안되는 상황이 발생.
     - a, u , w 를 제외한 주소가 0 인 type 들이 존재하기 때문.
 9. archive format 에서 이름이 긴 // 곳을 표시 x
-10. arvhive foramt 에서 N, n 을 구분하는 방법이 잘못됨. gnu 와 차이가 존재. 
+10. archive foramt 에서 N, n 을 구분하는 방법이 잘못됨. gnu 와 차이가 존재.
+11. archive format 에서 sectioon header 의 이름을 출력하는 방식이 다름
 
 ---
 
@@ -66,3 +67,9 @@
     - 위 두 함수에서 // 조건 재 정의
     - 문제는 긴 문자열을 무시.
     - 조건을 /<digits> 를 확인 할 수 있는 방향으로 재정의
+10. classify_by_shndx
+    - 현재 N 은 sh_flags == 0 알때만 'N' 으로 정의되지만
+    - 경우에 따라서 debug 는 sh_flag 는 0이 아닐 수 있다.
+    - 기준을 Occupies memory during execution 즉 메모리에 올라가지 않는다면 debug로 보았다.  
+11. load_symbols
+    - debug 모드를 Test 하는 조건을 걸어서 문제를 해결

@@ -260,14 +260,16 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 		if (!(*symbols)[i].name)
 			(*symbols)[i].name = "";
 		(*symbols)[i].type = classify_symbol(unit, meta, &(*symbols)[i], *shdr_cache);
-		if ((*symbols)[i].st_value == 0 && (*symbols)[i].type != 'a' && (*symbols)[i].type != 'U' && (*symbols)[i].type != 'w') {
-			uint64_t offset = check_debug_symbol(meta);
-			uint64_t size = check_debug_section_size(meta);
-			uint32_t sh_name = check_section_name(meta, (*symbols)[i].st_shndx);
-			if (offset != 0 && size != 0) {
-				(*symbols)[i].name = safe_get_string(unit, offset, size, sh_name);
-				if (!(*symbols)[i].name)
-					(*symbols)[i].name = "";
+		if (ft_strlen((*symbols)[i].name) == 0 && ((*symbols)[i].st_value == 0 && (*symbols)[i].type != 'a' && (*symbols)[i].type != 'U' && (*symbols)[i].type != 'w')) {
+			if ((*symbols)[i].type == 'N' || (*symbols)[i].type == ft_tolower((*symbols)[i].type)) {
+				uint64_t offset = check_debug_symbol(meta);
+				uint64_t size = check_debug_section_size(meta);
+				uint32_t sh_name = check_section_name(meta, (*symbols)[i].st_shndx);
+				if (offset != 0 && size != 0) {
+					(*symbols)[i].name = safe_get_string(unit, offset, size, sh_name);
+					if (!(*symbols)[i].name)
+						(*symbols)[i].name = "";
+				}
 			}
 		}
 		i++;
