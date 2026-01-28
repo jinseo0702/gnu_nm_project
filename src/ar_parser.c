@@ -18,6 +18,7 @@ static uint64_t parse_ar_size(const char *ar_size_str)
 static const char *extract_ar_name(const struct ar_hdr *hdr, const char *strtab, uint64_t strtab_size)
 {
 	static char name_buf[17];
+	static char long_name_buf[4095] = {0,};
 	int i;
 	uint64_t offset;
 	const char *name_ptr;
@@ -36,13 +37,13 @@ static const char *extract_ar_name(const struct ar_hdr *hdr, const char *strtab,
 		{
 			name_ptr = strtab + offset;
 			i = 0;
-			while (i < 16 && offset + i < strtab_size && name_ptr[i] != '/' && name_ptr[i] != '\n' && name_ptr[i] != '\0')
+			while (i < 4095 && offset + i < strtab_size && name_ptr[i] != '/' && name_ptr[i] != '\n' && name_ptr[i] != '\0')
 			{
-				name_buf[i] = name_ptr[i];
+				long_name_buf[i] = name_ptr[i];
 				i++;
 			}
-			name_buf[i] = '\0';
-			return name_buf;
+			long_name_buf[i] = '\0';
+			return long_name_buf;
 		}
 	}
 	i = 0;
@@ -94,7 +95,7 @@ int process_ar_archive(const t_unit *unit, uint32_t opt)
 			strtab = (const char *)MOVE_ADDRESS(unit->base, payload_off);
 			strtab_size = member_size;
 		}
-		else if (hdr->ar_name[0] != '/')
+		else if (!(hdr->ar_name[0] == '/' && ft_strlen(hdr->ar_name) == 1))
 		{
 			member_unit.base = (const unsigned char *)MOVE_ADDRESS(unit->base, payload_off);
 			member_unit.limit = member_size;
