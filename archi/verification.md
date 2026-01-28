@@ -26,6 +26,9 @@
 6. symbol type is 'a' , not print
 7. archive STT_SECTION 이 보이지 않음
     - STT_SECTION 의 이름은 Symbol 의 name 과 다르게 움직임.
+8. archive format 에서 정렬이 안되는 상황이 발생.
+    - a, u , w 를 제외한 주소가 0 인 type 들이 존재하기 때문.
+9. archive format 에서 이름이 긴 // 곳을 표시 x
 
 ---
 
@@ -55,3 +58,6 @@
     - compare_by_value 에서 'a', 'U' 'w' 비교 조건 추가
 6.
     - is_visible 에 type != 'a' and 공백일때 조건 추가
+7. load_symbols 에서 archive format 에서 section 이 나오도록 조건 추가
+8. compare_by_value
+    - 5.2 조건에서 저렇게 비교하는게 아니라 (a,b) U, w | (a,b) !U, !w 로 변경

@@ -18,34 +18,46 @@ const char *safe_get_string(const t_unit *unit, uint64_t strtab_offset, uint64_t
 	return strtab + str_offset;
 }
 
-static uint64_t check_debug_symbol(const t_unit *unit, t_MetaData *meta) {
+static uint64_t check_debug_symbol(t_MetaData *meta)
+{
+	uint16_t idx;
+	uint64_t offset;
 	if (meta->elf_class == ELFCLASS64)
 	{
-		uint16_t idx = meta->ElfN_Ehdr.Ehdr64->e_shstrndx;
-		uint64_t offset = meta->ElfN_Shdr.Shdr64[idx].sh_offset;
-		return offset;
+		idx = meta->ElfN_Ehdr.Ehdr64->e_shstrndx;
+		offset = meta->ElfN_Shdr.Shdr64[idx].sh_offset;
 	}
 	else
 	{
-		uint16_t idx = meta->ElfN_Ehdr.Ehdr32->e_shstrndx;
-		uint64_t offset = meta->ElfN_Shdr.Shdr32[idx].sh_offset;
-		return offset;
+		idx = meta->ElfN_Ehdr.Ehdr32->e_shstrndx;
+		offset = meta->ElfN_Shdr.Shdr32[idx].sh_offset;
 	}
+	return offset;
 }
 
-static uint64_t check_debug_section_size(const t_unit *unit, t_MetaData *meta) {
+static uint64_t check_debug_section_size(t_MetaData *meta)
+{
+	uint16_t idx;
+	uint64_t sh_size;
 	if (meta->elf_class == ELFCLASS64)
 	{
-		uint16_t idx = meta->ElfN_Ehdr.Ehdr64->e_shstrndx;
-		uint64_t sh_size = meta->ElfN_Shdr.Shdr64[idx].sh_size;
-		return sh_size;
+		idx = meta->ElfN_Ehdr.Ehdr64->e_shstrndx;
+		sh_size = meta->ElfN_Shdr.Shdr64[idx].sh_size;
 	}
 	else
 	{
-		uint16_t idx = meta->ElfN_Ehdr.Ehdr32->e_shstrndx;
-		uint64_t sh_size = meta->ElfN_Shdr.Shdr32[idx].sh_size;
-		return sh_size;
+		idx = meta->ElfN_Ehdr.Ehdr32->e_shstrndx;
+		sh_size = meta->ElfN_Shdr.Shdr32[idx].sh_size;
 	}
+	return sh_size;
+}
+
+static uint32_t check_section_name(t_MetaData *meta, uint16_t st_shndx)
+{
+	uint32_t sh_name;
+	if (meta->elf_class == ELFCLASS64) sh_name = meta->ElfN_Shdr.Shdr64[st_shndx].sh_name;
+	else sh_name = meta->ElfN_Shdr.Shdr64[st_shndx].sh_name;
+	return sh_name;
 }
 
 static int verify_elf_header(const t_unit *unit, t_MetaData *meta)
@@ -248,11 +260,12 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 		if (!(*symbols)[i].name)
 			(*symbols)[i].name = "";
 		(*symbols)[i].type = classify_symbol(unit, meta, &(*symbols)[i], *shdr_cache);
-		if ((*symbols)[i].type == 'N') {
-			uint64_t offset = check_debug_symbol(unit, meta);
-			uint64_t size = check_debug_section_size(unit, meta);
+		if ((*symbols)[i].st_value == 0 && (*symbols)[i].type != 'a' && (*symbols)[i].type != 'U' && (*symbols)[i].type != 'w') {
+			uint64_t offset = check_debug_symbol(meta);
+			uint64_t size = check_debug_section_size(meta);
+			uint32_t sh_name = check_section_name(meta, (*symbols)[i].st_shndx);
 			if (offset != 0 && size != 0) {
-				(*symbols)[i].name = safe_get_string(unit, offset, size, (*symbols)[i].st_name);
+				(*symbols)[i].name = safe_get_string(unit, offset, size, sh_name);
 				if (!(*symbols)[i].name)
 					(*symbols)[i].name = "";
 			}

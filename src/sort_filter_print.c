@@ -69,9 +69,9 @@ static int compare_by_value(const t_NmSymData *a, const t_NmSymData *b)
 {
 	if (a->st_value == 0 && b->st_value == 0) 
 	{
-		if (a->type == 'a' && (b->type == 'U' || b->type == 'w'))
+		if ((a->type != 'U' && a->type != 'w')  && (b->type == 'U' || b->type == 'w'))
 			return 1;
-		else if ((a->type == 'U' || a->type == 'w') && b->type == 'a')
+		else if ((a->type == 'U' || a->type == 'w') && (b->type != 'U' && b->type != 'w'))
 			return -1;
 	}
 	if (a->st_value < b->st_value)
