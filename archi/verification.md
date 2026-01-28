@@ -31,6 +31,9 @@
 9. archive format 에서 이름이 긴 // 곳을 표시 x
 10. archive foramt 에서 N, n 을 구분하는 방법이 잘못됨. gnu 와 차이가 존재.
 11. archive format 에서 sectioon header 의 이름을 출력하는 방식이 다름
+12. 32비트 출력시 출력 형식 불일치
+13. 32비트 obj 파일 출력시 section name 출력안됨
+    - 내가 글자를 구분 못해서 32bit 자리에 64bit 내용을 넣음
 
 ---
 
@@ -73,3 +76,8 @@
     - 기준을 Occupies memory during execution 즉 메모리에 올라가지 않는다면 debug로 보았다.  
 11. load_symbols
     - debug 모드를 Test 하는 조건을 걸어서 문제를 해결
+12. print_symbol, write_hex
+    - 위 두가지에 machine type 구분
+13. human Error
+    - check_section_name 에서 32/64 bit 둘다 64bit 구조체 사용
+    - 상황에 맡게 수정완료

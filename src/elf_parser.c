@@ -56,7 +56,7 @@ static uint32_t check_section_name(t_MetaData *meta, uint16_t st_shndx)
 {
 	uint32_t sh_name;
 	if (meta->elf_class == ELFCLASS64) sh_name = meta->ElfN_Shdr.Shdr64[st_shndx].sh_name;
-	else sh_name = meta->ElfN_Shdr.Shdr64[st_shndx].sh_name;
+	else sh_name = meta->ElfN_Shdr.Shdr32[st_shndx].sh_name;
 	return sh_name;
 }
 
@@ -245,6 +245,7 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 			(*symbols)[i].st_shndx = sym64->st_shndx;
 			(*symbols)[i].st_info_type = ELF64_ST_TYPE(sym64->st_info);
 			(*symbols)[i].st_info_bind = ELF64_ST_BIND(sym64->st_info);
+			(*symbols)[i].elf_class = ELFCLASS64;
 		}
 		else
 		{
@@ -255,13 +256,15 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 			(*symbols)[i].st_shndx = sym32->st_shndx;
 			(*symbols)[i].st_info_type = ELF32_ST_TYPE(sym32->st_info);
 			(*symbols)[i].st_info_bind = ELF32_ST_BIND(sym32->st_info);
+			(*symbols)[i].elf_class = ELFCLASS32;
 		}
 		(*symbols)[i].name = safe_get_string(unit, meta->strtab_offset, meta->strtab_size, (*symbols)[i].st_name);
 		if (!(*symbols)[i].name)
 			(*symbols)[i].name = "";
 		(*symbols)[i].type = classify_symbol(unit, meta, &(*symbols)[i], *shdr_cache);
-		if (ft_strlen((*symbols)[i].name) == 0 && ((*symbols)[i].st_value == 0 && (*symbols)[i].type != 'a' && (*symbols)[i].type != 'U' && (*symbols)[i].type != 'w')) {
-			if ((*symbols)[i].type == 'N' || (*symbols)[i].type == ft_tolower((*symbols)[i].type)) {
+		// if (ft_strlen((*symbols)[i].name) == 0 && ((*symbols)[i].st_value == 0 && (*symbols)[i].type != 'a' && (*symbols)[i].type != 'U' && (*symbols)[i].type != 'w')) {
+		if ((*symbols)[i].st_info_type == STT_SECTION) {
+			// if ((*symbols)[i].type == 'N' || (*symbols)[i].type == ft_tolower((*symbols)[i].type)) {
 				uint64_t offset = check_debug_symbol(meta);
 				uint64_t size = check_debug_section_size(meta);
 				uint32_t sh_name = check_section_name(meta, (*symbols)[i].st_shndx);
@@ -270,7 +273,7 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 					if (!(*symbols)[i].name)
 						(*symbols)[i].name = "";
 				}
-			}
+			// }
 		}
 		i++;
 	}

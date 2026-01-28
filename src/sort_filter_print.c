@@ -124,8 +124,11 @@ static void quicksort(t_NmSymData *arr, int low, int high, int (*cmp)(const t_Nm
 	}
 }
 
-static void write_hex(uint64_t addr, char *dest) {
-    int i = 15;
+static void write_hex(uint64_t addr, char *dest, uint8_t class) {
+	int i;
+	if (class == ELFCLASS64)
+		i = 15;
+	else i = 7;
     const char *base = "0123456789abcdef";
 
     while (i >= 0) {
@@ -133,7 +136,9 @@ static void write_hex(uint64_t addr, char *dest) {
         addr >>= 4;                // 4비트 오른쪽으로 밀기
         i--;
     }
-    dest[16] = '\0';
+	if (class == ELFCLASS64)
+    	dest[16] = '\0';
+	else dest[8] = '\0';
 }
 
 static void print_symbol(const t_NmSymData *sym, uint32_t opt)
@@ -150,11 +155,13 @@ static void print_symbol(const t_NmSymData *sym, uint32_t opt)
 	{
 		char arr[17] = {0,};
 		if (sym->type == 'U' || sym->type == 'w' || sym->type == 'v'){
-			ft_memset(arr, ' ', 16);
+			if (sym->elf_class == ELFCLASS64)
+				ft_memset(arr, ' ', 16);
+			else ft_memset(arr, ' ', 8);
 			ft_printf("%s %c %s\n", arr , sym->type, sym->name);
 		}
 		else{
-			write_hex(sym->st_value, arr);
+			write_hex(sym->st_value, arr, sym->elf_class);
 			ft_printf("%s %c %s\n", arr, sym->type, sym->name);
 		}
 	}

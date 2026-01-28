@@ -63,6 +63,7 @@ typedef struct s_NmSymData {
 	uint8_t st_info_bind;
 	unsigned char type;
 	const char *name;
+	uint8_t elf_class;
 } t_NmSymData;
 
 typedef enum e_result {
