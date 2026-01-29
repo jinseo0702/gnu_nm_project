@@ -13,18 +13,58 @@ class TargetGenerator:
         self.generator_files = []
         self.source_code = """
         #include <stdio.h>
+        #include <stdlib.h>
 
-        int global_var = 42;            /* Data Section (D) */
-        int uninit_var;                 /* BSS Section (B) */
-        static int static_var = 10;     /* Data Section Local (d) */
-        const int read_only = 100;      /* Read-only Data (R/r) */
+        // --- Data & BSS Section Symbols ---
+        int global_alpha = 10;          // D (External Data)
+        int global_Zebra;               // B (External BSS)
+        static int static_low = 5;      // d (Internal Data)
+        static int static_High;         // b (Internal BSS)
+        const int constant_val = 100;   // R (Read-only Data)
 
-        void test_func(void) {          /* Text Section (T) */
-            printf("Hello nm!\\\\n");
+        // 정렬 테스트를 위한 다양한 이름들
+        int _underscore_var = 1;        // D
+        int apple = 2;                  // D
+        int Apple = 3;                  // D
+        int zzzz = 4;                   // D
+
+        // --- Text Section Symbols (Functions) ---
+
+        // 내부 함수 (t)
+        static void static_helper_func(void) {
+            printf("Internal helper\n");
         }
 
-        int main(void) {
-            test_func();
+        // 외부 함수 (T)
+        void zebra_function(void) {
+            printf("Zebra!\n");
+        }
+
+        // 외부 함수 (T)
+        void apple_function(void) {
+            static_helper_func();
+            printf("Apple!\n");
+        }
+
+        // 라이브러리 함수 호출 (U - undefined 심볼 유도)
+        extern void external_library_func(void); 
+
+        int main(int argc, char **argv) {
+            // 지역 변수는 nm에 나오지 않음 (테스트용)
+            int local_stack = 42;
+
+            if (argc > 1) {
+                apple_function();
+            } else {
+                zebra_function();
+            }
+
+            printf("Vars: %d, %d, %d\n", global_alpha, global_Zebra, constant_val);
+
+            // malloc 등을 호출하여 라이브러리 심볼 유도
+            void *ptr = malloc(10);
+            free(ptr);
+
             return 0;
         }
         """
@@ -126,7 +166,7 @@ class TestRunner:
         """옵션 조합 생성기 역할"""
         option = ['-a', '-P', '-u', '-r', '-g', '-n', '-z']
         combos = []
-        for r in range(8):
+        for r in range(9):
             for c in itertools.combinations(option, r):
                 combos.append(list(c))
         return combos
@@ -159,11 +199,11 @@ class TestRunner:
                     print(f"    [PASS] Flags: {flags}")
                 else:
                     print(f"    [FAIL] Flags: {flags} -> 결과 다름")
-                    sys_line = sys_res.decode().splitlines()
-                    my_line = my_sys.decode().splitlines()
-                    diff = difflib.unified_diff(sys_line, my_line, fromfile='Original', tofile='Mine', lineterm='')
-                    for line in diff:
-                        print(line)
+                    # sys_line = sys_res.decode().splitlines()
+                    # my_line = my_sys.decode().splitlines()
+                    # diff = difflib.unified_diff(sys_line, my_line, fromfile='Original', tofile='Mine', lineterm='')
+                    # for line in diff:
+                    #     print(line)
 
             bad_file = self.corruptor.create_bad_file(target)
             print(f"    Fuzzing: {bad_file}...", end=" ")

@@ -528,9 +528,3 @@ Target: test_32bit.o
     [PASS] Flags: ['-a', '-P', '-u', '-r', '-g', '-n', '-z']
     Fuzzing: corruped_test_32bit.o...  방어 성공 (Segfault 안남)
 ----------------------------------------
-\n--- 청소 시작 ---
-    [Delete] temp_source.c 삭제됨
-    [Delete] test_exec.out 삭제됨
-    [Delete] test_obj.o 삭제됨
-    [Delete] test_obj.so 삭제됨
-    [Delete] test_32bit.o 삭제됨
