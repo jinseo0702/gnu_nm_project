@@ -5,9 +5,9 @@ NAME = ft_nm
 
 DEBUG ?= 0
 
-CFLAG = -Wall -Wextra -Werror 
-CFLAG += -Wno-unused-parameter
-CFLAG += -Iinclude -Ilibft -Ift_printf
+CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS += -Wno-unused-parameter
+CFLAGS += -Iinclude -Ilibft -Ift_printf
 
 LDFLAGS =
 SANFLAGS = -fsanitize=address
@@ -54,7 +54,7 @@ $(PRINTF_A):
 	@make -C ft_printf/
 
 %.o : %.c $(HEADER)
-	@$(CC) $(CFLAG) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	@make clean -C libft/

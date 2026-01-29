@@ -175,9 +175,10 @@ class TestRunner:
         """명령어 실행 도우미"""
 
         custom_env = os.environ.copy()
-        custom_env["LC_ALL"] = "C"
+        # custom_env["LC_ALL"] = "C"
         try:
-            return subprocess.check_output(cmd, stderr=subprocess.DEVNULL, timeout=1, env=custom_env)
+            return subprocess.check_output(cmd, stderr=subprocess.DEVNULL, timeout=1)
+            # return subprocess.check_output(cmd, stderr=subprocess.DEVNULL, timeout=1, env=custom_env)
         except subprocess.TimeoutExpired:
             return b"TIMEOUT"
         except subprocess.CalledProcessError as e:

@@ -41,8 +41,35 @@ static int is_visible(const t_NmSymData *sym, uint32_t opt)
 	return 1;
 }
 
+static const char *skip_special_prefix(const char *str)
+{
+    const char *original = str;
+    
+    while (*str && (*str == '_' || *str == '.' || *str == '$'))
+        str++;
+    
+    if (*str == '\0')
+        return original;
+    return str;
+}
+
+static int str_compare_toupper(const char *s1, const char *s2)
+{
+	// while (*s1 && *s2 && *s1 == *s2)
+	while (*s1 && *s2 && ft_toupper(*s1) == ft_toupper(*s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (unsigned char)ft_toupper(*s1) - (unsigned char)ft_toupper(*s2);
+}
+
 static int str_compare(const char *s1, const char *s2)
 {
+	const char *str1 = skip_special_prefix(s1);
+	const char *str2 = skip_special_prefix(s2);
+	if (str_compare_toupper(str1, str2) != 0)
+		return str_compare_toupper(str1, str2);
 	while (*s1 && *s2 && *s1 == *s2)
 	{
 		s1++;
@@ -132,8 +159,8 @@ static void write_hex(uint64_t addr, char *dest, uint8_t class) {
     const char *base = "0123456789abcdef";
 
     while (i >= 0) {
-        dest[i] = base[addr & 0xF]; // 마지막 4비트 추출
-        addr >>= 4;                // 4비트 오른쪽으로 밀기
+        dest[i] = base[addr & 0xF];
+        addr >>= 4;                
         i--;
     }
 	if (class == ELFCLASS64)

@@ -35,6 +35,7 @@
 13. 32비트 obj 파일 출력시 section name 출력안됨
     - 내가 글자를 구분 못해서 32bit 자리에 64bit 내용을 넣음
 14. none option 일때 정렬이 안된다. 근데 Tester에는 왜 맞다고 나올까
+15. gnu format에 맞춰본다.
 
 ---
 
@@ -82,3 +83,10 @@
 13. human Error
     - check_section_name 에서 32/64 bit 둘다 64bit 구조체 사용
     - 상황에 맡게 수정완료
+14. 내가 착각했다. 그리고 이건 15 번의 LC_ALL=C 옵션이랑 겹치게 된다.
+    - 내가 LC_ALL=C 를 적용해서 강제로 정렬을 시키는데 이건 문제의 취지랑 맞지않는다.
+    - 그래서 15번을 고려했다.
+15. gnu 는 
+    - Test 해본결과 '_', '.', '$' 는 무시하고 alpha 가 나올때까지 돈다.
+    - 그리고 일단 대문자 소문자로 비교 하지 않고 비교를 하고 그래도 같은 문자라면 strcmp 로직을 돌린다.
+    - 코드는 /gnu_nm_project/src/sort_filter_print.c 에 str_compare 가 변경된걸 보면된다.

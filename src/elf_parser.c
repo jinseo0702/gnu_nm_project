@@ -291,11 +291,20 @@ int process_elf_unit(const t_unit *unit, uint32_t opt, int multiple_files)
 	symbols = NULL;
 	shdr_cache = NULL;
 	if (verify_elf_header(unit, &meta) != OK)
+	{
+		NM_LOG(unit->display_name, "file format not recognized");
 		return FAIL_PATH;
+	}
 	if (find_symbol_table(unit, &meta) != OK)
+	{
+		NM_LOG(unit->display_name, "file format not recognized");
 		return FAIL_PATH;
+	}
 	if (load_symbols(unit, &meta, &symbols, &shdr_cache) != OK)
+	{
+		NM_LOG(unit->display_name, "file format not recognized");
 		return FAIL_PATH;
+	}
 	ret = sort_and_print_symbols(symbols, meta.sym_count, opt, unit->display_name, multiple_files);
 	free(symbols);
 	free(shdr_cache);
