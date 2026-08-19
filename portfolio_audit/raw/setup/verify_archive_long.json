@@ -1,0 +1,11 @@
+{
+  "command": [
+    "ar",
+    "t",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_long.a"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.000504,
+  "exit_code": 0,
+  "timed_out": false
+}

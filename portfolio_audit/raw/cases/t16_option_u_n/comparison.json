@@ -1,0 +1,66 @@
+{
+  "argv": [
+    "-u",
+    "-n",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ],
+  "category": "Option combination",
+  "classification": "PASS",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": true,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t16_option_u_n",
+  "mode": "default",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "-u",
+    "-n",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ],
+  "purpose": "undefined filter combined with numeric sort",
+  "raw_directory": "raw/cases/t16_option_u_n",
+  "summary": "semantic symbol records, order, status, and diagnostics match",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "-u",
+    "-n",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ]
+}

@@ -1,0 +1,6 @@
+global_bss B 0 10
+global_data D 4 8
+global_text T 2 6
+local_data d 0 4
+local_text t 0 2
+missing_external U

@@ -1,0 +1,12 @@
+000000000000003d T force_local_references
+0000000000000000 D global_data
+0000000000000000 T global_function
+0000000000000000 R global_rodata
+                 U undefined_function
+                 U undefined_object
+0000000000000000 D undefined_references
+0000000000000016 W weak_defined_function
+0000000000000008 V weak_defined_object
+                 w weak_undefined_function
+                 w weak_undefined_object
+0000000000000010 D weak_undefined_references

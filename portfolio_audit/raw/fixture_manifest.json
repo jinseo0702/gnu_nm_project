@@ -1,0 +1,86 @@
+{
+  "bin/fixtures/archive_bad_elf_member.a": {
+    "bytes": 3008,
+    "sha256": "a8f6a728333c8ee7c35a34d7f6e3e3048bee76b2913114d204d4c43d501749c7"
+  },
+  "bin/fixtures/archive_long.a": {
+    "bytes": 3080,
+    "sha256": "b13c22f7a541c47a2e15c3dbfc18331bf824da64e0400751874380ac9e90ffe2"
+  },
+  "bin/fixtures/archive_short.a": {
+    "bytes": 4794,
+    "sha256": "84c74baed168f573708405ddb4ca2b67e1c3735914b788d543408bab7154500c"
+  },
+  "bin/fixtures/basic64.o": {
+    "bytes": 2792,
+    "sha256": "487cf44911e63d0627d40c1fb2e8d13217398fccf150f9f16112bfdb6ab37a12"
+  },
+  "bin/fixtures/empty_file": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "bin/fixtures/executable64": {
+    "bytes": 17000,
+    "sha256": "4a163ec2c34f375b6a36b33da035c428e1c6f4918b0afd804296c96c5eac0363"
+  },
+  "bin/fixtures/high64.o": {
+    "bytes": 2360,
+    "sha256": "89789c7b8680fc33e89d52e9feec355a2b381505e59dcf1a6aaad00c533ce62a"
+  },
+  "bin/fixtures/malformed_bad_fmag.a": {
+    "bytes": 4794,
+    "sha256": "08d0d9914e1a7a379962b89bad20bd8adf0d4d8936ee9ebaba16efb2dace0ae0"
+  },
+  "bin/fixtures/malformed_bad_shentsize.o": {
+    "bytes": 2792,
+    "sha256": "699511e3c419b18f70c4eed85e16ca0d8e5202ea075afdf89466bfd2c45a231b"
+  },
+  "bin/fixtures/malformed_bad_shoff.o": {
+    "bytes": 2792,
+    "sha256": "c11f0c44678bb76a3a1f6813135df1171f5e09bc3fff427cb04cd691b1eaf004"
+  },
+  "bin/fixtures/malformed_bad_strtab_offset.o": {
+    "bytes": 2792,
+    "sha256": "f536ad016e73f1479bffe6de6bc0403f5cdb806027306229b624f673eb33a2e8"
+  },
+  "bin/fixtures/malformed_bad_symbol_shndx.o": {
+    "bytes": 2792,
+    "sha256": "aff25dcd9e713652906e7005e0d0f3c7c06956057f4e3d7133eccea4c05574f8"
+  },
+  "bin/fixtures/malformed_truncated_archive.a": {
+    "bytes": 15,
+    "sha256": "dc418961ddacd24f3189024625ae35e44f605e9aea446b8c2cfa2a9bd9b0f4d8"
+  },
+  "bin/fixtures/malformed_truncated_elf": {
+    "bytes": 32,
+    "sha256": "6fe4c6bc4e0390b96c5bd221099821a7f30d1a09e4aab8f9c30b712713f353ab"
+  },
+  "bin/fixtures/member_with_a_very_long_filename_for_archive.o": {
+    "bytes": 2792,
+    "sha256": "487cf44911e63d0627d40c1fb2e8d13217398fccf150f9f16112bfdb6ab37a12"
+  },
+  "bin/fixtures/order64.o": {
+    "bytes": 888,
+    "sha256": "351fed89cc62fcebd25aa86a0f9ce12582cddb40d4206682375031d0b304f902"
+  },
+  "bin/fixtures/plain_text.txt": {
+    "bytes": 28,
+    "sha256": "d0fe7587508b23d7569e081906d0418ce12cc94bbeb1286533b9445fb3edccab"
+  },
+  "bin/fixtures/shared64.so": {
+    "bytes": 16416,
+    "sha256": "3d9fc1d8e86275a07257770022fff0bff94465a5c1c62e6ae0e8177aeb1bd0f8"
+  },
+  "bin/fixtures/shared64_dynsym_only.so": {
+    "bytes": 14008,
+    "sha256": "4c8442b80e6652d836d84ebcc5c42e4b79bb27b2cfa1dde41a7db9139ada1f94"
+  },
+  "bin/fixtures/simple32.o": {
+    "bytes": 1736,
+    "sha256": "89f73712214a8b6b501605bd431cd82311c8505e25392d8df86b1efde8191873"
+  },
+  "bin/fixtures/symbol_types.o": {
+    "bytes": 6592,
+    "sha256": "3e52d2b3d2aa0412990dda66d228e547d0535a14cc638b477ddb891f3b95c726"
+  }
+}

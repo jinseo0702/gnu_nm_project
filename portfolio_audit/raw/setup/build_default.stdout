@@ -1,0 +1,21 @@
+make[1]: Entering directory '/home/jinseo/duo/gnu_nm_project'
+make[2]: Entering directory '/home/jinseo/duo/gnu_nm_project/libft'
+make[2]: Leaving directory '/home/jinseo/duo/gnu_nm_project/libft'
+make[2]: Entering directory '/home/jinseo/duo/gnu_nm_project/ft_printf'
+rm -rf ft_memset.o ft_fprintf.o ft_printf.o ft_putchar.o ft_putstr.o ft_putaddress.o ft_putnbr.o libftprintf.a
+make[2]: Leaving directory '/home/jinseo/duo/gnu_nm_project/ft_printf'
+make[1]: Leaving directory '/home/jinseo/duo/gnu_nm_project'
+make[1]: Entering directory '/home/jinseo/duo/gnu_nm_project'
+make[2]: Entering directory '/home/jinseo/duo/gnu_nm_project/libft'
+make[2]: Leaving directory '/home/jinseo/duo/gnu_nm_project/libft'
+make[2]: Entering directory '/home/jinseo/duo/gnu_nm_project/ft_printf'
+gcc -g -Wall -Wextra -Werror  -c ft_memset.c -o ft_memset.o
+gcc -g -Wall -Wextra -Werror  -c ft_fprintf.c -o ft_fprintf.o
+gcc -g -Wall -Wextra -Werror  -c ft_printf.c -o ft_printf.o
+gcc -g -Wall -Wextra -Werror  -c ft_putchar.c -o ft_putchar.o
+gcc -g -Wall -Wextra -Werror  -c ft_putstr.c -o ft_putstr.o
+gcc -g -Wall -Wextra -Werror  -c ft_putaddress.c -o ft_putaddress.o
+gcc -g -Wall -Wextra -Werror  -c ft_putnbr.c -o ft_putnbr.o
+ar -rcs libftprintf.a ft_memset.o ft_fprintf.o ft_printf.o ft_putchar.o ft_putstr.o ft_putaddress.o ft_putnbr.o
+make[2]: Leaving directory '/home/jinseo/duo/gnu_nm_project/ft_printf'
+make[1]: Leaving directory '/home/jinseo/duo/gnu_nm_project'

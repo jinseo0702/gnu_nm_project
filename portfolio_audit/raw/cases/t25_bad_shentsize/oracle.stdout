@@ -1,0 +1,1 @@
+bfd plugin: LLVM gold plugin has failed to create LTO module: invalid e_shentsize in ELF header: 1

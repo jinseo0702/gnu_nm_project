@@ -1,0 +1,4109 @@
+{
+  "counts": {
+    "CRASH": 0,
+    "FAIL": 12,
+    "PARTIAL": 5,
+    "PASS": 13
+  },
+  "fixture_count": 21,
+  "harness_validation": {
+    "all_detected": true,
+    "detected_count": 5,
+    "validation_count": 5,
+    "validations": [
+      {
+        "classification": "FAIL",
+        "detected": true,
+        "dimensions": {
+          "diagnostic_classes_equal": true,
+          "exit_code_equal": true,
+          "record_multiset_equal": false,
+          "records_equal": false,
+          "status_kind_equal": true,
+          "unparsed_stdout_equal": true
+        },
+        "mutation": "remove_symbol_record",
+        "summary": "missing or changed symbol record: (None, 'missing_external', 'U', None, None)"
+      },
+      {
+        "classification": "FAIL",
+        "detected": true,
+        "dimensions": {
+          "diagnostic_classes_equal": true,
+          "exit_code_equal": true,
+          "record_multiset_equal": false,
+          "records_equal": false,
+          "status_kind_equal": true,
+          "unparsed_stdout_equal": true
+        },
+        "mutation": "change_symbol_type",
+        "summary": "missing or changed symbol record: (None, 'global_bss', 'B', 0, None)"
+      },
+      {
+        "classification": "FAIL",
+        "detected": true,
+        "dimensions": {
+          "diagnostic_classes_equal": true,
+          "exit_code_equal": true,
+          "record_multiset_equal": false,
+          "records_equal": false,
+          "status_kind_equal": true,
+          "unparsed_stdout_equal": true
+        },
+        "mutation": "change_symbol_value",
+        "summary": "missing or changed symbol record: (None, 'global_bss', 'B', 0, None)"
+      },
+      {
+        "classification": "FAIL",
+        "detected": true,
+        "dimensions": {
+          "diagnostic_classes_equal": true,
+          "exit_code_equal": true,
+          "record_multiset_equal": true,
+          "records_equal": false,
+          "status_kind_equal": true,
+          "unparsed_stdout_equal": true
+        },
+        "mutation": "swap_symbol_order",
+        "summary": "symbol set matches but ordering differs"
+      },
+      {
+        "classification": "FAIL",
+        "detected": true,
+        "dimensions": {
+          "diagnostic_classes_equal": true,
+          "exit_code_equal": false,
+          "record_multiset_equal": true,
+          "records_equal": true,
+          "status_kind_equal": false,
+          "unparsed_stdout_equal": true
+        },
+        "mutation": "change_exit_status",
+        "summary": "success/error status differs"
+      }
+    ]
+  },
+  "metadata": {
+    "branch": "ver1.2",
+    "commit": "064ca553813e93c7d1870cdeab440f7c1ece56f9",
+    "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+    "oracle": "GNU nm (GNU Binutils for Ubuntu) 2.46",
+    "platform": "Linux-7.0.0-29-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+    "recorded_at": "2026-08-19T19:21:33+09:00"
+  },
+  "normalization": {
+    "normalized": [
+      "LC_ALL=C",
+      "hexadecimal leading zeros and A-F case parsed as numeric values",
+      "audit fixture root removed from file headings",
+      "semantic whitespace parsed as field delimiters",
+      "diagnostic executable prefix and quote style reduced to categories"
+    ],
+    "not_normalized": [
+      "symbol name/type/value/size",
+      "symbol inclusion/exclusion",
+      "symbol order",
+      "archive member identity",
+      "success versus nonzero status",
+      "diagnostic category",
+      "signal or timeout in default execution"
+    ]
+  },
+  "schema_version": 1,
+  "security_assessment": {
+    "counted_in_baseline": false,
+    "executed": false,
+    "status": "EXCLUDED_BY_USER"
+  },
+  "source_integrity": {
+    "manifest": "raw/source_integrity.json",
+    "unchanged": true
+  },
+  "test_count": 30,
+  "tests": [
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "category": "ELF64",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t01_elf64_rel_default",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "purpose": "ELF64 relocatable basic name/type/value/order",
+      "raw_directory": "raw/cases/t01_elf64_rel_default",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+      ],
+      "category": "ELF32",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t02_elf32_rel_default",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "data32",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "function32",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local32",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing32",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+      ],
+      "purpose": "ELF32 relocatable parsing and 32-bit values",
+      "raw_directory": "raw/cases/t02_elf32_rel_default",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "data32",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "function32",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local32",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing32",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/executable64"
+      ],
+      "category": "ELF type",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t03_elf64_exec_default",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "_DYNAMIC",
+            "size": null,
+            "type": "d",
+            "value": 4210248
+          },
+          {
+            "context": null,
+            "name": "_GLOBAL_OFFSET_TABLE_",
+            "size": null,
+            "type": "d",
+            "value": 4210664
+          },
+          {
+            "context": null,
+            "name": "_IO_stdin_used",
+            "size": null,
+            "type": "R",
+            "value": 4202496
+          },
+          {
+            "context": null,
+            "name": "__FRAME_END__",
+            "size": null,
+            "type": "r",
+            "value": 4202672
+          },
+          {
+            "context": null,
+            "name": "__GNU_EH_FRAME_HDR",
+            "size": null,
+            "type": "r",
+            "value": 4202500
+          },
+          {
+            "context": null,
+            "name": "__TMC_END__",
+            "size": null,
+            "type": "D",
+            "value": 4210712
+          },
+          {
+            "context": null,
+            "name": "__abi_tag",
+            "size": null,
+            "type": "r",
+            "value": 4202728
+          },
+          {
+            "context": null,
+            "name": "__bss_start",
+            "size": null,
+            "type": "B",
+            "value": 4210708
+          },
+          {
+            "context": null,
+            "name": "__data_start",
+            "size": null,
+            "type": "D",
+            "value": 4210688
+          },
+          {
+            "context": null,
+            "name": "__do_global_dtors_aux",
+            "size": null,
+            "type": "t",
+            "value": 4198608
+          },
+          {
+            "context": null,
+            "name": "__do_global_dtors_aux_fini_array_entry",
+            "size": null,
+            "type": "d",
+            "value": 4210240
+          },
+          {
+            "context": null,
+            "name": "__dso_handle",
+            "size": null,
+            "type": "D",
+            "value": 4210696
+          },
+          {
+            "context": null,
+            "name": "__frame_dummy_init_array_entry",
+            "size": null,
+            "type": "d",
+            "value": 4210232
+          },
+          {
+            "context": null,
+            "name": "__gmon_start__",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "__libc_start_main@GLIBC_2.34",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "_dl_relocate_static_pie",
+            "size": null,
+            "type": "T",
+            "value": 4198480
+          },
+          {
+            "context": null,
+            "name": "_edata",
+            "size": null,
+            "type": "D",
+            "value": 4210708
+          },
+          {
+            "context": null,
+            "name": "_end",
+            "size": null,
+            "type": "B",
+            "value": 4210720
+          },
+          {
+            "context": null,
+            "name": "_fini",
+            "size": null,
+            "type": "T",
+            "value": 4198712
+          },
+          {
+            "context": null,
+            "name": "_init",
+            "size": null,
+            "type": "T",
+            "value": 4198400
+          },
+          {
+            "context": null,
+            "name": "_start",
+            "size": null,
+            "type": "T",
+            "value": 4198432
+          },
+          {
+            "context": null,
+            "name": "completed.0",
+            "size": null,
+            "type": "b",
+            "value": 4210708
+          },
+          {
+            "context": null,
+            "name": "data_start",
+            "size": null,
+            "type": "W",
+            "value": 4210688
+          },
+          {
+            "context": null,
+            "name": "deregister_tm_clones",
+            "size": null,
+            "type": "t",
+            "value": 4198496
+          },
+          {
+            "context": null,
+            "name": "executable_bss",
+            "size": null,
+            "type": "B",
+            "value": 4210712
+          },
+          {
+            "context": null,
+            "name": "executable_data",
+            "size": null,
+            "type": "D",
+            "value": 4210704
+          },
+          {
+            "context": null,
+            "name": "frame_dummy",
+            "size": null,
+            "type": "t",
+            "value": 4198656
+          },
+          {
+            "context": null,
+            "name": "helper",
+            "size": null,
+            "type": "t",
+            "value": 4198662
+          },
+          {
+            "context": null,
+            "name": "main",
+            "size": null,
+            "type": "T",
+            "value": 4198686
+          },
+          {
+            "context": null,
+            "name": "register_tm_clones",
+            "size": null,
+            "type": "t",
+            "value": 4198544
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/executable64"
+      ],
+      "order_sensitive": false,
+      "purpose": "ET_EXEC static symbol extraction",
+      "raw_directory": "raw/cases/t03_elf64_exec_default",
+      "summary": "semantic symbol record set and status match; order is tested separately",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "__abi_tag",
+            "size": null,
+            "type": "r",
+            "value": 4202728
+          },
+          {
+            "context": null,
+            "name": "__bss_start",
+            "size": null,
+            "type": "B",
+            "value": 4210708
+          },
+          {
+            "context": null,
+            "name": "completed.0",
+            "size": null,
+            "type": "b",
+            "value": 4210708
+          },
+          {
+            "context": null,
+            "name": "__data_start",
+            "size": null,
+            "type": "D",
+            "value": 4210688
+          },
+          {
+            "context": null,
+            "name": "data_start",
+            "size": null,
+            "type": "W",
+            "value": 4210688
+          },
+          {
+            "context": null,
+            "name": "deregister_tm_clones",
+            "size": null,
+            "type": "t",
+            "value": 4198496
+          },
+          {
+            "context": null,
+            "name": "_dl_relocate_static_pie",
+            "size": null,
+            "type": "T",
+            "value": 4198480
+          },
+          {
+            "context": null,
+            "name": "__do_global_dtors_aux",
+            "size": null,
+            "type": "t",
+            "value": 4198608
+          },
+          {
+            "context": null,
+            "name": "__do_global_dtors_aux_fini_array_entry",
+            "size": null,
+            "type": "d",
+            "value": 4210240
+          },
+          {
+            "context": null,
+            "name": "__dso_handle",
+            "size": null,
+            "type": "D",
+            "value": 4210696
+          },
+          {
+            "context": null,
+            "name": "_DYNAMIC",
+            "size": null,
+            "type": "d",
+            "value": 4210248
+          },
+          {
+            "context": null,
+            "name": "_edata",
+            "size": null,
+            "type": "D",
+            "value": 4210708
+          },
+          {
+            "context": null,
+            "name": "_end",
+            "size": null,
+            "type": "B",
+            "value": 4210720
+          },
+          {
+            "context": null,
+            "name": "executable_bss",
+            "size": null,
+            "type": "B",
+            "value": 4210712
+          },
+          {
+            "context": null,
+            "name": "executable_data",
+            "size": null,
+            "type": "D",
+            "value": 4210704
+          },
+          {
+            "context": null,
+            "name": "_fini",
+            "size": null,
+            "type": "T",
+            "value": 4198712
+          },
+          {
+            "context": null,
+            "name": "frame_dummy",
+            "size": null,
+            "type": "t",
+            "value": 4198656
+          },
+          {
+            "context": null,
+            "name": "__frame_dummy_init_array_entry",
+            "size": null,
+            "type": "d",
+            "value": 4210232
+          },
+          {
+            "context": null,
+            "name": "__FRAME_END__",
+            "size": null,
+            "type": "r",
+            "value": 4202672
+          },
+          {
+            "context": null,
+            "name": "_GLOBAL_OFFSET_TABLE_",
+            "size": null,
+            "type": "d",
+            "value": 4210664
+          },
+          {
+            "context": null,
+            "name": "__gmon_start__",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "__GNU_EH_FRAME_HDR",
+            "size": null,
+            "type": "r",
+            "value": 4202500
+          },
+          {
+            "context": null,
+            "name": "helper",
+            "size": null,
+            "type": "t",
+            "value": 4198662
+          },
+          {
+            "context": null,
+            "name": "_init",
+            "size": null,
+            "type": "T",
+            "value": 4198400
+          },
+          {
+            "context": null,
+            "name": "_IO_stdin_used",
+            "size": null,
+            "type": "R",
+            "value": 4202496
+          },
+          {
+            "context": null,
+            "name": "__libc_start_main@GLIBC_2.34",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "main",
+            "size": null,
+            "type": "T",
+            "value": 4198686
+          },
+          {
+            "context": null,
+            "name": "register_tm_clones",
+            "size": null,
+            "type": "t",
+            "value": 4198544
+          },
+          {
+            "context": null,
+            "name": "_start",
+            "size": null,
+            "type": "T",
+            "value": 4198432
+          },
+          {
+            "context": null,
+            "name": "__TMC_END__",
+            "size": null,
+            "type": "D",
+            "value": 4210712
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/executable64"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64.so"
+      ],
+      "category": "ELF type",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t04_elf64_shared_default",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "_DYNAMIC",
+            "size": null,
+            "type": "d",
+            "value": 15984
+          },
+          {
+            "context": null,
+            "name": "_GLOBAL_OFFSET_TABLE_",
+            "size": null,
+            "type": "d",
+            "value": 16360
+          },
+          {
+            "context": null,
+            "name": "_ITM_deregisterTMCloneTable",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "_ITM_registerTMCloneTable",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "__FRAME_END__",
+            "size": null,
+            "type": "r",
+            "value": 8352
+          },
+          {
+            "context": null,
+            "name": "__GNU_EH_FRAME_HDR",
+            "size": null,
+            "type": "r",
+            "value": 8192
+          },
+          {
+            "context": null,
+            "name": "__TMC_END__",
+            "size": null,
+            "type": "d",
+            "value": 16400
+          },
+          {
+            "context": null,
+            "name": "__cxa_finalize",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "__do_global_dtors_aux",
+            "size": null,
+            "type": "t",
+            "value": 4272
+          },
+          {
+            "context": null,
+            "name": "__do_global_dtors_aux_fini_array_entry",
+            "size": null,
+            "type": "d",
+            "value": 15976
+          },
+          {
+            "context": null,
+            "name": "__dso_handle",
+            "size": null,
+            "type": "d",
+            "value": 16384
+          },
+          {
+            "context": null,
+            "name": "__frame_dummy_init_array_entry",
+            "size": null,
+            "type": "d",
+            "value": 15968
+          },
+          {
+            "context": null,
+            "name": "__gmon_start__",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "_fini",
+            "size": null,
+            "type": "t",
+            "value": 4380
+          },
+          {
+            "context": null,
+            "name": "_init",
+            "size": null,
+            "type": "t",
+            "value": 4096
+          },
+          {
+            "context": null,
+            "name": "completed.0",
+            "size": null,
+            "type": "b",
+            "value": 16396
+          },
+          {
+            "context": null,
+            "name": "deregister_tm_clones",
+            "size": null,
+            "type": "t",
+            "value": 4160
+          },
+          {
+            "context": null,
+            "name": "frame_dummy",
+            "size": null,
+            "type": "t",
+            "value": 4336
+          },
+          {
+            "context": null,
+            "name": "register_tm_clones",
+            "size": null,
+            "type": "t",
+            "value": 4208
+          },
+          {
+            "context": null,
+            "name": "shared_add",
+            "size": null,
+            "type": "T",
+            "value": 4345
+          },
+          {
+            "context": null,
+            "name": "shared_bss",
+            "size": null,
+            "type": "B",
+            "value": 16400
+          },
+          {
+            "context": null,
+            "name": "shared_data",
+            "size": null,
+            "type": "D",
+            "value": 16392
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64.so"
+      ],
+      "order_sensitive": false,
+      "purpose": "ET_DYN shared object static symbol extraction",
+      "raw_directory": "raw/cases/t04_elf64_shared_default",
+      "summary": "semantic symbol record set and status match; order is tested separately",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "completed.0",
+            "size": null,
+            "type": "b",
+            "value": 16396
+          },
+          {
+            "context": null,
+            "name": "__cxa_finalize",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "deregister_tm_clones",
+            "size": null,
+            "type": "t",
+            "value": 4160
+          },
+          {
+            "context": null,
+            "name": "__do_global_dtors_aux",
+            "size": null,
+            "type": "t",
+            "value": 4272
+          },
+          {
+            "context": null,
+            "name": "__do_global_dtors_aux_fini_array_entry",
+            "size": null,
+            "type": "d",
+            "value": 15976
+          },
+          {
+            "context": null,
+            "name": "__dso_handle",
+            "size": null,
+            "type": "d",
+            "value": 16384
+          },
+          {
+            "context": null,
+            "name": "_DYNAMIC",
+            "size": null,
+            "type": "d",
+            "value": 15984
+          },
+          {
+            "context": null,
+            "name": "_fini",
+            "size": null,
+            "type": "t",
+            "value": 4380
+          },
+          {
+            "context": null,
+            "name": "frame_dummy",
+            "size": null,
+            "type": "t",
+            "value": 4336
+          },
+          {
+            "context": null,
+            "name": "__frame_dummy_init_array_entry",
+            "size": null,
+            "type": "d",
+            "value": 15968
+          },
+          {
+            "context": null,
+            "name": "__FRAME_END__",
+            "size": null,
+            "type": "r",
+            "value": 8352
+          },
+          {
+            "context": null,
+            "name": "_GLOBAL_OFFSET_TABLE_",
+            "size": null,
+            "type": "d",
+            "value": 16360
+          },
+          {
+            "context": null,
+            "name": "__gmon_start__",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "__GNU_EH_FRAME_HDR",
+            "size": null,
+            "type": "r",
+            "value": 8192
+          },
+          {
+            "context": null,
+            "name": "_init",
+            "size": null,
+            "type": "t",
+            "value": 4096
+          },
+          {
+            "context": null,
+            "name": "_ITM_deregisterTMCloneTable",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "_ITM_registerTMCloneTable",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "register_tm_clones",
+            "size": null,
+            "type": "t",
+            "value": 4208
+          },
+          {
+            "context": null,
+            "name": "shared_add",
+            "size": null,
+            "type": "T",
+            "value": 4345
+          },
+          {
+            "context": null,
+            "name": "shared_bss",
+            "size": null,
+            "type": "B",
+            "value": 16400
+          },
+          {
+            "context": null,
+            "name": "shared_data",
+            "size": null,
+            "type": "D",
+            "value": 16392
+          },
+          {
+            "context": null,
+            "name": "__TMC_END__",
+            "size": null,
+            "type": "d",
+            "value": 16400
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64.so"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64_dynsym_only.so"
+      ],
+      "category": "Symbol table",
+      "classification": "PARTIAL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "diagnostic_overlap": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "status_semantics_equal": true
+      },
+      "id": "t05_dynsym_only",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "no_symbols"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64_dynsym_only.so"
+      ],
+      "purpose": "dynsym-only/no-SHT_SYMTAB behavior",
+      "raw_directory": "raw/cases/t05_dynsym_only",
+      "summary": "primary diagnostic matches but extra/missing diagnostic categories differ",
+      "target": {
+        "diagnostic_classes": [
+          "invalid_format",
+          "no_symbols"
+        ],
+        "diagnostic_line_count": 2,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64_dynsym_only.so"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_short.a"
+      ],
+      "category": "Archive",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t06_archive_short",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": "basic64.o",
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": "basic64.o",
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "basic64.o",
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": "simple32.o",
+            "name": "data32",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": "simple32.o",
+            "name": "function32",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "simple32.o",
+            "name": "local32",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "simple32.o",
+            "name": "missing32",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_short.a"
+      ],
+      "purpose": "regular archive short member traversal",
+      "raw_directory": "raw/cases/t06_archive_short",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": "basic64.o",
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": "basic64.o",
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "basic64.o",
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": "simple32.o",
+            "name": "data32",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": "simple32.o",
+            "name": "function32",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "simple32.o",
+            "name": "local32",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "simple32.o",
+            "name": "missing32",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_short.a"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_long.a"
+      ],
+      "category": "Archive",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t07_archive_long",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_long.a"
+      ],
+      "purpose": "GNU // and /offset long member names",
+      "raw_directory": "raw/cases/t07_archive_long",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "member_with_a_very_long_filename_for_archive.o",
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_long.a"
+      ]
+    },
+    {
+      "argv": [
+        "-a",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ],
+      "category": "Option -a",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t08_option_all",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": ".bss",
+            "size": null,
+            "type": "b",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_abbrev",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_info",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_line",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_line_str",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_str",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".rodata",
+            "size": null,
+            "type": "r",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "common_symbol",
+            "size": null,
+            "type": "C",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "force_local_references",
+            "size": null,
+            "type": "T",
+            "value": 61
+          },
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "C",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_function",
+            "size": null,
+            "type": "T",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_rodata",
+            "size": null,
+            "type": "R",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "ifunc_implementation",
+            "size": null,
+            "type": "t",
+            "value": 33
+          },
+          {
+            "context": null,
+            "name": "ifunc_resolver",
+            "size": null,
+            "type": "t",
+            "value": 44
+          },
+          {
+            "context": null,
+            "name": "indirect_function",
+            "size": null,
+            "type": "i",
+            "value": 44
+          },
+          {
+            "context": null,
+            "name": "local_bss",
+            "size": null,
+            "type": "b",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "local_function",
+            "size": null,
+            "type": "t",
+            "value": 11
+          },
+          {
+            "context": null,
+            "name": "local_rodata",
+            "size": null,
+            "type": "r",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "symbol_types.c",
+            "size": null,
+            "type": "a",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "undefined_function",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_object",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_references",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "weak_defined_function",
+            "size": null,
+            "type": "W",
+            "value": 22
+          },
+          {
+            "context": null,
+            "name": "weak_defined_object",
+            "size": null,
+            "type": "V",
+            "value": 8
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_function",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_object",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_references",
+            "size": null,
+            "type": "D",
+            "value": 16
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-a",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ],
+      "order_sensitive": false,
+      "purpose": "all-symbol inclusion",
+      "raw_directory": "raw/cases/t08_option_all",
+      "summary": "semantic symbol record set and status match; order is tested separately",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": ".bss",
+            "size": null,
+            "type": "b",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "common_symbol",
+            "size": null,
+            "type": "C",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": ".data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_abbrev",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_info",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_line",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_line_str",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".debug_str",
+            "size": null,
+            "type": "N",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "force_local_references",
+            "size": null,
+            "type": "T",
+            "value": 61
+          },
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "C",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_function",
+            "size": null,
+            "type": "T",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_rodata",
+            "size": null,
+            "type": "R",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "ifunc_implementation",
+            "size": null,
+            "type": "t",
+            "value": 33
+          },
+          {
+            "context": null,
+            "name": "ifunc_resolver",
+            "size": null,
+            "type": "t",
+            "value": 44
+          },
+          {
+            "context": null,
+            "name": "indirect_function",
+            "size": null,
+            "type": "i",
+            "value": 44
+          },
+          {
+            "context": null,
+            "name": "local_bss",
+            "size": null,
+            "type": "b",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "local_function",
+            "size": null,
+            "type": "t",
+            "value": 11
+          },
+          {
+            "context": null,
+            "name": "local_rodata",
+            "size": null,
+            "type": "r",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": ".rodata",
+            "size": null,
+            "type": "r",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "symbol_types.c",
+            "size": null,
+            "type": "a",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": ".text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "undefined_function",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_object",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_references",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "weak_defined_function",
+            "size": null,
+            "type": "W",
+            "value": 22
+          },
+          {
+            "context": null,
+            "name": "weak_defined_object",
+            "size": null,
+            "type": "V",
+            "value": 8
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_function",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_object",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_references",
+            "size": null,
+            "type": "D",
+            "value": 16
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-a",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ]
+    },
+    {
+      "argv": [
+        "-g",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ],
+      "category": "Option -g",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t09_option_global",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "common_symbol",
+            "size": null,
+            "type": "C",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "force_local_references",
+            "size": null,
+            "type": "T",
+            "value": 61
+          },
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "C",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_function",
+            "size": null,
+            "type": "T",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_rodata",
+            "size": null,
+            "type": "R",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "indirect_function",
+            "size": null,
+            "type": "i",
+            "value": 44
+          },
+          {
+            "context": null,
+            "name": "undefined_function",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_object",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_references",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "weak_defined_function",
+            "size": null,
+            "type": "W",
+            "value": 22
+          },
+          {
+            "context": null,
+            "name": "weak_defined_object",
+            "size": null,
+            "type": "V",
+            "value": 8
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_function",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_object",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_references",
+            "size": null,
+            "type": "D",
+            "value": 16
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-g",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ],
+      "purpose": "external symbol inclusion/exclusion",
+      "raw_directory": "raw/cases/t09_option_global",
+      "summary": "missing or changed symbol record: (None, 'common_symbol', 'C', 4, None)",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "force_local_references",
+            "size": null,
+            "type": "T",
+            "value": 61
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_function",
+            "size": null,
+            "type": "T",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_rodata",
+            "size": null,
+            "type": "R",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "undefined_function",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_object",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_references",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "weak_defined_function",
+            "size": null,
+            "type": "W",
+            "value": 22
+          },
+          {
+            "context": null,
+            "name": "weak_defined_object",
+            "size": null,
+            "type": "V",
+            "value": 8
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_function",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_object",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_references",
+            "size": null,
+            "type": "D",
+            "value": 16
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-g",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ]
+    },
+    {
+      "argv": [
+        "-u",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ],
+      "category": "Option -u",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t10_option_undefined",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "undefined_function",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_object",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_function",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_object",
+            "size": null,
+            "type": "w",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-u",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ],
+      "purpose": "undefined and weak-undefined inclusion",
+      "raw_directory": "raw/cases/t10_option_undefined",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "undefined_function",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "undefined_object",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_function",
+            "size": null,
+            "type": "w",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "weak_undefined_object",
+            "size": null,
+            "type": "w",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-u",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+      ],
+      "category": "Ordering",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t11_sort_name",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "Alpha",
+            "size": null,
+            "type": "D",
+            "value": 3
+          },
+          {
+            "context": null,
+            "name": "_alpha",
+            "size": null,
+            "type": "D",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "_zulu",
+            "size": null,
+            "type": "D",
+            "value": 1
+          },
+          {
+            "context": null,
+            "name": "alpha",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "dollar$symbol",
+            "size": null,
+            "type": "D",
+            "value": 6
+          },
+          {
+            "context": null,
+            "name": "dot.symbol",
+            "size": null,
+            "type": "D",
+            "value": 5
+          },
+          {
+            "context": null,
+            "name": "zeta",
+            "size": null,
+            "type": "D",
+            "value": 0
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+      ],
+      "purpose": "default name collation with punctuation/case",
+      "raw_directory": "raw/cases/t11_sort_name",
+      "summary": "symbol set matches but ordering differs",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "Alpha",
+            "size": null,
+            "type": "D",
+            "value": 3
+          },
+          {
+            "context": null,
+            "name": "_alpha",
+            "size": null,
+            "type": "D",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "alpha",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "dollar$symbol",
+            "size": null,
+            "type": "D",
+            "value": 6
+          },
+          {
+            "context": null,
+            "name": "dot.symbol",
+            "size": null,
+            "type": "D",
+            "value": 5
+          },
+          {
+            "context": null,
+            "name": "zeta",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "_zulu",
+            "size": null,
+            "type": "D",
+            "value": 1
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+      ]
+    },
+    {
+      "argv": [
+        "-n",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+      ],
+      "category": "Ordering -n",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t12_sort_numeric",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "zeta",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "_zulu",
+            "size": null,
+            "type": "D",
+            "value": 1
+          },
+          {
+            "context": null,
+            "name": "_alpha",
+            "size": null,
+            "type": "D",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "Alpha",
+            "size": null,
+            "type": "D",
+            "value": 3
+          },
+          {
+            "context": null,
+            "name": "alpha",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "dot.symbol",
+            "size": null,
+            "type": "D",
+            "value": 5
+          },
+          {
+            "context": null,
+            "name": "dollar$symbol",
+            "size": null,
+            "type": "D",
+            "value": 6
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-n",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+      ],
+      "purpose": "numeric value ordering",
+      "raw_directory": "raw/cases/t12_sort_numeric",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "zeta",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "_zulu",
+            "size": null,
+            "type": "D",
+            "value": 1
+          },
+          {
+            "context": null,
+            "name": "_alpha",
+            "size": null,
+            "type": "D",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "Alpha",
+            "size": null,
+            "type": "D",
+            "value": 3
+          },
+          {
+            "context": null,
+            "name": "alpha",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "dot.symbol",
+            "size": null,
+            "type": "D",
+            "value": 5
+          },
+          {
+            "context": null,
+            "name": "dollar$symbol",
+            "size": null,
+            "type": "D",
+            "value": 6
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-n",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+      ]
+    },
+    {
+      "argv": [
+        "-r",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "category": "Ordering -r",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t13_sort_reverse",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-r",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "purpose": "reverse of default ordering",
+      "raw_directory": "raw/cases/t13_sort_reverse",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-r",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ]
+    },
+    {
+      "argv": [
+        "-P",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "category": "Option -P",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t14_posix_basic",
+      "mode": "posix",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": 16,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": 8,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": 6,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": 4,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": 2,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-P",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "purpose": "POSIX record name/type/value/size",
+      "raw_directory": "raw/cases/t14_posix_basic",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": 16,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": 8,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": 6,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": 4,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": 2,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-P",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ]
+    },
+    {
+      "argv": [
+        "-P",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/high64.o"
+      ],
+      "category": "Option -P",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t15_posix_high64",
+      "mode": "posix",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "high_absolute",
+            "size": null,
+            "type": "A",
+            "value": 4294967587
+          },
+          {
+            "context": null,
+            "name": "low_function",
+            "size": 2,
+            "type": "T",
+            "value": 0
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-P",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/high64.o"
+      ],
+      "purpose": "POSIX output above 32-bit value range",
+      "raw_directory": "raw/cases/t15_posix_high64",
+      "summary": "missing or changed symbol record: (None, 'high_absolute', 'A', 4294967587, None)",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "high_absolute",
+            "size": null,
+            "type": "A",
+            "value": 291
+          },
+          {
+            "context": null,
+            "name": "low_function",
+            "size": 2,
+            "type": "T",
+            "value": 0
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-P",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/high64.o"
+      ]
+    },
+    {
+      "argv": [
+        "-u",
+        "-n",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "category": "Option combination",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t16_option_u_n",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-u",
+        "-n",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "purpose": "undefined filter combined with numeric sort",
+      "raw_directory": "raw/cases/t16_option_u_n",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-u",
+        "-n",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+      ],
+      "category": "CLI",
+      "classification": "PASS",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t17_multiple_files",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": "basic64.o",
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": "basic64.o",
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "basic64.o",
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": "simple32.o",
+            "name": "data32",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": "simple32.o",
+            "name": "function32",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "simple32.o",
+            "name": "local32",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "simple32.o",
+            "name": "missing32",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+      ],
+      "purpose": "multiple-file headings and symbols",
+      "raw_directory": "raw/cases/t17_multiple_files",
+      "summary": "semantic symbol records, order, status, and diagnostics match",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": "basic64.o",
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": "basic64.o",
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "basic64.o",
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "basic64.o",
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": "simple32.o",
+            "name": "data32",
+            "size": null,
+            "type": "D",
+            "value": 0
+          },
+          {
+            "context": "simple32.o",
+            "name": "function32",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": "simple32.o",
+            "name": "local32",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": "simple32.o",
+            "name": "missing32",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+      ]
+    },
+    {
+      "argv": [
+        "-z",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "category": "CLI error",
+      "classification": "PARTIAL",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "diagnostic_line_count_equal": false,
+        "diagnostic_overlap": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "status_semantics_equal": true
+      },
+      "id": "t18_invalid_option",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "invalid_option"
+        ],
+        "diagnostic_line_count": 48,
+        "exit_code": 1,
+        "records": [],
+        "status_kind": "error",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "-z",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "purpose": "invalid option status and diagnostic",
+      "raw_directory": "raw/cases/t18_invalid_option",
+      "summary": "diagnostic category matches but exact exit code or diagnostic detail differs",
+      "target": {
+        "diagnostic_classes": [
+          "invalid_option"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 1,
+        "records": [],
+        "status_kind": "error",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "-z",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ]
+    },
+    {
+      "argv": [
+        "--",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "category": "CLI",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "exit_code_equal": false,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": false,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t19_double_dash",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "--",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ],
+      "purpose": "end-of-options marker",
+      "raw_directory": "raw/cases/t19_double_dash",
+      "summary": "success/error status differs",
+      "target": {
+        "diagnostic_classes": [
+          "invalid_option"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 1,
+        "records": [],
+        "status_kind": "error",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "--",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/does_not_exist.o"
+      ],
+      "category": "Path error",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "diagnostic_overlap": true,
+        "exit_code_equal": false,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": false,
+        "status_semantics_equal": false
+      },
+      "id": "t20_missing_file",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "missing_file"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 1,
+        "records": [],
+        "status_kind": "error",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/does_not_exist.o"
+      ],
+      "purpose": "missing path status and diagnostic",
+      "raw_directory": "raw/cases/t20_missing_file",
+      "summary": "error status or diagnostic category differs",
+      "target": {
+        "diagnostic_classes": [
+          "missing_file"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/does_not_exist.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/empty_file"
+      ],
+      "category": "Format error",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "diagnostic_overlap": false,
+        "exit_code_equal": false,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": false,
+        "status_semantics_equal": false
+      },
+      "id": "t21_empty_file",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 1,
+        "records": [],
+        "status_kind": "error",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/empty_file"
+      ],
+      "purpose": "empty file rejection",
+      "raw_directory": "raw/cases/t21_empty_file",
+      "summary": "error status or diagnostic category differs",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/empty_file"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/plain_text.txt"
+      ],
+      "category": "Format error",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "diagnostic_overlap": true,
+        "exit_code_equal": false,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": false,
+        "status_semantics_equal": false
+      },
+      "id": "t22_text_file",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "invalid_format"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 1,
+        "records": [],
+        "status_kind": "error",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/plain_text.txt"
+      ],
+      "purpose": "non-ELF/non-archive rejection",
+      "raw_directory": "raw/cases/t22_text_file",
+      "summary": "error status or diagnostic category differs",
+      "target": {
+        "diagnostic_classes": [
+          "invalid_format"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/plain_text.txt"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_elf"
+      ],
+      "category": "Malformed ELF",
+      "classification": "PARTIAL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "diagnostic_overlap": false,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "status_semantics_equal": true
+      },
+      "id": "t23_truncated_elf",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "no_symbols"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": [
+          "bfd plugin: LLVM gold plugin has failed to create LTO module: invalid buffer: the size (32) is smaller than an ELF header (64)"
+        ]
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_elf"
+      ],
+      "purpose": "truncated ELF header rejection",
+      "raw_directory": "raw/cases/t23_truncated_elf",
+      "summary": "input is rejected without symbols, but diagnostic category differs",
+      "target": {
+        "diagnostic_classes": [
+          "invalid_format"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_elf"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_shoff.o"
+      ],
+      "category": "Malformed ELF",
+      "classification": "PARTIAL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "diagnostic_overlap": false,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "status_semantics_equal": true
+      },
+      "id": "t24_bad_shoff",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "no_symbols"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": [
+          "bfd plugin: LLVM gold plugin has failed to create LTO module: section header table goes past the end of the file: e_shoff = 0x1ae8"
+        ]
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_shoff.o"
+      ],
+      "purpose": "out-of-file section table offset",
+      "raw_directory": "raw/cases/t24_bad_shoff",
+      "summary": "input is rejected without symbols, but diagnostic category differs",
+      "target": {
+        "diagnostic_classes": [
+          "invalid_format"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_shoff.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_shentsize.o"
+      ],
+      "category": "Malformed ELF",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "diagnostic_overlap": false,
+        "exit_code_equal": true,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "status_semantics_equal": true
+      },
+      "id": "t25_bad_shentsize",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "no_symbols"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": [
+          "bfd plugin: LLVM gold plugin has failed to create LTO module: invalid e_shentsize in ELF header: 1"
+        ]
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_shentsize.o"
+      ],
+      "purpose": "invalid section header entry size",
+      "raw_directory": "raw/cases/t25_bad_shentsize",
+      "summary": "unexpected symbol output differs while handling invalid input",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_shentsize.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_strtab_offset.o"
+      ],
+      "category": "Malformed ELF",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "diagnostic_overlap": false,
+        "exit_code_equal": true,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "status_semantics_equal": true
+      },
+      "id": "t26_bad_strtab",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "other_diagnostic"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "<corrupt>",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "<corrupt>",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "<corrupt>",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "<corrupt>",
+            "size": null,
+            "type": "U",
+            "value": null
+          },
+          {
+            "context": null,
+            "name": "<corrupt>",
+            "size": null,
+            "type": "D",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "<corrupt>",
+            "size": null,
+            "type": "B",
+            "value": 0
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_strtab_offset.o"
+      ],
+      "purpose": "out-of-file linked string table",
+      "raw_directory": "raw/cases/t26_bad_strtab",
+      "summary": "unexpected symbol output differs while handling invalid input",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_strtab_offset.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_symbol_shndx.o"
+      ],
+      "category": "Malformed ELF",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "id": "t27_bad_symbol_shndx",
+      "mode": "default",
+      "oracle": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "A",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_symbol_shndx.o"
+      ],
+      "purpose": "symbol section index beyond section count",
+      "raw_directory": "raw/cases/t27_bad_symbol_shndx",
+      "summary": "missing or changed symbol record: (None, 'global_data', 'A', 4, None)",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [
+          {
+            "context": null,
+            "name": "global_bss",
+            "size": null,
+            "type": "B",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "global_data",
+            "size": null,
+            "type": "?",
+            "value": 4
+          },
+          {
+            "context": null,
+            "name": "global_text",
+            "size": null,
+            "type": "T",
+            "value": 2
+          },
+          {
+            "context": null,
+            "name": "local_data",
+            "size": null,
+            "type": "d",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "local_text",
+            "size": null,
+            "type": "t",
+            "value": 0
+          },
+          {
+            "context": null,
+            "name": "missing_external",
+            "size": null,
+            "type": "U",
+            "value": null
+          }
+        ],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_symbol_shndx.o"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_archive.a"
+      ],
+      "category": "Malformed archive",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "diagnostic_overlap": false,
+        "exit_code_equal": false,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": false,
+        "status_semantics_equal": false
+      },
+      "id": "t28_truncated_archive",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "invalid_format"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 1,
+        "records": [],
+        "status_kind": "error",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_archive.a"
+      ],
+      "purpose": "truncated archive member header",
+      "raw_directory": "raw/cases/t28_truncated_archive",
+      "summary": "error status or diagnostic category differs",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_archive.a"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_fmag.a"
+      ],
+      "category": "Malformed archive",
+      "classification": "FAIL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "diagnostic_overlap": false,
+        "exit_code_equal": false,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": false,
+        "status_semantics_equal": false
+      },
+      "id": "t29_bad_archive_fmag",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "invalid_format"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 1,
+        "records": [],
+        "status_kind": "error",
+        "unparsed_stdout": []
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_fmag.a"
+      ],
+      "purpose": "invalid archive member trailer magic",
+      "raw_directory": "raw/cases/t29_bad_archive_fmag",
+      "summary": "error status or diagnostic category differs",
+      "target": {
+        "diagnostic_classes": [],
+        "diagnostic_line_count": 0,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_fmag.a"
+      ]
+    },
+    {
+      "argv": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_bad_elf_member.a"
+      ],
+      "category": "Archive error",
+      "classification": "PARTIAL",
+      "dimensions": {
+        "diagnostic_classes_equal": false,
+        "diagnostic_overlap": false,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": true,
+        "status_semantics_equal": true
+      },
+      "id": "t30_bad_elf_archive_member",
+      "mode": "error",
+      "oracle": {
+        "diagnostic_classes": [
+          "no_symbols"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": [
+          "bfd plugin: LLVM gold plugin has failed to create LTO module: section header table goes past the end of the file: e_shoff = 0x1ae8"
+        ]
+      },
+      "oracle_command": [
+        "/usr/bin/nm",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_bad_elf_member.a"
+      ],
+      "purpose": "malformed ELF member error propagation",
+      "raw_directory": "raw/cases/t30_bad_elf_archive_member",
+      "summary": "input is rejected without symbols, but diagnostic category differs",
+      "target": {
+        "diagnostic_classes": [
+          "invalid_format"
+        ],
+        "diagnostic_line_count": 1,
+        "exit_code": 0,
+        "records": [],
+        "status_kind": "ok",
+        "unparsed_stdout": []
+      },
+      "target_command": [
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+        "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_bad_elf_member.a"
+      ]
+    }
+  ]
+}

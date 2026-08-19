@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/usr/bin/nm",
+    "-n",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.01028,
+  "exit_code": 0,
+  "timed_out": false
+}

@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/does_not_exist.o"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.000919,
+  "exit_code": 1,
+  "timed_out": false
+}
