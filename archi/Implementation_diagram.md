@@ -44,71 +44,70 @@ IMPLEMENTATION DIAGRAM
         - symbol section 선택(symtab/dynsym)
         - strtab 검증 및 심볼 raw 로드(t_NmSymData array)
     * F) sym_classify.c
-        - per-symbol type 결정 규칙(A/a/B/b/C/D/d/i/N/n/p/R/r/T/t/U/u/V/v/W/w/?)
-        - 사용안하는것
+        - Symbol Type Determination Rules (A/a/B/b/C/D/d/i/N/n/p/R/r/T/t/U/u/V/v/W/w/?)
+        - Unused Types
             - c, g, G, s, S, -, I
         - A/a : 
-            - st_shndx 가 SHN_ABS 인경우
-            - st_info ELFN_ST_BIND 가 STB_LOCAL 인경우 : a
-            - st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : A
+            - If `st_shndx` is `SHN_ABS`
+            - If `ELFN_ST_BIND` of `st_info` is `STB_LOCAL`: a
+            - If `ELFN_ST_BIND` of `st_info` is `STB_GLOBAL`: A
         - B/b:
-            - sh_type 이 SHT_NOBITS  인경우 &&
-            - (sh_flag & SHF_ALLOC) != 0
-            - (sh_flag & SHF_WRITE) != 0 
-            - st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : b
-            - st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : B
+            - If `sh_type` is `SHT_NOBITS` AND
+            - `(sh_flag & SHF_ALLOC) != 0`
+            - `(sh_flag & SHF_WRITE) != 0`
+            - If `ELFN_ST_BIND` of `st_info` is `STB_LOCAL`: b
+            - If `ELFN_ST_BIND` of `st_info` is `STB_GLOBAL`: B
         - C:
-            -  sh_type 이 SHT_NOBITS  인경우 &&
-            - (sh_flag & SHF_ALLOC) != 0 
-            - (sh_flag & SHF_WRITE) != 0
-            - st_shndx 가 SHN_COMMON 인경우
+            - If `sh_type` is `SHT_NOBITS` AND
+            - `(sh_flag & SHF_ALLOC) != 0`
+            - `(sh_flag & SHF_WRITE) != 0`
+            - If `st_shndx` is `SHN_COMMON`
         - D/d:
-            -  sh_type 이 SHT_PROGBITS  인경우 &&
-            - (sh_flag & SHF_ALLOC) != 0
-            - (sh_flag & SHF_WRITE) != 0 
-            - st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : d
-            - st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : D
+            - If `sh_type` is `SHT_PROGBITS` AND
+            - `(sh_flag & SHF_ALLOC) != 0`
+            - `(sh_flag & SHF_WRITE) != 0`
+            - If `ELFN_ST_BIND` of `st_info` is `STB_LOCAL`: d
+            - If `ELFN_ST_BIND` of `st_info` is `STB_GLOBAL`: D
         - i: 
-            - st_info 의 ELFN_ST_TYPE 가 STT_GNU_IFUNC 인 경우
+            - If `ELFN_ST_TYPE` of `st_info` is `STT_GNU_IFUNC`
         - N:
-            - sh_type 이 SHT_PROGBITS 이면서
-            - sh_flag 가 0(none) 인경우
+            - If `sh_type` is `SHT_PROGBITS` AND
+            - `sh_flag` is 0 (none)
         - n:
-            - sh_type 이 SHT_PROGBITS 이면서
-            - sh_flag 이 (sh_flag & SHF_WRITE) == 0  인경우
+            - If `sh_type` is `SHT_PROGBITS` AND
+            - `(sh_flag & SHF_WRITE) == 0` for `sh_flag`
         - p:
-            - 여기서 p는 옵션이 아니라 symbol type 문자이며, 옵션은 -P만 존재한다.
-            - 64bit기준만 고려 한다.
-            - sh_type 이 SHT_X86_64_UNWIND 이면 p 이다.
+            - Here, p is a symbol type character, not an option (only `-P` exists as an option).
+            - Consider 64-bit criteria only.
+            - If `sh_type` is `SHT_X86_64_UNWIND`, it is p.
         - R/r:
-            - sh_type 이 SHT_PROGBITS 이면서
-            - sh_flag 이 (sh_flag & SHF_WRITE) == 0  이면서
-            - sh_flag 이 SHF_ALLOC 인 경우
-            - st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : r
-            - st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : R
+            - If `sh_type` is `SHT_PROGBITS` AND
+            - `(sh_flag & SHF_WRITE) == 0` for `sh_flag` AND
+            - `sh_flag` is `SHF_ALLOC`
+            - If `ELFN_ST_BIND` of `st_info` is `STB_LOCAL`: r
+            - If `ELFN_ST_BIND` of `st_info` is `STB_GLOBAL`: R
         - T/t:
-            - sh_type 이 SHT_PROGBITS 이면서
-            - sh_flag 이 SHF_ALLOC  이면서 SHF_EXECINSTR 인경우
-            - st_info 의 ELFN_ST_BIND 가 STB_LOCAL 인경우 : t
-            - st_info 의 ELFN_ST_BIND 가 STB_GLOBAL 인경우 : T
+            - If `sh_type` is `SHT_PROGBITS` AND
+            - `sh_flag` is `SHF_ALLOC` AND `SHF_EXECINSTR`
+            - If `ELFN_ST_BIND` of `st_info` is `STB_LOCAL`: t
+            - If `ELFN_ST_BIND` of `st_info` is `STB_GLOBAL`: T
         - U: 
-            - ElfN_Sym 의 st_shndx 가 SHN_UNDEF 인경우 그리고
-            - st_info 의 ELFN_ST_BIND 가  STB_WEAK 이 아닌경우
+            - If `st_shndx` is `SHN_UNDEF` AND
+            - `ELFN_ST_BIND` of `st_info` is NOT `STB_WEAK`K 이 아닌경우
         - u:
-            - st_info 의 ELFN_ST_BIND 가 STB_GNU_UNIQUE 인경우
+            - If `ELFN_ST_BIND` of `st_info` is `STB_GNU_UNIQUE`
         - V/v : 
-            - st_info 의 ELFN_ST_BIND 가  STB_WEAK 일때 
-            - st_info 의 ELFN_ST_TYPE 이 STT_OBJECT 이고
-            - st_shndx 가 SHN_UNDEF(정의 되지 않았다면) v
-            - st_shndx 가 정의 되었다면 V
+            - When `ELFN_ST_BIND` of `st_info` is `STB_WEAK`
+            - If `ELFN_ST_TYPE` of `st_info` is `STT_OBJECT` AND
+            - If `st_shndx` is `SHN_UNDEF` (undefined): v
+            - If `st_shndx` is defined: V
         - W/w :
-            - man page 보면 not been tagged as a weak object symbol 를 근거로
-            - st_info 의 ELFN_ST_BIND 가  STB_WEAK 일때 
-            - st_info 의 ELFN_ST_TYPE 가  STT_OBJECT 아닐때
-            - st_shndx 가 SHN_UNDEF(정의 되지 않았다면) w
-            - st_shndx 가 정의 되었다면 W
+            - When `ELFN_ST_BIND` of `st_info` is `STB_WEAK`
+            - If `ELFN_ST_TYPE` of `st_info` is NOT `STT_OBJECT`
+            - If `st_shndx` is `SHN_UNDEF` (undefined): w
+            - If `st_shndx` is defined: W
         - ?:
-            - 위 내용이 아닌경우 
+            - Cases other than the above. 
     * G) sort_filter_print.c
         - 옵션 우선순위에 따라 visible list 구성
         - 정렬(n/r)

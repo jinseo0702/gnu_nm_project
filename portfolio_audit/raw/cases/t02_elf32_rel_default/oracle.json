@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.006832,
+  "exit_code": 0,
+  "timed_out": false
+}

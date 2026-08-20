@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gcc",
+    "-m32",
+    "-c",
+    "-g",
+    "-o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/tests/simple32.s"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.002221,
+  "exit_code": 0,
+  "timed_out": false
+}

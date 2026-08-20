@@ -1,0 +1,53 @@
+{
+  "argv": [
+    "-z",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ],
+  "category": "CLI error",
+  "classification": "PARTIAL",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "diagnostic_line_count_equal": false,
+    "diagnostic_overlap": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": true,
+    "status_kind_equal": true,
+    "status_semantics_equal": true
+  },
+  "id": "t18_invalid_option",
+  "mode": "error",
+  "oracle": {
+    "diagnostic_classes": [
+      "invalid_option"
+    ],
+    "diagnostic_line_count": 48,
+    "exit_code": 1,
+    "records": [],
+    "status_kind": "error",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "-z",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ],
+  "purpose": "invalid option status and diagnostic",
+  "raw_directory": "raw/cases/t18_invalid_option",
+  "summary": "diagnostic category matches but exact exit code or diagnostic detail differs",
+  "target": {
+    "diagnostic_classes": [
+      "invalid_option"
+    ],
+    "diagnostic_line_count": 1,
+    "exit_code": 1,
+    "records": [],
+    "status_kind": "error",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "-z",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ]
+}

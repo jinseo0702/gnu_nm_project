@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for f in *_ft; do
+	echo "=== $f ==="
+	sdiff "$f" "${f%_ft}_ori"
+done

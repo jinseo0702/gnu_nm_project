@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64.so"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.006614,
+  "exit_code": 0,
+  "timed_out": false
+}

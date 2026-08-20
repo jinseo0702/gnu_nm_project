@@ -1,0 +1,92 @@
+{
+  "argv": [
+    "--",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ],
+  "category": "CLI",
+  "classification": "FAIL",
+  "dimensions": {
+    "diagnostic_classes_equal": false,
+    "exit_code_equal": false,
+    "record_multiset_equal": false,
+    "records_equal": false,
+    "status_kind_equal": false,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t19_double_dash",
+  "mode": "default",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "global_bss",
+        "size": null,
+        "type": "B",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "global_data",
+        "size": null,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": null,
+        "name": "global_text",
+        "size": null,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": null,
+        "name": "local_data",
+        "size": null,
+        "type": "d",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "local_text",
+        "size": null,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "--",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ],
+  "purpose": "end-of-options marker",
+  "raw_directory": "raw/cases/t19_double_dash",
+  "summary": "success/error status differs",
+  "target": {
+    "diagnostic_classes": [
+      "invalid_option"
+    ],
+    "diagnostic_line_count": 1,
+    "exit_code": 1,
+    "records": [],
+    "status_kind": "error",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "--",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ]
+}

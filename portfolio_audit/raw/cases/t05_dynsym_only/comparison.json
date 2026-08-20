@@ -1,0 +1,50 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64_dynsym_only.so"
+  ],
+  "category": "Symbol table",
+  "classification": "PARTIAL",
+  "dimensions": {
+    "diagnostic_classes_equal": false,
+    "diagnostic_overlap": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": true,
+    "status_kind_equal": true,
+    "status_semantics_equal": true
+  },
+  "id": "t05_dynsym_only",
+  "mode": "error",
+  "oracle": {
+    "diagnostic_classes": [
+      "no_symbols"
+    ],
+    "diagnostic_line_count": 1,
+    "exit_code": 0,
+    "records": [],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64_dynsym_only.so"
+  ],
+  "purpose": "dynsym-only/no-SHT_SYMTAB behavior",
+  "raw_directory": "raw/cases/t05_dynsym_only",
+  "summary": "primary diagnostic matches but extra/missing diagnostic categories differ",
+  "target": {
+    "diagnostic_classes": [
+      "invalid_format",
+      "no_symbols"
+    ],
+    "diagnostic_line_count": 2,
+    "exit_code": 0,
+    "records": [],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64_dynsym_only.so"
+  ]
+}

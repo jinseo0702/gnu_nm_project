@@ -1,0 +1,6 @@
+0000000000000000 B global_bss
+0000000000000004 A global_data
+0000000000000002 T global_text
+0000000000000000 d local_data
+0000000000000000 t local_text
+                 U missing_external

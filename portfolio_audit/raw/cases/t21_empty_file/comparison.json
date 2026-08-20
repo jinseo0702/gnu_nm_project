@@ -1,0 +1,45 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/empty_file"
+  ],
+  "category": "Format error",
+  "classification": "FAIL",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "diagnostic_overlap": false,
+    "exit_code_equal": false,
+    "record_multiset_equal": true,
+    "records_equal": true,
+    "status_kind_equal": false,
+    "status_semantics_equal": false
+  },
+  "id": "t21_empty_file",
+  "mode": "error",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 1,
+    "records": [],
+    "status_kind": "error",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/empty_file"
+  ],
+  "purpose": "empty file rejection",
+  "raw_directory": "raw/cases/t21_empty_file",
+  "summary": "error status or diagnostic category differs",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/empty_file"
+  ]
+}

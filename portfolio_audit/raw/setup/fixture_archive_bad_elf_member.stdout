@@ -1,0 +1,2 @@
+bfd plugin: LLVM gold plugin has failed to create LTO module: section header table goes past the end of the file: e_shoff = 0x1ae8
+bfd plugin: LLVM gold plugin has failed to create LTO module: section header table goes past the end of the file: e_shoff = 0x1ae8
