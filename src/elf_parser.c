@@ -9,7 +9,7 @@ const char *safe_get_string(const t_unit *unit, uint64_t strtab_offset, uint64_t
 
 	if (str_offset >= strtab_size)
 		return NULL;
-	if (!CHECK_RANGE(strtab_offset + str_offset, 1, unit->limit))
+	if (!CHECK_RANGE(strtab_offset, strtab_size, unit->limit))
 		return NULL;
 	strtab = (const char *)MOVE_ADDRESS(unit->base, strtab_offset);
 	remaining = strtab_size - str_offset;
@@ -65,7 +65,7 @@ static int verify_elf_header(const t_unit *unit, t_MetaData *meta)
 	const Elf64_Ehdr *ehdr64;
 	const Elf32_Ehdr *ehdr32;
 
-	if (!CHECK_RANGE(0, sizeof(Elf64_Ehdr), unit->limit))
+	if (!CHECK_RANGE(0, EI_NIDENT, unit->limit))
 		return FAIL_PATH;
 	ehdr64 = (const Elf64_Ehdr *)unit->base;
 	if (ehdr64->e_ident[EI_MAG0] != ELFMAG0 || ehdr64->e_ident[EI_MAG1] != ELFMAG1 ||
@@ -78,12 +78,15 @@ static int verify_elf_header(const t_unit *unit, t_MetaData *meta)
 	meta->elf_class = ehdr64->e_ident[EI_CLASS];
 	if (meta->elf_class == ELFCLASS64)
 	{
+		if (!CHECK_RANGE(0, sizeof(*ehdr64), unit->limit))
+			return FAIL_PATH;
 		meta->ElfN_Ehdr.Ehdr64 = ehdr64;
 		if (ehdr64->e_type != ET_REL && ehdr64->e_type != ET_EXEC && ehdr64->e_type != ET_DYN)
 			return FAIL_PATH;
 		if (ehdr64->e_machine != EM_X86_64 && ehdr64->e_machine != EM_386)
 			return FAIL_PATH;
-		if (ehdr64->e_shoff == 0 || ehdr64->e_shnum == 0)
+		if (ehdr64->e_shoff == 0 || ehdr64->e_shnum == 0 ||
+			ehdr64->e_shstrndx >= ehdr64->e_shnum || ehdr64->e_shentsize != sizeof(Elf64_Shdr))
 			return FAIL_PATH;
 		if (!CHECK_RANGE(ehdr64->e_shoff, ehdr64->e_shnum * ehdr64->e_shentsize, unit->limit))
 			return FAIL_PATH;
@@ -91,12 +94,15 @@ static int verify_elf_header(const t_unit *unit, t_MetaData *meta)
 	else
 	{
 		ehdr32 = (const Elf32_Ehdr *)unit->base;
+		if (!CHECK_RANGE(0, sizeof(*ehdr32), unit->limit))
+			return FAIL_PATH;
 		meta->ElfN_Ehdr.Ehdr32 = ehdr32;
 		if (ehdr32->e_type != ET_REL && ehdr32->e_type != ET_EXEC && ehdr32->e_type != ET_DYN)
 			return FAIL_PATH;
 		if (ehdr32->e_machine != EM_X86_64 && ehdr32->e_machine != EM_386)
 			return FAIL_PATH;
-		if (ehdr32->e_shoff == 0 || ehdr32->e_shnum == 0)
+		if (ehdr32->e_shoff == 0 || ehdr32->e_shnum == 0 ||
+			ehdr32->e_shstrndx >= ehdr32->e_shnum || ehdr32->e_shentsize != sizeof(Elf32_Shdr))
 			return FAIL_PATH;
 		if (!CHECK_RANGE(ehdr32->e_shoff, ehdr32->e_shnum * ehdr32->e_shentsize, unit->limit))
 			return FAIL_PATH;
@@ -163,34 +169,35 @@ static int find_symbol_table(const t_unit *unit, t_MetaData *meta)
 	else
 	{
 		NM_LOG(unit->display_name, "no symbols");
-		return FAIL_PATH;
+		return SKIP_UNIT;
 	}
 	if (meta->elf_class == ELFCLASS64)
 	{
 		shdr64 = &meta->ElfN_Shdr.Shdr64[i];
-		if (shdr64->sh_link >= shnum)
+		if (shdr64->sh_link >= shnum || meta->ElfN_Shdr.Shdr64[shdr64->sh_link].sh_type != SHT_STRTAB ||
+			shdr64->sh_entsize != sizeof(Elf64_Sym) || shdr64->sh_size % sizeof(Elf64_Sym) ||
+			!CHECK_RANGE(shdr64->sh_offset, shdr64->sh_size, unit->limit))
 			return FAIL_PATH;
 		meta->strtab_offset = meta->ElfN_Shdr.Shdr64[shdr64->sh_link].sh_offset;
 		meta->strtab_size = meta->ElfN_Shdr.Shdr64[shdr64->sh_link].sh_size;
 		meta->ElfN_Sym.Sym64 = (const Elf64_Sym *)MOVE_ADDRESS(unit->base, shdr64->sh_offset);
-		if (shdr64->sh_entsize == 0)
-			meta->sym_count = shdr64->sh_size / sizeof(Elf64_Sym);
-		else
-			meta->sym_count = shdr64->sh_size / shdr64->sh_entsize;
+		meta->sym_count = shdr64->sh_size / sizeof(Elf64_Sym);
 	}
 	else
 	{
 		shdr32 = &meta->ElfN_Shdr.Shdr32[i];
-		if (shdr32->sh_link >= shnum)
+		if (shdr32->sh_link >= shnum || meta->ElfN_Shdr.Shdr32[shdr32->sh_link].sh_type != SHT_STRTAB ||
+			shdr32->sh_entsize != sizeof(Elf32_Sym) || shdr32->sh_size % sizeof(Elf32_Sym) ||
+			!CHECK_RANGE(shdr32->sh_offset, shdr32->sh_size, unit->limit))
 			return FAIL_PATH;
 		meta->strtab_offset = meta->ElfN_Shdr.Shdr32[shdr32->sh_link].sh_offset;
 		meta->strtab_size = meta->ElfN_Shdr.Shdr32[shdr32->sh_link].sh_size;
 		meta->ElfN_Sym.Sym32 = (const Elf32_Sym *)MOVE_ADDRESS(unit->base, shdr32->sh_offset);
-		if (shdr32->sh_entsize == 0)
-			meta->sym_count = shdr32->sh_size / sizeof(Elf32_Sym);
-		else
-			meta->sym_count = shdr32->sh_size / shdr32->sh_entsize;
+		meta->sym_count = shdr32->sh_size / sizeof(Elf32_Sym);
 	}
+	if (!CHECK_RANGE(meta->strtab_offset, meta->strtab_size, unit->limit) ||
+		!CHECK_RANGE(check_debug_symbol(meta), check_debug_section_size(meta), unit->limit))
+		return FAIL_PATH;
 	return OK;
 }
 
@@ -203,6 +210,8 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 	const Elf32_Shdr *shdr32;
 	uint16_t shnum;
 
+	if (meta->sym_count > SIZE_MAX / sizeof(t_NmSymData))
+		return FAIL_PATH;
 	*symbols = malloc(sizeof(t_NmSymData) * meta->sym_count);
 	if (!*symbols)
 		return FAIL_PATH;
@@ -212,10 +221,7 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 		shnum = meta->ElfN_Ehdr.Ehdr32->e_shnum;
 	*shdr_cache = malloc(sizeof(t_NmShdrData) * shnum);
 	if (!*shdr_cache)
-	{
-		free(*symbols);
 		return FAIL_PATH;
-	}
 	i = 0;
 	while (i < shnum)
 	{
@@ -258,9 +264,14 @@ static int load_symbols(const t_unit *unit, t_MetaData *meta, t_NmSymData **symb
 			(*symbols)[i].st_info_bind = ELF32_ST_BIND(sym32->st_info);
 			(*symbols)[i].elf_class = ELFCLASS32;
 		}
+		uint16_t section = (*symbols)[i].st_shndx;
+		if (section >= shnum && (section != SHN_ABS && section != SHN_COMMON))
+			return FAIL_PATH;
+		if ((*symbols)[i].st_info_type == STT_SECTION && section >= shnum)
+			return FAIL_PATH;
 		(*symbols)[i].name = safe_get_string(unit, meta->strtab_offset, meta->strtab_size, (*symbols)[i].st_name);
 		if (!(*symbols)[i].name)
-			(*symbols)[i].name = "";
+			return FAIL_PATH;
 		(*symbols)[i].type = classify_symbol(unit, meta, &(*symbols)[i], *shdr_cache);
 		// if (ft_strlen((*symbols)[i].name) == 0 && ((*symbols)[i].st_value == 0 && (*symbols)[i].type != 'a' && (*symbols)[i].type != 'U' && (*symbols)[i].type != 'w')) {
 		if ((*symbols)[i].st_info_type == STT_SECTION) {
@@ -295,13 +306,18 @@ int process_elf_unit(const t_unit *unit, uint32_t opt, int multiple_files)
 		NM_LOG(unit->display_name, "file format not recognized");
 		return FAIL_PATH;
 	}
-	if (find_symbol_table(unit, &meta) != OK)
+	ret = find_symbol_table(unit, &meta);
+	if (ret == SKIP_UNIT)
+		return OK;
+	if (ret != OK)
 	{
 		NM_LOG(unit->display_name, "file format not recognized");
 		return FAIL_PATH;
 	}
 	if (load_symbols(unit, &meta, &symbols, &shdr_cache) != OK)
 	{
+		free(symbols);
+		free(shdr_cache);
 		NM_LOG(unit->display_name, "file format not recognized");
 		return FAIL_PATH;
 	}

@@ -47,10 +47,10 @@ int main(int argc, char **argv)
 	i = 0;
 	while (i < path_count)
 	{
-		process_path(paths[i], opts, path_count > 1);
+		if (process_path(paths[i], opts, path_count > 1) != OK)
+			ret = 1;
 		i++;
 	}
-	if (paths && paths[0] != argv[0])
-		free(paths);
-	return 0;
+	free(paths);
+	return ret;
 }

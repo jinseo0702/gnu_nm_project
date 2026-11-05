@@ -18,26 +18,10 @@ static int is_visible(const t_NmSymData *sym, uint32_t opt)
 	}
 	show_external = HASOPT(opt, OPT_g);
 	show_undefined = HASOPT(opt, OPT_u);
-	if (!show_all && !show_external && !show_undefined)
-		return 1;
-	if (show_undefined)
-	{
-		if (sym->type == 'w' || sym->type == 'U')
-			return 1;
+	if (show_external && sym->st_info_bind == STB_LOCAL)
 		return 0;
-	}
-	if (show_external)
-	{
-		if (sym->type == 'A' || sym->type == 'B' || sym->type == 'D' || 
-			sym->type == 'R' || sym->type == 'T' || sym->type == 'W' || 
-			sym->type == 'w' || sym->type == 'U' || sym->type == 'V')
-			return 1;
+	if (show_undefined && sym->st_shndx != SHN_UNDEF)
 		return 0;
-	}
-	if (show_all)
-	{
-		return 1;
-	}
 	return 1;
 }
 
@@ -168,6 +152,17 @@ static void write_hex(uint64_t addr, char *dest, uint8_t class) {
 	else dest[8] = '\0';
 }
 
+static void print_hex_field(uint64_t value)
+{
+	char digits[17];
+	const char *first = digits;
+
+	write_hex(value, digits, ELFCLASS64);
+	while (first[0] == '0' && first[1])
+		first++;
+	ft_printf(" %s", first);
+}
+
 static void print_symbol(const t_NmSymData *sym, uint32_t opt)
 {
 	if (HASOPT(opt, OPT_P))
@@ -176,9 +171,9 @@ static void print_symbol(const t_NmSymData *sym, uint32_t opt)
 		if (sym->type == 'U' || sym->type == 'w' || sym->type == 'v')
 			ft_printf("\n");
 		else{
-			ft_printf(" %x", sym->st_value);
+			print_hex_field(sym->st_value);
 			if (sym->st_size != 0) {
-				ft_printf(" %x", sym->st_size);
+				print_hex_field(sym->st_size);
 			}
 			ft_printf("\n");
 		}
