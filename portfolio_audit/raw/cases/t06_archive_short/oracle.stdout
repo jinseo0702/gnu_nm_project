@@ -1,0 +1,14 @@
+
+basic64.o:
+0000000000000000 B global_bss
+0000000000000004 D global_data
+0000000000000002 T global_text
+0000000000000000 d local_data
+0000000000000000 t local_text
+                 U missing_external
+
+simple32.o:
+00000000 D data32
+00000002 T function32
+00000000 t local32
+         U missing32

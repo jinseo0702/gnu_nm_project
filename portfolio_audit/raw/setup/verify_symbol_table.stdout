@@ -1,0 +1,35 @@
+
+Symbol table '.symtab' contains 32 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS symbol_types.c
+     2: 0000000000000000     0 SECTION LOCAL  DEFAULT    1 .text
+     3: 0000000000000000     0 SECTION LOCAL  DEFAULT    3 .data
+     4: 0000000000000000     0 SECTION LOCAL  DEFAULT    4 .bss
+     5: 0000000000000004     4 OBJECT  LOCAL  DEFAULT    3 local_data
+     6: 0000000000000000     4 OBJECT  LOCAL  DEFAULT    4 local_bss
+     7: 0000000000000000     0 SECTION LOCAL  DEFAULT    5 .rodata
+     8: 0000000000000004     4 OBJECT  LOCAL  DEFAULT    5 local_rodata
+     9: 000000000000000b    11 FUNC    LOCAL  DEFAULT    1 local_function
+    10: 0000000000000021    11 FUNC    LOCAL  DEFAULT    1 ifunc_implementation
+    11: 000000000000002c    17 FUNC    LOCAL  DEFAULT    1 ifunc_resolver
+    12: 0000000000000000     0 SECTION LOCAL  DEFAULT    8 .debug_info
+    13: 0000000000000000     0 SECTION LOCAL  DEFAULT   10 .debug_abbrev
+    14: 0000000000000000     0 SECTION LOCAL  DEFAULT   13 .debug_line
+    15: 0000000000000000     0 SECTION LOCAL  DEFAULT   15 .debug_str
+    16: 0000000000000000     0 SECTION LOCAL  DEFAULT   16 .debug_line_str
+    17: 0000000000000000     4 OBJECT  GLOBAL DEFAULT    3 global_data
+    18: 0000000000000004     4 OBJECT  GLOBAL DEFAULT  COM global_bss
+    19: 0000000000000000     4 OBJECT  GLOBAL DEFAULT    5 global_rodata
+    20: 0000000000000004     4 OBJECT  GLOBAL DEFAULT  COM common_symbol
+    21: 0000000000000000    11 FUNC    GLOBAL DEFAULT    1 global_function
+    22: 0000000000000000    16 OBJECT  GLOBAL DEFAULT    6 undefined_references
+    23: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND undefined_function
+    24: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND undefined_object
+    25: 0000000000000008     4 OBJECT  WEAK   DEFAULT    3 weak_defined_object
+    26: 0000000000000016    11 FUNC    WEAK   DEFAULT    1 weak_defined_function
+    27: 0000000000000010    16 OBJECT  GLOBAL DEFAULT    6 weak_undefined_references
+    28: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND weak_undefined_object
+    29: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND weak_undefined_function
+    30: 000000000000002c    17 IFUNC   GLOBAL DEFAULT    1 indirect_function
+    31: 000000000000003d    36 FUNC    GLOBAL DEFAULT    1 force_local_references

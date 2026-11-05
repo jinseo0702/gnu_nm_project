@@ -1,0 +1,5 @@
+make[1]: Entering directory '/home/jinseo/duo/gnu_nm_project/libft'
+make[1]: Leaving directory '/home/jinseo/duo/gnu_nm_project/libft'
+make[1]: Entering directory '/home/jinseo/duo/gnu_nm_project/ft_printf'
+rm -rf ft_memset.o ft_fprintf.o ft_printf.o ft_putchar.o ft_putstr.o ft_putaddress.o ft_putnbr.o libftprintf.a
+make[1]: Leaving directory '/home/jinseo/duo/gnu_nm_project/ft_printf'

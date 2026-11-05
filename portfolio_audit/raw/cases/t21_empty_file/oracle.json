@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/empty_file"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.000853,
+  "exit_code": 1,
+  "timed_out": false
+}

@@ -33,14 +33,22 @@ ft_nm : Linux x_86_32 /x_86_64 대상 ELF(32/64) 및 archive(ar) 포멧을 안�
     - e_type : ET_REL, ET_EXEC, ET_DYN 
     - e_machine : EM_386, EM_X86_64
     - section table : e_shoff != 0 , e_dhnum != 0 , e_shentsize 검증, 그리고 e_shoff + e_shnum*e_shentsize 범위검사
+    - section table은 0 < section index < e_shnum 를 지켜야한다.
 6. 심볼 테이블 선택
     - SHT_SYMTAB 우선, 없으면 SHT_SYMTAB
     - 둘다 없으면 메세지 출력 후 다음 해석 단위로 이동
+    - sh_size / sh_entsize 로 cnt 로 arry 할당 후 사용
+    - sh_size, sh_entsize 우효성 검사
+    - SHT_SYMTAB/DYNSYM의 cnt 계산은 resolved_entsize(0이면 sizeof로 치환한 값)로 수행한다.
 7. 문자열 테이블 안전 접근
     - 문자열은 심볼테이블의 sh_link(범위검사 포함)에 st_name를 통해 함수로만 접근
     - ft_memchr(strtab+st_name, '\0', remaining)로 널 종결 존재 확인
 8. 옵션 정책
     - 우선순위 (a|g|u) > n > P, r 은 정렬 뒤집기
+    - a | g | u 는 교집합으로 처리
+    - a : type N, a
+    - g : type 'A', 'B', 'D', 'R', 'T', 'W', 'w', 'U'
+    - u : type 'w' 'U'
     - 정렬: n 없으면 name 기준, 있으면 value 기준(동일 value면 name)
     - P : POSIX.2 출력 포맷
 9. 프로그램 종료 정책

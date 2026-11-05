@@ -1,0 +1,77 @@
+{
+  "all_detected": true,
+  "detected_count": 5,
+  "validation_count": 5,
+  "validations": [
+    {
+      "classification": "FAIL",
+      "detected": true,
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "mutation": "remove_symbol_record",
+      "summary": "missing or changed symbol record: (None, 'missing_external', 'U', None, None)"
+    },
+    {
+      "classification": "FAIL",
+      "detected": true,
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "mutation": "change_symbol_type",
+      "summary": "missing or changed symbol record: (None, 'global_bss', 'B', 0, None)"
+    },
+    {
+      "classification": "FAIL",
+      "detected": true,
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": false,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "mutation": "change_symbol_value",
+      "summary": "missing or changed symbol record: (None, 'global_bss', 'B', 0, None)"
+    },
+    {
+      "classification": "FAIL",
+      "detected": true,
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": true,
+        "record_multiset_equal": true,
+        "records_equal": false,
+        "status_kind_equal": true,
+        "unparsed_stdout_equal": true
+      },
+      "mutation": "swap_symbol_order",
+      "summary": "symbol set matches but ordering differs"
+    },
+    {
+      "classification": "FAIL",
+      "detected": true,
+      "dimensions": {
+        "diagnostic_classes_equal": true,
+        "exit_code_equal": false,
+        "record_multiset_equal": true,
+        "records_equal": true,
+        "status_kind_equal": false,
+        "unparsed_stdout_equal": true
+      },
+      "mutation": "change_exit_status",
+      "summary": "success/error status differs"
+    }
+  ]
+}

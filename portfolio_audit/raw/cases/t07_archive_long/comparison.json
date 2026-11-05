@@ -1,0 +1,130 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_long.a"
+  ],
+  "category": "Archive",
+  "classification": "PASS",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": true,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t07_archive_long",
+  "mode": "default",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "global_bss",
+        "size": null,
+        "type": "B",
+        "value": 0
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "global_data",
+        "size": null,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "global_text",
+        "size": null,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "local_data",
+        "size": null,
+        "type": "d",
+        "value": 0
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "local_text",
+        "size": null,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_long.a"
+  ],
+  "purpose": "GNU // and /offset long member names",
+  "raw_directory": "raw/cases/t07_archive_long",
+  "summary": "semantic symbol records, order, status, and diagnostics match",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "global_bss",
+        "size": null,
+        "type": "B",
+        "value": 0
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "global_data",
+        "size": null,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "global_text",
+        "size": null,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "local_data",
+        "size": null,
+        "type": "d",
+        "value": 0
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "local_text",
+        "size": null,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": "member_with_a_very_long_filename_for_archive.o",
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_long.a"
+  ]
+}

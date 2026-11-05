@@ -1,0 +1,144 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+  ],
+  "category": "Ordering",
+  "classification": "FAIL",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": false,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t11_sort_name",
+  "mode": "default",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "Alpha",
+        "size": null,
+        "type": "D",
+        "value": 3
+      },
+      {
+        "context": null,
+        "name": "_alpha",
+        "size": null,
+        "type": "D",
+        "value": 2
+      },
+      {
+        "context": null,
+        "name": "_zulu",
+        "size": null,
+        "type": "D",
+        "value": 1
+      },
+      {
+        "context": null,
+        "name": "alpha",
+        "size": null,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": null,
+        "name": "dollar$symbol",
+        "size": null,
+        "type": "D",
+        "value": 6
+      },
+      {
+        "context": null,
+        "name": "dot.symbol",
+        "size": null,
+        "type": "D",
+        "value": 5
+      },
+      {
+        "context": null,
+        "name": "zeta",
+        "size": null,
+        "type": "D",
+        "value": 0
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+  ],
+  "purpose": "default name collation with punctuation/case",
+  "raw_directory": "raw/cases/t11_sort_name",
+  "summary": "symbol set matches but ordering differs",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "Alpha",
+        "size": null,
+        "type": "D",
+        "value": 3
+      },
+      {
+        "context": null,
+        "name": "_alpha",
+        "size": null,
+        "type": "D",
+        "value": 2
+      },
+      {
+        "context": null,
+        "name": "alpha",
+        "size": null,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": null,
+        "name": "dollar$symbol",
+        "size": null,
+        "type": "D",
+        "value": 6
+      },
+      {
+        "context": null,
+        "name": "dot.symbol",
+        "size": null,
+        "type": "D",
+        "value": 5
+      },
+      {
+        "context": null,
+        "name": "zeta",
+        "size": null,
+        "type": "D",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "_zulu",
+        "size": null,
+        "type": "D",
+        "value": 1
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o"
+  ]
+}

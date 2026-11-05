@@ -1,0 +1,17 @@
+{
+  "command": [
+    "gcc",
+    "-fcommon",
+    "-fno-stack-protector",
+    "-O0",
+    "-g",
+    "-c",
+    "-o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/tests/symbol_types.c"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.009183,
+  "exit_code": 0,
+  "timed_out": false
+}

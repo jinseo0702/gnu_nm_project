@@ -1,0 +1,467 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/executable64"
+  ],
+  "category": "ELF type",
+  "classification": "PASS",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": false,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t03_elf64_exec_default",
+  "mode": "default",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "_DYNAMIC",
+        "size": null,
+        "type": "d",
+        "value": 4210248
+      },
+      {
+        "context": null,
+        "name": "_GLOBAL_OFFSET_TABLE_",
+        "size": null,
+        "type": "d",
+        "value": 4210664
+      },
+      {
+        "context": null,
+        "name": "_IO_stdin_used",
+        "size": null,
+        "type": "R",
+        "value": 4202496
+      },
+      {
+        "context": null,
+        "name": "__FRAME_END__",
+        "size": null,
+        "type": "r",
+        "value": 4202672
+      },
+      {
+        "context": null,
+        "name": "__GNU_EH_FRAME_HDR",
+        "size": null,
+        "type": "r",
+        "value": 4202500
+      },
+      {
+        "context": null,
+        "name": "__TMC_END__",
+        "size": null,
+        "type": "D",
+        "value": 4210712
+      },
+      {
+        "context": null,
+        "name": "__abi_tag",
+        "size": null,
+        "type": "r",
+        "value": 4202728
+      },
+      {
+        "context": null,
+        "name": "__bss_start",
+        "size": null,
+        "type": "B",
+        "value": 4210708
+      },
+      {
+        "context": null,
+        "name": "__data_start",
+        "size": null,
+        "type": "D",
+        "value": 4210688
+      },
+      {
+        "context": null,
+        "name": "__do_global_dtors_aux",
+        "size": null,
+        "type": "t",
+        "value": 4198608
+      },
+      {
+        "context": null,
+        "name": "__do_global_dtors_aux_fini_array_entry",
+        "size": null,
+        "type": "d",
+        "value": 4210240
+      },
+      {
+        "context": null,
+        "name": "__dso_handle",
+        "size": null,
+        "type": "D",
+        "value": 4210696
+      },
+      {
+        "context": null,
+        "name": "__frame_dummy_init_array_entry",
+        "size": null,
+        "type": "d",
+        "value": 4210232
+      },
+      {
+        "context": null,
+        "name": "__gmon_start__",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "__libc_start_main@GLIBC_2.34",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "_dl_relocate_static_pie",
+        "size": null,
+        "type": "T",
+        "value": 4198480
+      },
+      {
+        "context": null,
+        "name": "_edata",
+        "size": null,
+        "type": "D",
+        "value": 4210708
+      },
+      {
+        "context": null,
+        "name": "_end",
+        "size": null,
+        "type": "B",
+        "value": 4210720
+      },
+      {
+        "context": null,
+        "name": "_fini",
+        "size": null,
+        "type": "T",
+        "value": 4198712
+      },
+      {
+        "context": null,
+        "name": "_init",
+        "size": null,
+        "type": "T",
+        "value": 4198400
+      },
+      {
+        "context": null,
+        "name": "_start",
+        "size": null,
+        "type": "T",
+        "value": 4198432
+      },
+      {
+        "context": null,
+        "name": "completed.0",
+        "size": null,
+        "type": "b",
+        "value": 4210708
+      },
+      {
+        "context": null,
+        "name": "data_start",
+        "size": null,
+        "type": "W",
+        "value": 4210688
+      },
+      {
+        "context": null,
+        "name": "deregister_tm_clones",
+        "size": null,
+        "type": "t",
+        "value": 4198496
+      },
+      {
+        "context": null,
+        "name": "executable_bss",
+        "size": null,
+        "type": "B",
+        "value": 4210712
+      },
+      {
+        "context": null,
+        "name": "executable_data",
+        "size": null,
+        "type": "D",
+        "value": 4210704
+      },
+      {
+        "context": null,
+        "name": "frame_dummy",
+        "size": null,
+        "type": "t",
+        "value": 4198656
+      },
+      {
+        "context": null,
+        "name": "helper",
+        "size": null,
+        "type": "t",
+        "value": 4198662
+      },
+      {
+        "context": null,
+        "name": "main",
+        "size": null,
+        "type": "T",
+        "value": 4198686
+      },
+      {
+        "context": null,
+        "name": "register_tm_clones",
+        "size": null,
+        "type": "t",
+        "value": 4198544
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/executable64"
+  ],
+  "order_sensitive": false,
+  "purpose": "ET_EXEC static symbol extraction",
+  "raw_directory": "raw/cases/t03_elf64_exec_default",
+  "summary": "semantic symbol record set and status match; order is tested separately",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "__abi_tag",
+        "size": null,
+        "type": "r",
+        "value": 4202728
+      },
+      {
+        "context": null,
+        "name": "__bss_start",
+        "size": null,
+        "type": "B",
+        "value": 4210708
+      },
+      {
+        "context": null,
+        "name": "completed.0",
+        "size": null,
+        "type": "b",
+        "value": 4210708
+      },
+      {
+        "context": null,
+        "name": "__data_start",
+        "size": null,
+        "type": "D",
+        "value": 4210688
+      },
+      {
+        "context": null,
+        "name": "data_start",
+        "size": null,
+        "type": "W",
+        "value": 4210688
+      },
+      {
+        "context": null,
+        "name": "deregister_tm_clones",
+        "size": null,
+        "type": "t",
+        "value": 4198496
+      },
+      {
+        "context": null,
+        "name": "_dl_relocate_static_pie",
+        "size": null,
+        "type": "T",
+        "value": 4198480
+      },
+      {
+        "context": null,
+        "name": "__do_global_dtors_aux",
+        "size": null,
+        "type": "t",
+        "value": 4198608
+      },
+      {
+        "context": null,
+        "name": "__do_global_dtors_aux_fini_array_entry",
+        "size": null,
+        "type": "d",
+        "value": 4210240
+      },
+      {
+        "context": null,
+        "name": "__dso_handle",
+        "size": null,
+        "type": "D",
+        "value": 4210696
+      },
+      {
+        "context": null,
+        "name": "_DYNAMIC",
+        "size": null,
+        "type": "d",
+        "value": 4210248
+      },
+      {
+        "context": null,
+        "name": "_edata",
+        "size": null,
+        "type": "D",
+        "value": 4210708
+      },
+      {
+        "context": null,
+        "name": "_end",
+        "size": null,
+        "type": "B",
+        "value": 4210720
+      },
+      {
+        "context": null,
+        "name": "executable_bss",
+        "size": null,
+        "type": "B",
+        "value": 4210712
+      },
+      {
+        "context": null,
+        "name": "executable_data",
+        "size": null,
+        "type": "D",
+        "value": 4210704
+      },
+      {
+        "context": null,
+        "name": "_fini",
+        "size": null,
+        "type": "T",
+        "value": 4198712
+      },
+      {
+        "context": null,
+        "name": "frame_dummy",
+        "size": null,
+        "type": "t",
+        "value": 4198656
+      },
+      {
+        "context": null,
+        "name": "__frame_dummy_init_array_entry",
+        "size": null,
+        "type": "d",
+        "value": 4210232
+      },
+      {
+        "context": null,
+        "name": "__FRAME_END__",
+        "size": null,
+        "type": "r",
+        "value": 4202672
+      },
+      {
+        "context": null,
+        "name": "_GLOBAL_OFFSET_TABLE_",
+        "size": null,
+        "type": "d",
+        "value": 4210664
+      },
+      {
+        "context": null,
+        "name": "__gmon_start__",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "__GNU_EH_FRAME_HDR",
+        "size": null,
+        "type": "r",
+        "value": 4202500
+      },
+      {
+        "context": null,
+        "name": "helper",
+        "size": null,
+        "type": "t",
+        "value": 4198662
+      },
+      {
+        "context": null,
+        "name": "_init",
+        "size": null,
+        "type": "T",
+        "value": 4198400
+      },
+      {
+        "context": null,
+        "name": "_IO_stdin_used",
+        "size": null,
+        "type": "R",
+        "value": 4202496
+      },
+      {
+        "context": null,
+        "name": "__libc_start_main@GLIBC_2.34",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "main",
+        "size": null,
+        "type": "T",
+        "value": 4198686
+      },
+      {
+        "context": null,
+        "name": "register_tm_clones",
+        "size": null,
+        "type": "t",
+        "value": 4198544
+      },
+      {
+        "context": null,
+        "name": "_start",
+        "size": null,
+        "type": "T",
+        "value": 4198432
+      },
+      {
+        "context": null,
+        "name": "__TMC_END__",
+        "size": null,
+        "type": "D",
+        "value": 4210712
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/executable64"
+  ]
+}

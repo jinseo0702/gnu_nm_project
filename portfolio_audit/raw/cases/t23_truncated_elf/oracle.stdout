@@ -1,0 +1,1 @@
+bfd plugin: LLVM gold plugin has failed to create LTO module: invalid buffer: the size (32) is smaller than an ELF header (64)

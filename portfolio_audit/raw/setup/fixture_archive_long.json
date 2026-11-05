@@ -1,0 +1,12 @@
+{
+  "command": [
+    "ar",
+    "rcs",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/archive_long.a",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/member_with_a_very_long_filename_for_archive.o"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.007144,
+  "exit_code": 0,
+  "timed_out": false
+}

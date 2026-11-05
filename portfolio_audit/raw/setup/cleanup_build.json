@@ -1,0 +1,10 @@
+{
+  "command": [
+    "make",
+    "fclean"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.005576,
+  "exit_code": 0,
+  "timed_out": false
+}

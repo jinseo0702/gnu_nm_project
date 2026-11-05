@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/executable64"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.001925,
+  "exit_code": 0,
+  "timed_out": false
+}

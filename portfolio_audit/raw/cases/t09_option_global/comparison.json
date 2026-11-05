@@ -1,0 +1,238 @@
+{
+  "argv": [
+    "-g",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+  ],
+  "category": "Option -g",
+  "classification": "FAIL",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": false,
+    "records_equal": false,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t09_option_global",
+  "mode": "default",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "common_symbol",
+        "size": null,
+        "type": "C",
+        "value": 4
+      },
+      {
+        "context": null,
+        "name": "force_local_references",
+        "size": null,
+        "type": "T",
+        "value": 61
+      },
+      {
+        "context": null,
+        "name": "global_bss",
+        "size": null,
+        "type": "C",
+        "value": 4
+      },
+      {
+        "context": null,
+        "name": "global_data",
+        "size": null,
+        "type": "D",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "global_function",
+        "size": null,
+        "type": "T",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "global_rodata",
+        "size": null,
+        "type": "R",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "indirect_function",
+        "size": null,
+        "type": "i",
+        "value": 44
+      },
+      {
+        "context": null,
+        "name": "undefined_function",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "undefined_object",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "undefined_references",
+        "size": null,
+        "type": "D",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "weak_defined_function",
+        "size": null,
+        "type": "W",
+        "value": 22
+      },
+      {
+        "context": null,
+        "name": "weak_defined_object",
+        "size": null,
+        "type": "V",
+        "value": 8
+      },
+      {
+        "context": null,
+        "name": "weak_undefined_function",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "weak_undefined_object",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "weak_undefined_references",
+        "size": null,
+        "type": "D",
+        "value": 16
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "-g",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+  ],
+  "purpose": "external symbol inclusion/exclusion",
+  "raw_directory": "raw/cases/t09_option_global",
+  "summary": "missing or changed symbol record: (None, 'common_symbol', 'C', 4, None)",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "force_local_references",
+        "size": null,
+        "type": "T",
+        "value": 61
+      },
+      {
+        "context": null,
+        "name": "global_data",
+        "size": null,
+        "type": "D",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "global_function",
+        "size": null,
+        "type": "T",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "global_rodata",
+        "size": null,
+        "type": "R",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "undefined_function",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "undefined_object",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "undefined_references",
+        "size": null,
+        "type": "D",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "weak_defined_function",
+        "size": null,
+        "type": "W",
+        "value": 22
+      },
+      {
+        "context": null,
+        "name": "weak_defined_object",
+        "size": null,
+        "type": "V",
+        "value": 8
+      },
+      {
+        "context": null,
+        "name": "weak_undefined_function",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "weak_undefined_object",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "weak_undefined_references",
+        "size": null,
+        "type": "D",
+        "value": 16
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "-g",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/symbol_types.o"
+  ]
+}

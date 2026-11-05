@@ -1,0 +1,14 @@
+{
+  "command": [
+    "gcc",
+    "-c",
+    "-g",
+    "-o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/order64.o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/tests/order64.s"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.002083,
+  "exit_code": 0,
+  "timed_out": false
+}

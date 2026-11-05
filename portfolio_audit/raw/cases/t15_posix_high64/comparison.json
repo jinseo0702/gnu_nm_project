@@ -1,0 +1,77 @@
+{
+  "argv": [
+    "-P",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/high64.o"
+  ],
+  "category": "Option -P",
+  "classification": "FAIL",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": false,
+    "records_equal": false,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t15_posix_high64",
+  "mode": "posix",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "high_absolute",
+        "size": null,
+        "type": "A",
+        "value": 4294967587
+      },
+      {
+        "context": null,
+        "name": "low_function",
+        "size": 2,
+        "type": "T",
+        "value": 0
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "-P",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/high64.o"
+  ],
+  "purpose": "POSIX output above 32-bit value range",
+  "raw_directory": "raw/cases/t15_posix_high64",
+  "summary": "missing or changed symbol record: (None, 'high_absolute', 'A', 4294967587, None)",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "high_absolute",
+        "size": null,
+        "type": "A",
+        "value": 291
+      },
+      {
+        "context": null,
+        "name": "low_function",
+        "size": 2,
+        "type": "T",
+        "value": 0
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "-P",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/high64.o"
+  ]
+}

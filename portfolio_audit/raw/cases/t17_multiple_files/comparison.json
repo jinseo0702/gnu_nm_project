@@ -1,0 +1,189 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+  ],
+  "category": "CLI",
+  "classification": "PASS",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": true,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t17_multiple_files",
+  "mode": "default",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": "basic64.o",
+        "name": "global_bss",
+        "size": null,
+        "type": "B",
+        "value": 0
+      },
+      {
+        "context": "basic64.o",
+        "name": "global_data",
+        "size": null,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": "basic64.o",
+        "name": "global_text",
+        "size": null,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": "basic64.o",
+        "name": "local_data",
+        "size": null,
+        "type": "d",
+        "value": 0
+      },
+      {
+        "context": "basic64.o",
+        "name": "local_text",
+        "size": null,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": "basic64.o",
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": "simple32.o",
+        "name": "data32",
+        "size": null,
+        "type": "D",
+        "value": 0
+      },
+      {
+        "context": "simple32.o",
+        "name": "function32",
+        "size": null,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": "simple32.o",
+        "name": "local32",
+        "size": null,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": "simple32.o",
+        "name": "missing32",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+  ],
+  "purpose": "multiple-file headings and symbols",
+  "raw_directory": "raw/cases/t17_multiple_files",
+  "summary": "semantic symbol records, order, status, and diagnostics match",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": "basic64.o",
+        "name": "global_bss",
+        "size": null,
+        "type": "B",
+        "value": 0
+      },
+      {
+        "context": "basic64.o",
+        "name": "global_data",
+        "size": null,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": "basic64.o",
+        "name": "global_text",
+        "size": null,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": "basic64.o",
+        "name": "local_data",
+        "size": null,
+        "type": "d",
+        "value": 0
+      },
+      {
+        "context": "basic64.o",
+        "name": "local_text",
+        "size": null,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": "basic64.o",
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": "simple32.o",
+        "name": "data32",
+        "size": null,
+        "type": "D",
+        "value": 0
+      },
+      {
+        "context": "simple32.o",
+        "name": "function32",
+        "size": null,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": "simple32.o",
+        "name": "local32",
+        "size": null,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": "simple32.o",
+        "name": "missing32",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/simple32.o"
+  ]
+}

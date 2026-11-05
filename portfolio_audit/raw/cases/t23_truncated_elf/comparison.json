@@ -1,0 +1,51 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_elf"
+  ],
+  "category": "Malformed ELF",
+  "classification": "PARTIAL",
+  "dimensions": {
+    "diagnostic_classes_equal": false,
+    "diagnostic_overlap": false,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": true,
+    "status_kind_equal": true,
+    "status_semantics_equal": true
+  },
+  "id": "t23_truncated_elf",
+  "mode": "error",
+  "oracle": {
+    "diagnostic_classes": [
+      "no_symbols"
+    ],
+    "diagnostic_line_count": 1,
+    "exit_code": 0,
+    "records": [],
+    "status_kind": "ok",
+    "unparsed_stdout": [
+      "bfd plugin: LLVM gold plugin has failed to create LTO module: invalid buffer: the size (32) is smaller than an ELF header (64)"
+    ]
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_elf"
+  ],
+  "purpose": "truncated ELF header rejection",
+  "raw_directory": "raw/cases/t23_truncated_elf",
+  "summary": "input is rejected without symbols, but diagnostic category differs",
+  "target": {
+    "diagnostic_classes": [
+      "invalid_format"
+    ],
+    "diagnostic_line_count": 1,
+    "exit_code": 0,
+    "records": [],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_truncated_elf"
+  ]
+}

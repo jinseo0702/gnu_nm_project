@@ -1,0 +1,90 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_strtab_offset.o"
+  ],
+  "category": "Malformed ELF",
+  "classification": "FAIL",
+  "dimensions": {
+    "diagnostic_classes_equal": false,
+    "diagnostic_overlap": false,
+    "exit_code_equal": true,
+    "record_multiset_equal": false,
+    "records_equal": false,
+    "status_kind_equal": true,
+    "status_semantics_equal": true
+  },
+  "id": "t26_bad_strtab",
+  "mode": "error",
+  "oracle": {
+    "diagnostic_classes": [
+      "other_diagnostic"
+    ],
+    "diagnostic_line_count": 1,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "<corrupt>",
+        "size": null,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "<corrupt>",
+        "size": null,
+        "type": "d",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "<corrupt>",
+        "size": null,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": null,
+        "name": "<corrupt>",
+        "size": null,
+        "type": "U",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "<corrupt>",
+        "size": null,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": null,
+        "name": "<corrupt>",
+        "size": null,
+        "type": "B",
+        "value": 0
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_strtab_offset.o"
+  ],
+  "purpose": "out-of-file linked string table",
+  "raw_directory": "raw/cases/t26_bad_strtab",
+  "summary": "unexpected symbol output differs while handling invalid input",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_strtab_offset.o"
+  ]
+}

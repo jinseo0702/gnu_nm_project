@@ -1,0 +1,355 @@
+{
+  "argv": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64.so"
+  ],
+  "category": "ELF type",
+  "classification": "PASS",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": false,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t04_elf64_shared_default",
+  "mode": "default",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "_DYNAMIC",
+        "size": null,
+        "type": "d",
+        "value": 15984
+      },
+      {
+        "context": null,
+        "name": "_GLOBAL_OFFSET_TABLE_",
+        "size": null,
+        "type": "d",
+        "value": 16360
+      },
+      {
+        "context": null,
+        "name": "_ITM_deregisterTMCloneTable",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "_ITM_registerTMCloneTable",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "__FRAME_END__",
+        "size": null,
+        "type": "r",
+        "value": 8352
+      },
+      {
+        "context": null,
+        "name": "__GNU_EH_FRAME_HDR",
+        "size": null,
+        "type": "r",
+        "value": 8192
+      },
+      {
+        "context": null,
+        "name": "__TMC_END__",
+        "size": null,
+        "type": "d",
+        "value": 16400
+      },
+      {
+        "context": null,
+        "name": "__cxa_finalize",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "__do_global_dtors_aux",
+        "size": null,
+        "type": "t",
+        "value": 4272
+      },
+      {
+        "context": null,
+        "name": "__do_global_dtors_aux_fini_array_entry",
+        "size": null,
+        "type": "d",
+        "value": 15976
+      },
+      {
+        "context": null,
+        "name": "__dso_handle",
+        "size": null,
+        "type": "d",
+        "value": 16384
+      },
+      {
+        "context": null,
+        "name": "__frame_dummy_init_array_entry",
+        "size": null,
+        "type": "d",
+        "value": 15968
+      },
+      {
+        "context": null,
+        "name": "__gmon_start__",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "_fini",
+        "size": null,
+        "type": "t",
+        "value": 4380
+      },
+      {
+        "context": null,
+        "name": "_init",
+        "size": null,
+        "type": "t",
+        "value": 4096
+      },
+      {
+        "context": null,
+        "name": "completed.0",
+        "size": null,
+        "type": "b",
+        "value": 16396
+      },
+      {
+        "context": null,
+        "name": "deregister_tm_clones",
+        "size": null,
+        "type": "t",
+        "value": 4160
+      },
+      {
+        "context": null,
+        "name": "frame_dummy",
+        "size": null,
+        "type": "t",
+        "value": 4336
+      },
+      {
+        "context": null,
+        "name": "register_tm_clones",
+        "size": null,
+        "type": "t",
+        "value": 4208
+      },
+      {
+        "context": null,
+        "name": "shared_add",
+        "size": null,
+        "type": "T",
+        "value": 4345
+      },
+      {
+        "context": null,
+        "name": "shared_bss",
+        "size": null,
+        "type": "B",
+        "value": 16400
+      },
+      {
+        "context": null,
+        "name": "shared_data",
+        "size": null,
+        "type": "D",
+        "value": 16392
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64.so"
+  ],
+  "order_sensitive": false,
+  "purpose": "ET_DYN shared object static symbol extraction",
+  "raw_directory": "raw/cases/t04_elf64_shared_default",
+  "summary": "semantic symbol record set and status match; order is tested separately",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "completed.0",
+        "size": null,
+        "type": "b",
+        "value": 16396
+      },
+      {
+        "context": null,
+        "name": "__cxa_finalize",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "deregister_tm_clones",
+        "size": null,
+        "type": "t",
+        "value": 4160
+      },
+      {
+        "context": null,
+        "name": "__do_global_dtors_aux",
+        "size": null,
+        "type": "t",
+        "value": 4272
+      },
+      {
+        "context": null,
+        "name": "__do_global_dtors_aux_fini_array_entry",
+        "size": null,
+        "type": "d",
+        "value": 15976
+      },
+      {
+        "context": null,
+        "name": "__dso_handle",
+        "size": null,
+        "type": "d",
+        "value": 16384
+      },
+      {
+        "context": null,
+        "name": "_DYNAMIC",
+        "size": null,
+        "type": "d",
+        "value": 15984
+      },
+      {
+        "context": null,
+        "name": "_fini",
+        "size": null,
+        "type": "t",
+        "value": 4380
+      },
+      {
+        "context": null,
+        "name": "frame_dummy",
+        "size": null,
+        "type": "t",
+        "value": 4336
+      },
+      {
+        "context": null,
+        "name": "__frame_dummy_init_array_entry",
+        "size": null,
+        "type": "d",
+        "value": 15968
+      },
+      {
+        "context": null,
+        "name": "__FRAME_END__",
+        "size": null,
+        "type": "r",
+        "value": 8352
+      },
+      {
+        "context": null,
+        "name": "_GLOBAL_OFFSET_TABLE_",
+        "size": null,
+        "type": "d",
+        "value": 16360
+      },
+      {
+        "context": null,
+        "name": "__gmon_start__",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "__GNU_EH_FRAME_HDR",
+        "size": null,
+        "type": "r",
+        "value": 8192
+      },
+      {
+        "context": null,
+        "name": "_init",
+        "size": null,
+        "type": "t",
+        "value": 4096
+      },
+      {
+        "context": null,
+        "name": "_ITM_deregisterTMCloneTable",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "_ITM_registerTMCloneTable",
+        "size": null,
+        "type": "w",
+        "value": null
+      },
+      {
+        "context": null,
+        "name": "register_tm_clones",
+        "size": null,
+        "type": "t",
+        "value": 4208
+      },
+      {
+        "context": null,
+        "name": "shared_add",
+        "size": null,
+        "type": "T",
+        "value": 4345
+      },
+      {
+        "context": null,
+        "name": "shared_bss",
+        "size": null,
+        "type": "B",
+        "value": 16400
+      },
+      {
+        "context": null,
+        "name": "shared_data",
+        "size": null,
+        "type": "D",
+        "value": 16392
+      },
+      {
+        "context": null,
+        "name": "__TMC_END__",
+        "size": null,
+        "type": "d",
+        "value": 16400
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/shared64.so"
+  ]
+}

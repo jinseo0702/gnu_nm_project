@@ -1,0 +1,133 @@
+{
+  "argv": [
+    "-P",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ],
+  "category": "Option -P",
+  "classification": "PASS",
+  "dimensions": {
+    "diagnostic_classes_equal": true,
+    "exit_code_equal": true,
+    "record_multiset_equal": true,
+    "records_equal": true,
+    "status_kind_equal": true,
+    "unparsed_stdout_equal": true
+  },
+  "id": "t14_posix_basic",
+  "mode": "posix",
+  "oracle": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "global_bss",
+        "size": 16,
+        "type": "B",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "global_data",
+        "size": 8,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": null,
+        "name": "global_text",
+        "size": 6,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": null,
+        "name": "local_data",
+        "size": 4,
+        "type": "d",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "local_text",
+        "size": 2,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "oracle_command": [
+    "/usr/bin/nm",
+    "-P",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ],
+  "purpose": "POSIX record name/type/value/size",
+  "raw_directory": "raw/cases/t14_posix_basic",
+  "summary": "semantic symbol records, order, status, and diagnostics match",
+  "target": {
+    "diagnostic_classes": [],
+    "diagnostic_line_count": 0,
+    "exit_code": 0,
+    "records": [
+      {
+        "context": null,
+        "name": "global_bss",
+        "size": 16,
+        "type": "B",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "global_data",
+        "size": 8,
+        "type": "D",
+        "value": 4
+      },
+      {
+        "context": null,
+        "name": "global_text",
+        "size": 6,
+        "type": "T",
+        "value": 2
+      },
+      {
+        "context": null,
+        "name": "local_data",
+        "size": 4,
+        "type": "d",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "local_text",
+        "size": 2,
+        "type": "t",
+        "value": 0
+      },
+      {
+        "context": null,
+        "name": "missing_external",
+        "size": null,
+        "type": "U",
+        "value": null
+      }
+    ],
+    "status_kind": "ok",
+    "unparsed_stdout": []
+  },
+  "target_command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "-P",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/basic64.o"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/ft_nm_baseline",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/malformed_bad_symbol_shndx.o"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.000766,
+  "exit_code": 0,
+  "timed_out": false
+}

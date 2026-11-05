@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gcc",
+    "-no-pie",
+    "-O0",
+    "-g",
+    "-o",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/bin/fixtures/executable64",
+    "/home/jinseo/duo/gnu_nm_project/portfolio_audit/tests/executable.c"
+  ],
+  "cwd": "/home/jinseo/duo/gnu_nm_project",
+  "duration_seconds": 0.022563,
+  "exit_code": 0,
+  "timed_out": false
+}
